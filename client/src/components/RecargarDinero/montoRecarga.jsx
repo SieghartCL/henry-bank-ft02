@@ -19,7 +19,7 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
         }
     }, [usuarioConectado])
 
-    const [cantidad, setCantidad] = useState(0);
+    const [value, setCantidad] = useState(0);
 
     return (
         <div id="enviardinero">
@@ -37,7 +37,7 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
             </svg>
             <div className="form-group col-md-5 envia">
                 <div className="total">
-                    <h1>${cantidad}</h1>
+                    <h1>${value}</h1>
                 </div>
                 <div class="input-group input-group-sm mb-3">
                     <input type="number" max="100000" min="0" class="form-control mensaje" placeholder="Modificar Cantidad"
@@ -47,7 +47,7 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
                 <div>
                     <Link to={{
                         pathname: "/recargar",
-                        state: { cantidad }
+                        state: { value }
                     }
                     }><Button className="btn btn-dark" size="lg">Recargar</Button>
                     </Link>

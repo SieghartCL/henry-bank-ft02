@@ -183,16 +183,16 @@ export function getAddress(address, id, user) {
 }
 
 export function cargarDinero(id, value) {
-  return function (dispatch) {
+  console.log(value)
     axios
-      .post(`http://localhost:3001/transactions/loadBalance/${id}`, { value })
+      .post(`http://localhost:3001/transactions/loadBalance/${id}`, {value})
       .then((res) => {
+        console.log(res.data)
         Swal.fire({
           title: "Recarga exitosa!",
           icon: "success",
         }).then(() => {
           window.location.replace("http://localhost:3000/cliente");
-          dispatch({ type: CARGAR_DINERO });
         });
       })
       .catch((res) => {
@@ -202,7 +202,6 @@ export function cargarDinero(id, value) {
           icon: "error",
         });
       });
-  };
 }
 
 export function transactionsHistory(id, moment) {
