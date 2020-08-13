@@ -1,6 +1,7 @@
 import React from 'react';
 import './css/App.css';
-import { Route } from 'react-router-dom';
+/* import { Route } from 'react-router-dom'; */
+import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import AltaUsuario from "./components/Cliente/FormularioAltaCliente.jsx";
 import Login from './components/Usuario/LoginForm.jsx';
 import Home from './components/Usuario/Onboarding.jsx';
@@ -12,13 +13,15 @@ import exportCrearUsuario from './components/Usuario/FormularioCrearUsuario.jsx'
 import Contacts from './components/Contactos/contactos'
 import ResetearContrasena from './components/Cliente/ResetearContrasena' 
 import ValidResetPassword from './components/Cliente/validResetPassword'
+import NotFound from './components/404/Notfound'
 
 
 function App() {
   
   return (
     <div>
-  
+   <Router>
+        <Switch>
       <Route exact path='/' component={Home} />
       <Route 
         exact path='/new/:id' 
@@ -35,6 +38,10 @@ function App() {
       <Route exact path='/enviar' component={EnviarDinero} />
       <Route exact path='/logout' component={BotonLogout}  />
       <Route path ="/contactos" component = {Contacts} />
+     {/*  <Route component={NotFound} /> */}
+      <Route path="*" component={NotFound} status={404} /> 
+      </Switch>
+    </Router>
     </div>
   );
 }
