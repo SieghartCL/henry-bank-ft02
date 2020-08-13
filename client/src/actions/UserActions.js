@@ -195,31 +195,26 @@ export function getAddress(address, id, user) {
   };
 }
 
-export function cargarDinero(id, valor) {
-  return function (dispatch) {
-    axios
-      .post(
-        `http://localhost:3001/transactions/loadBalance/${id}`,
-
-        { valor: valor }
-      )
-      .then((res) => {
-        swal({
-          title: "Recarga exitosa!",
-          icon: "success",
-        }).then(() => {
-          window.location.replace("http://localhost:3000/cliente");
-          dispatch({ type: CARGAR_DINERO });
-        });
-      })
-      .catch((res) => {
-        swal({
-          title: "Error",
-          text: "No se pudo recargar dinero",
-          icon: "error",
-        });
+export function cargarDinero(id, value) {
+  console.log(value);
+  axios
+    .post(`http://localhost:3001/transactions/loadBalance/${id}`, { value })
+    .then((res) => {
+      console.log(res.data);
+      Swal.fire({
+        title: "Recarga exitosa!",
+        icon: "success",
+      }).then(() => {
+        window.location.replace("http://localhost:3000/cliente");
       });
-  };
+    })
+    .catch((res) => {
+      swal({
+        title: "Error",
+        text: "No se pudo recargar dinero",
+        icon: "error",
+      });
+    });
 }
 
 export function transactionsHistory(id, moment) {
