@@ -1,0 +1,83 @@
+#root {
+  padding-left: 20%;
+  padding-right: 20%;
+}
+
+#btns {
+  display: grid;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 25px;
+}
+
+.table td,
+.table th {
+  border: 1px transparent;
+  text-align: center;
+}
+
+/* #backSend{
+} */
+
+#input {
+  border-color: black;
+  border-radius: 10px;
+}
+
+#tableCont {
+  display: inline;
+  background-color: transparent;
+  border: transparent;
+}
+
+.body {
+  background-color: transparent;
+  background-image: none;
+}
+
+#btnsDisplay {
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+#btnsDisabled {
+  display: inline-flex;
+  justify-content: space-between;
+}
+
+#tableContacts {
+  display: inline-table;
+  border-color: transparent;
+}
+
+#rowTable {
+  cursor: pointer;
+}
+
+#rowData {
+  background-color: lightgrey;
+}
+
+/* #wholeBottom{
+
+} */
+
+/*table responsive*/
+
+@media (max-width: 500px) {
+  .table thead {
+    display: none;
+  }
+  .table,
+  .table tbody,
+  .table tr,
+  .table td {
+    display: block;
+  }
+  .table tr {
+    margin-bottom: 40px;
+  }
+  .table td {
+    position: relative;
+  }
+}
