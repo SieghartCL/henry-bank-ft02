@@ -17,11 +17,10 @@ const Contacts = () => {
   const userSelected = useSelector((store) => store.usuario.contactSelected);
   const userContected = useSelector((store) => store.usuario.usuarioConectado);
 
-  const [emailValue, setEmailValue] = useState('');
+  const [emailValue, setEmailValue] = useState("");
 
   useEffect(() => dispatch(getProfile()), []);
   useEffect(() => dispatch(getContacts(userContected.id)), [userContected]);
-
 
   const selectedUser = (user) => {
     dispatch({ type: SELECT_CONTACT, payload: user });
@@ -33,12 +32,12 @@ const Contacts = () => {
 
   const addHandler = () => {
     dispatch(addContact(emailValue, userContected.id));
-    setEmailValue('');
+    setEmailValue("");
   };
 
   const volver = function (e) {
-    window.location.replace('http://localhost:3000/enviar')
-  }
+    window.location.replace("http://localhost:3000/enviar");
+  };
 
   return (
     <div>
@@ -72,40 +71,48 @@ const Contacts = () => {
       </div> */}
 
       <Container id="tableCont" class="row justify-content-center">
-        <div id="bodyTable">
+        <div>
           <Table id="tableContacts" striped bordered hover borderless="true">
+            <thead>
+              <tr>
+                <th>Nombre</th>
+                <th>Email</th>
+              </tr>
+            </thead>
             {console.log(contacts)}
             {contacts.length == 0 ? (
-              <div id="emptyContacts">No tienes contactos aún!</div>
+              <th>No tienes contactos aún!</th>
             ) : (
-                <tbody>
-                  {contacts.map((contact) => {
-                    return (
-                      contact.id == userSelected.id ? (
-                        <tr id="rowData">
-                          <td>
-                            {contact.firstName} {contact.lastName}
-                          </td>
-                          <td onClick={() => selectedUser(contact)}>{contact.email}</td>
-                        </tr>
-                      ) : (
-                          <tr id="rowTable">
-                            <td>
-                              {contact.firstName} {contact.lastName}
-                            </td>
-                            <td onClick={() => selectedUser(contact)}>{contact.email}</td>
-                          </tr>
-                        )
-                    )
-                    // <tr id="rowTable">
-                    //   <td>
-                    //     {contact.firstName} {contact.lastName}
-                    //   </td>
-                    //   <td onClick={() => selectedUser(contact)}>{contact.email}</td>
-                    // </tr>
-                  })}
-                </tbody>
-              )}
+              <tbody>
+                {contacts.map((contact) => {
+                  return contact.id == userSelected.id ? (
+                    <tr id="rowData">
+                      <td>
+                        {contact.firstName} {contact.lastName}
+                      </td>
+                      <td onClick={() => selectedUser(contact)}>
+                        {contact.email}
+                      </td>
+                    </tr>
+                  ) : (
+                    <tr id="rowTable">
+                      <td>
+                        {contact.firstName} {contact.lastName}
+                      </td>
+                      <td onClick={() => selectedUser(contact)}>
+                        {contact.email}
+                      </td>
+                    </tr>
+                  );
+                  // <tr id="rowTable">
+                  //   <td>
+                  //     {contact.firstName} {contact.lastName}
+                  //   </td>
+                  //   <td onClick={() => selectedUser(contact)}>{contact.email}</td>
+                  // </tr>
+                })}
+              </tbody>
+            )}
           </Table>
         </div>
       </Container>
@@ -124,47 +131,61 @@ const Contacts = () => {
             <div id="btns">
               {userSelected !== "" ? (
                 <div id="btnsDisplay">
-                  <Button id="addDisplay"
+                  <Button
+                    id="addDisplay"
                     className="btn btn-dark"
                     variant="top"
                     size="lg"
                     onClick={() => addHandler()}
                   >
                     Agregar
-              </Button><div id="betweenButtons"></div>
-                  <Button id="deleteDisplay"
+                  </Button>
+                  <Button
+                    id="deleteDisplay"
                     className="btn btn-dark"
                     variant="top"
                     size="lg"
-                    onClick={() => deleteHandler(userSelected.email, userContected.id)}
+                    onClick={() =>
+                      deleteHandler(userSelected.email, userContected.id)
+                    }
                   >
                     Eliminar
-              </Button>
+                  </Button>
                 </div>
               ) : (
-                  <div id="btnsDisabled">
-                    <Button
-                      onClick={() => addHandler(contacts.email)}
-                      className="btn btn-dark"
-                      variant="top"
-                      size="lg"
-                    >
-                      Agregar
-              </Button><div id="betweenButtons"></div>
-                    <Button id="deleteBtn" disabled style={{ pointerEvents: 'none' }} className="btn btn-dark" variant="top" size="lg">
-                      Eliminar
-              </Button>
-
-                  </div>
-                )}
+                <div id="btnsDisabled">
+                  <Button
+                    onClick={() => addHandler(contacts.email)}
+                    className="btn btn-dark"
+                    variant="top"
+                    size="lg"
+                  >
+                    Agregar
+                  </Button>
+                  <Button
+                    id="deleteBtn"
+                    disabled
+                    style={{ pointerEvents: "none" }}
+                    className="btn btn-dark"
+                    variant="top"
+                    size="lg"
+                  >
+                    Eliminar
+                  </Button>
+                </div>
+              )}
             </div>
           </div>
-          <div id="backSend" class="row justify-content-center"> <Button
-            onClick={volver}
-            className="btn btn-dark"
-            variant="top"
-            size="lg"
-          >Volver a Enviar Dinero</Button>
+          <div id="backSend" class="row justify-content-center">
+            {" "}
+            <Button
+              onClick={volver}
+              className="btn btn-dark"
+              variant="top"
+              size="lg"
+            >
+              Volver a Enviar Dinero
+            </Button>
           </div>
         </div>
       </div>

@@ -12,8 +12,7 @@ import {
   RECARGAR_DINERO,
 } from "../constants/userConstants";
 import axios from "axios";
-import swal from "sweetalert";
-import Swal from "sweetalert2";
+import swal from "sweetalert2";
 
 export function addUser(user) {
   return function (dispatch) {
@@ -21,15 +20,27 @@ export function addUser(user) {
       .post("http://localhost:3001/auth/register", user)
       .then((res) => {
         if (res.status === 200) {
-          alert("Se ha enviado un email de validación a " + user.email);
-          return (
-            dispatch({ type: ADD_USER }),
-            window.location.replace("http://localhost:3000")
-          );
+          swal
+            .fire({
+              title: "¡Registro realizado!",
+              text:
+                "Se ha enviado un email de validación a " + user.email + " =)",
+              icon: "success",
+            })
+            .then((value) => {
+              swal.fire(
+                dispatch({ type: ADD_USER }) &&
+                  window.location.replace("http://localhost:3000/login")
+              );
+            });
         }
       })
       .catch(() => {
-        alert("E-mail " + user.email + " ya está en uso");
+        swal.fire({
+          title: "¡Qué mal!",
+          text: "E-mail " + user.email + " ya está en uso =c",
+          icon: "error",
+        });
       });
   };
 }
@@ -70,28 +81,30 @@ export function getTransactions(idUser) {
 
 export function logout() {
   return function (dispatch) {
-    axios.get("http://localhost:3001/auth/logout").then((res) => {
-      if (res.status === 200) {
-        return dispatch({ type: LOGOUT });
-      } else {
-        alert("No fue posible desloguearse");
-      }
-    });
-  };
-}
-
-export function recarDinero(idUser, value) {
-  return function (dispatch) {
     axios
-      .post(`http://localhost:3001/transactions/loadBalance/${idUser}`, {
-        value,
-      })
+      .get("http://localhost:3001/auth/logout")
       .then((res) => {
         if (res.status === 200) {
-          return dispatch({ type: RECARGAR_DINERO });
-        } else {
-          alert("No se pudo recargar");
+          swal
+            .fire({
+              title: "¡Nos vemos pronto!",
+              text: "Se ha deslogueado satisfactoriamente",
+              icon: "success",
+            })
+            .then((value) => {
+              swal.fire(
+                dispatch({ type: LOGOUT }) &&
+                  window.location.replace("http://localhost:3000/login")
+              );
+            });
         }
+      })
+      .catch(() => {
+        swal.fire({
+          title: "¡Qué mal!",
+          text: "No se pudo desloguear =c",
+          icon: "error",
+        });
       });
   };
 }
@@ -173,9 +186,9 @@ export function getAddress(address, id, user) {
         }
       })
       .catch(() => {
-        Swal.fire({
-          title: "Error",
-          text: "La dirección ingresada no es válida",
+        swal({
+          title: "¡Qué mal!",
+          text: "La dirección ingresada no es válida =(",
           icon: "error",
         });
       });
@@ -191,7 +204,7 @@ export function cargarDinero(id, valor) {
         { valor: valor }
       )
       .then((res) => {
-        Swal.fire({
+        swal({
           title: "Recarga exitosa!",
           icon: "success",
         }).then(() => {
@@ -200,7 +213,7 @@ export function cargarDinero(id, valor) {
         });
       })
       .catch((res) => {
-        Swal.fire({
+        swal({
           title: "Error",
           text: "No se pudo recargar dinero",
           icon: "error",
@@ -221,7 +234,7 @@ export function transactionsHistory(id, moment) {
         dispatch({ type: TRANSACTIONS_HISTORY, payload: result.data });
       })
       .catch((error) => {
-        Swal.fire({
+        swal({
           title: error,
           text: "Hubo un error inesperado.",
           icon: "error",

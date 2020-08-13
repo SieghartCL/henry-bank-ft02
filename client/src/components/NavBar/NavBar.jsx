@@ -11,44 +11,34 @@ import "./navbar.css";
 
 const NavBar = () => {
   return (
-    <Navbar className="contenavbar" expand={"md"}>
-      <div className="conttop" align="center">
-        <Button
-          className="buttonSB"
-          href="/transactions"
-          variant="bbtn btn-dark"
-          size="lg"
-        >
+    <Navbar
+      className="m-auto"
+      id="nav"
+      fixed="bottom"
+      expand={"md"}
+      variant="light"
+      bg="light"
+    >
+      <div className="conttop">
+        <Button href="#" className="btn btn-dark" variant="top" size="lg">
           <IoIosPaperPlane size="32" />
           <br></br>
           Transacciones
         </Button>
-        <Button
-          className="buttonSW"
-          href="/stadistics"
-          variant="bbtn btn-light"
-          size="lg"
-        >
+
+        <Button href="#" className="btn btn-light" variant="top" size="lg">
           <BsGraphUp size="32" />
           <br></br>
           Estadisticas
         </Button>
-        <Button
-          className="buttonSW"
-          href="/myinfo"
-          variant="bbtn btn-light"
-          size="lg"
-        >
+
+        <Button href="#" className="btn btn-light" variant="top" size="lg">
           <MdLanguage size="32" />
           <br></br>
           Mis Datos
         </Button>
-        <Button
-          className="buttonSB"
-          href="/myproducts"
-          variant="bbtn btn-dark"
-          size="lg"
-        >
+
+        <Button href="#" className="btn btn-dark" variant="top" size="lg">
           <RiProductHuntLine size="32" />
           <br></br>
           Mis Productos
@@ -56,18 +46,18 @@ const NavBar = () => {
       </div>
       <div className="contbot" align="center">
         <Button
-          className="buttonRB"
-          href="/montorecarga"
-          variant="bbtn btn-dark"
+          href="/recargardinero"
+          className="btn btn-dark"
+          variant="bottom"
           size="sm"
         >
           <RiDownload2Line size="32" />
           Recargar Dinero
         </Button>
         <Button
-          className="buttonWR"
-          href="/enviar"
-          variant="bbtn btn-light"
+          href="/mandardinero"
+          className="btn btn-light"
+          variant="bottom"
           size="sm"
         >
           <RiUpload2Line size="32" />
