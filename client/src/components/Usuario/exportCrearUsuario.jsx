@@ -46,15 +46,16 @@ function handleSubmit(values) {
               <button type="button" className="btn btn-outline-light" value="Cancelar"  onClick={cancelar} >Cancelar</button>
             </div>
             </div>
-            <div class="form-row passhelpcont">
-            <div className="form-group col-md-6 link" >
+    
+            <div className="link">
               <a href="/">¿Olvidaste tu contraseña?</a>
               <a href="/">¿Necesitas ayuda?</a>
-            </div>
         </div>
         </FormikForm>
     </Formik>
     </div>
+    <Image id="footercrearusuario" src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png" ></Image>
+
     </Container>
     )
 

@@ -21,40 +21,37 @@
   width: 70%;
   height: 100%;
   background-color: black;
-
-
 }
-
-#contecliente1 .contecliente2 .buttonsUser .log {
-  font-size: 15px;
-  color:red;
+/* div Perfil  */
+.perfil {
+  display: flex;
+  flex-direction: column;
 }
-
-#cliente .contecliente2 .buttonsUser .editar {
-  font-size: 15px;
-  color:yellow;
-}
-
+/* div Buttons User  */
 .buttonsUser {
   display: flex;
   justify-content: space-around;
 }
 
+.editar {
+  font-size: 15px;
+  color:yellow;
+}
+
 .contecliente2 .header .perfil h2{
   font-weight: 500;
-  padding: 0px 20px;
-  padding-top: 15px;
   font-size: 30px;
   color: rgb(255, 255, 255);
 }
+
 .contecliente2 .header .perfil span{
   font-weight: 500;
   color: white;
 }
+
 .contecliente2 .header .perfil img{
-  width: 200px;
-  height: 200px;
- 
+  width: 50%;
+  height: 50%;
 }
 .contecliente2 .header .saldo {
   width: 100%;
@@ -90,4 +87,41 @@ align-self: center;
 
 #footerclient {
   width:70%;
+}
+
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+/* Container Cliente */
+#contecliente1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(rgb(53, 53, 53), rgb(255, 255, 255));
+  box-shadow: none !important;
+  border-color: transparent !important;
+  margin-top: 0px!important;
+}
+/* Subcontainer Cliente */
+.contecliente2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+/* Header Container */
+.contecliente2 .header{
+  display: flex;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+}
+/* div Perfil  */
+.perfil {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
 }

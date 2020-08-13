@@ -5,6 +5,7 @@ import "./CSS/altaCliente.css";
 import header from "./Images/header.png";
 import swal from 'sweetalert';
 import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image'
 
 
 function AddUserForm ({ id, getAddress, usuarioConectado, getProfile }){
@@ -149,15 +150,16 @@ function AddUserForm ({ id, getAddress, usuarioConectado, getProfile }){
               onChange={handleInputChange} 
               required
             />
-          </div>
-        
+          </div>  
           <div className="altaButtons">
           <input type="submit" className="btn btn-outline-dark" value="Dar de Alta" />
-              <button type="button" className="btn btn-outline-danger" value="Cancelar"  onClick={cancelar} >Cancelar</button>
+          <button type="button" className="btn btn-outline-danger" value="Cancelar"  onClick={cancelar} >Cancelar</button>
           </div>
         </form>
         <a href="/help">¿Necesitás ayuda?</a>
       </div>
+      <Image id="footeralta" src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png" ></Image>
+
     </Container>
   );
 };

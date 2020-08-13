@@ -1,3 +1,4 @@
+/* Container Login */
 #login{
   width: 70%;
   height: 70%;
@@ -9,22 +10,22 @@
   margin-top: 0%;
   margin-bottom: 0%;
 }
+/* Imagen Login */
 #login #henrybanklogin {
   width: 70%;
-  height: 70%;
+  height: 100%;
   align-self: center;
   margin-top: 0% !important;
 }
-
+/* Form Container  */
 #login #formlogin {
   background-color: linear-gradient(rgb(112, 112, 112), rgb(61, 61, 61));
   border-radius: 15px;
   width: 70%;
   height: 70%;
   align-self: center;
-  margin-bottom:5%;
 }
-
+/* Container 2 Login */
 #login #contelogin2 {
 padding-bottom: 4px;
 padding-top: 4px!important;
@@ -32,14 +33,14 @@ background-color: black;
 margin:0!important;
 
 }
-
-#login #contelogin2 #contelogin3 {
+/* Container 3 Login */
+#contelogin3 {
   width: 100%;
   background-color: black;
   align-self: center!important;
   padding-bottom: 4px;
 }
-
+/* Inputs  */
 .form-control {
   width: 80%;
   align-self: center;
@@ -47,13 +48,13 @@ margin:0!important;
   margin-bottom: 2%!important;
   margin-top: 5%;
 }
-
+/* Container 4  */
 #login #contelogin4 {
   background-color: black;
   align-items: center;
   margin-bottom: 0%;
 }
-
+/* Olvidaste contraseña Button */
 .forgotpass {
   color: white;
   font-weight: 500;
@@ -67,14 +68,14 @@ margin:0!important;
   background-color: rgb(122, 122, 122);
   width: 80%;
 }
-
+/* Imagen de Ondas  */
 #login #formlogin #ondas {
   width: 100%;
   height: 100%;
   align-self: center;
   margin-left: 0%!important;
 }
-
+/* Container Buttons  */
 #login .inicio {
   width: 100%!important;
   height: 30%;
@@ -85,7 +86,7 @@ margin:0!important;
   max-width: none!important;
   background-color: whitesmoke;
 }
-
+/* Iniciar Sesion Button */
 #login .inicio input{
 width: 100%;
  align-self: center;
@@ -93,9 +94,9 @@ width: 100%;
  color: #000;
  border: none;
  font-weight: bold;
- font-size: 80%7666666666666666666666kl;
+ font-size: 80%;
  box-shadow: 5px 5px 5px rgb(167, 167, 167);
- margin-top: 5%!important;
+ margin-top: 0%!important;
  margin-bottom: 5%;
 }
 
@@ -103,7 +104,7 @@ width: 100%;
   color: #fff;
   box-shadow: none;
 }
-
+/* Cancelar Button */
 #login .inicio button{
   width: 50%;
   box-shadow: 5px 5px 5px rgb(167, 167, 167);
@@ -130,7 +131,7 @@ width: 100%;
 .link {
   width: 100%;
   flex-direction: column;
-
+  background-color: transparent;
   width: 100%!important;
   align-self: center;
 
@@ -141,13 +142,53 @@ width: 100%;
   color: #5c5c5c;
   font-size: 80%;
   align-self: center;
+  background-color: transparent;
  
-
-
 }
 
 #footerlogin {
   width: 70%;
   height: 70%;
   align-self: center;
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+/* Container Login */
+#login{
+  width: 100%;
+  height: 100%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+/* Imagen Login */
+#login #henrybanklogin {
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  margin-top: 0% !important;
+}
+/* Form Container  */
+#login #formlogin {
+  background-color: linear-gradient(rgb(112, 112, 112), rgb(61, 61, 61));
+  border-radius: 15px;
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  margin-bottom: -5%;
+}
+/* Iniciar Sesion Button */
+#login .inicio input{
+  
+   font-size: 80%;
+   box-shadow: 5px 5px 5px rgb(167, 167, 167);
+   margin-top: -5%!important;
+   margin-bottom: 5%;
+  }
+#footerlogin {
+  width: 100%;
+  height: 100%;
+  align-self: center;
+}
 }

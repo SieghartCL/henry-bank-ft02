@@ -38,11 +38,6 @@ export default function LoginForm() {
             <input type="submit"  className="btn btn-outline-dark" value="Iniciar Sesión" />
             <button type="button"  className="btn btn-outline-light" value="Cancelar"  onClick={cancelar} >Volver</button>
           </div> 
-          <div class="form-row help">
-          <div className="form-group col-md-6 link" >
-            <a id="ayudaa" href="/">¿Necesitas ayuda?</a>
-          </div>
-        </div>
       </form>
       <Image id="footerlogin" src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png" ></Image>
     </Container>

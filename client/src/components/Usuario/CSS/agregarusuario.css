@@ -24,8 +24,8 @@
   align-self: center;
   width: 70%;
   height: 100%;
-  background-image: linear-gradient(rgb(194, 192, 192), rgb(236, 236, 236));
-  }
+  background-color: transparent;  
+}
 /* Container Formulario Formik */
   .Form {
     display: flex;
@@ -69,6 +69,7 @@
    height: 100%;
    display: flex;
    flex-direction: column;
+   align-self: center;
   
  }
   /* Boton Crear  */
@@ -120,14 +121,64 @@ align-self: center;
 }
 /* Ultimo Container forgotpass/ayuda */
   .link {
-    width: 70%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    background-image: linear-gradient(rgb(221, 221, 221), rgb(255, 255, 255));
-  }
+    align-self: center;
+    align-items: center;
+    background-color: transparent;
+}
 /* links forgotpass ayuda */
   #usuario .link a{
     color: #666666;
     font-size: 80%;
     align-self: center;
   }
+#footercrearusuario {
+  width: 100%;
+}
+
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+/* Container Crear Usuario */
+#crearusuario {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  box-shadow: none !important;
+  border-color: transparent !important;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+/* Imagen henry Bank Create User  */
+#henrybankcreateuser {
+  width: 100%;
+  height: 100%;
+  align-self: center;
+  margin-top: 0% !important;
+}
+/* Sub Container Crear usuario */
+#crearusuario #usuario{
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgb(194, 192, 192), rgb(236, 236, 236));
+  }
+/* Container Formulario Formik */
+  .Form {
+    display: flex;
+    flex-direction: column;
+  }
+/* Div Container  */
+  .form-group col-md-12{
+    display: flex;
+    flex-direction: column;
+  }
+  #footercrearusuario {
+    width: 100%;
+  }
+}
