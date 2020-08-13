@@ -5,7 +5,6 @@ import {
   GET_WALLET,
   LOGOUT,
   GET_TRANSACTIONS,
-  RECARGAR_DINERO,
   CARGAR_DINERO,
   ENVIAR_DINERO,
   LISTA_CONTACTOS,
@@ -143,10 +142,9 @@ export function getAddress(address, id, user) {
             .then((res) => {
               if (res.status === 200) {
                 dispatch({ type: MODIFY_USER, payload: res.data });
-                /*   alert ('Tus datos fueron modificados con éxitos') */
                 swal({
                   title: "¡Buen trabajo!",
-                  text: "Tus datos fueron modificados con éxitos",
+                  text: "Tus datos fueron creados con exito",
                   icon: "success",
                 }).then((value) => {
                   swal(
@@ -190,21 +188,21 @@ export function cargarDinero(id) {
   };
 }
 
-export function transactionsHistory(id, moment, body) {
+export function transactionsHistory(id, moment) {
   return function (dispatch) {
     axios
-      .post(
-        `http://localhost:3001/transactions/history/time/${id}?moment=${moment}`,
-        body
+      .get(
+        `http://localhost:3001/transactions/history/time/${id}?moment=${moment}`
       )
-      .then((res) => {
-        console.log(res);
-        dispatch({ type: TRANSACTIONS_HISTORY });
+      .then((result) => {
+        console.log("esto es data");
+        console.log(result.data);
+        dispatch({ type: TRANSACTIONS_HISTORY, payload: result.data }); //TypeError: dispatch is not a function
       })
-      .catch((data) => {
+      .catch((error) => {
         Swal.fire({
-          title: "Error",
-          text: "No se pudo recargar dinero",
+          title: error,
+          text: "Hubo un error inesperado.",
           icon: "error",
         });
       });

@@ -1,15 +1,18 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import "./General.css";
-import { Link } from 'react-router-dom';
-import Transactions from "../Transactions/Transactions"
+import { Link } from "react-router-dom";
 import { transactionsHistory, getProfile } from "../../actions/UserActions";
 
-function General({ usuarioConectado, getProfile, transactionsHistory, transacciones }) {
-
-    useEffect(() => {
-        getProfile();
-      }, []);
+function General({
+  usuarioConectado,
+  getProfile,
+  transactionsHistory,
+  transacciones,
+}) {
+  useEffect(() => {
+    getProfile();
+  }, []);
 
   return (
     <div className="container">
@@ -44,11 +47,13 @@ function General({ usuarioConectado, getProfile, transactionsHistory, transaccio
   );
 }
 
-function mapStateToProps(state){
-    return {
-      usuarioConectado: state.usuario.usuarioConectado,
-      transactions: state.usuario.transactions,
-    }
-  }
+function mapStateToProps(state) {
+  return {
+    usuarioConectado: state.usuario.usuarioConectado,
+    transactions: state.usuario.transactions,
+  };
+}
 
-export default connect(mapStateToProps,{ getProfile, transactionsHistory })(General)
+export default connect(mapStateToProps, { getProfile, transactionsHistory })(
+  General
+);

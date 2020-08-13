@@ -5,51 +5,55 @@ import "./Transactions.css";
 import OneTransaction from "./OneTransaction";
 import { transactionsHistory, getProfile } from "../../actions/UserActions";
 
-function Transactions({usuarioConectado, moment, getProfile, history}) {
-  // const {usuarioConectado, moment} = props;
-  var transactioners = [];
-  console.log(`Usuario: ${{usuarioConectado}}`);
-  console.log(usuarioConectado);
-  console.log(`Rango Horario: ${moment}`);
+function Transactions({ usuarioConectado, moment, getProfile, history }) {
+  const transactioners = transactionsHistory(usuarioConectado.id, moment);
 
   useEffect(() => {
     console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    transactionsHistory(1, moment);
+    transactioners();
     // getProfile();
-  });
+  }, []);
 
-  // /ƒ (dispatch) {
-  //   axiosWEBPACK_IMPORTED_MODULE1default.a.post("http://localhost:3001/transactions/history/time/" + id?moment= + moment).then(data => {
-  //     dispatch({
-  //       type: _constants…/
+  console.log(usuarioConectado.id);
+  console.log(`Rango Horario: ${moment}`);
+  console.log("HISTORIAAAAAAAAAAA: ", history); //ISTORIAAAAAAAAAAA:  history: {income:[], outcome:[] }   __proto__: Object
 
-  // transactioners = transactionsHistory(usuarioConectado.id, moment);
-  // const transactioners2 = transactioners
-  console.log("HISTORIAAAAAAAAAAA: ", history);
   return (
     <Container className="">
       <Row>
         <Col sm={4}></Col>
         <Col sm={8} className="">
-          {history && history.map((transactionsHistory) => (
-            <OneTransaction key={transactionsHistory.id} />
-          ))}
+          {/*   {history &&
+            history.income.map((transactionsHistory) => (
+              <OneTransaction
+                key={transactionsHistory.id}
+                state={transactionsHistory.state}
+              />
+            ))}
+            {history &&
+            history.outcome.map((transactionsHistory) => (
+              <OneTransaction
+                key={transactionsHistory.id}
+                state={transactionsHistory.state}
+              />
+            ))} */}
         </Col>
       </Row>
     </Container>
   );
 }
 function mapStateToProps(state) {
+  console.log("state.history");
+  console.log(state);
   return {
-    history: state.history,
+    history: state.usuario.history,
     usuarioConectado: state.usuario.usuarioConectado,
   };
 }
-// function mapDispatchToProps(dispatch) {
-//   return {
-//     transactionsHistory: (data) => dispatch(transactionsHistory(data)),
-//
-//   };
-// }
+function mapDispatchToProps(dispatch) {
+  return {
+    transactionsHistory: (data) => dispatch(transactionsHistory(data)),
+  };
+}
 
-export default connect(mapStateToProps, {transactionsHistory, getProfile})(Transactions);
+export default connect(mapStateToProps, mapDispatchToProps)(Transactions);

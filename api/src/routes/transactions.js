@@ -356,7 +356,7 @@ server.get("/history/:idUser", (req, res) => {
 //RUTA PARA RETORNAR SUMA GENERAL POR FECHA DE INGRESOS Y EGRESOS X USUARIO//
 //Fecha de incorporación a base: 10-08-2020
 //Última actualización: 11-08-2020
-server.post("/history/time/:idUser", async (req, res) => {
+server.get("/history/time/:idUser", async (req, res) => {
   const { idUser } = req.params;
   const { moment } = req.query;
 
