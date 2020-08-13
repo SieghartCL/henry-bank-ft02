@@ -12,6 +12,7 @@ import exportCrearUsuario from "./components/Usuario/FormularioCrearUsuario.jsx"
 import Contacts from "./components/Contactos/contactos";
 import ResetearContrasena from "./components/Cliente/ResetearContrasena";
 import ValidResetPassword from "./components/Cliente/validResetPassword";
+import MontoRecarga from "./components/RecargarDinero/montoRecarga.jsx";
 import Transactions from "./components/Transactions/Transactions";
 import EditUsuario from "./components/Cliente/FormularioEditCliente.jsx";
 function App() {
@@ -46,6 +47,7 @@ function App() {
         path="/transactions/:moment"
         component={({ match }) => <Transactions moment={match.params.moment} />}
       />
+      <Route path="/montorecarga" component={MontoRecarga} />
     </div>
   );
 }

@@ -57,7 +57,7 @@ const NavBar = () => {
       <div className="contbot" align="center">
         <Button
           className="buttonRB"
-          href="/recargar"
+          href="/montorecarga"
           variant="bbtn btn-dark"
           size="sm"
         >
