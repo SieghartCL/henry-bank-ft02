@@ -7,6 +7,7 @@ import { getProfile, getWallet, getTransactions } from "../../actions/UserAction
 import BotonLogout from "./BotonLogout.jsx";
 import { AiFillEdit} from 'react-icons/ai';
 import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image'
 
 function Cliente({ usuarioConectado, wallet, transactions, getProfile, getWallet, getTransactions, history }){
   useEffect(() => {
@@ -32,7 +33,6 @@ function Cliente({ usuarioConectado, wallet, transactions, getProfile, getWallet
     
   return(
     <Container id="contecliente1"> 
-   
       <div className="contecliente2">
         <div className="header">
           <div className="perfil">
@@ -40,21 +40,15 @@ function Cliente({ usuarioConectado, wallet, transactions, getProfile, getWallet
               <h2>Hola, <span>{usuarioConectado.firstName}   
               <div className="buttonsUser">
                 <BotonLogout id="blogout" history={history} title="Log Out"/>
-
                 <AiFillEdit className="btn" type="button" size={60}  onClick={editUser} color="yellow" title="Editar" /> 
-
               </div>
-              <div>
-              </div>
+          <div>
+        </div>
               </span></h2>
-              
             :            
-              <h2>Hola, <span>Usuario</span></h2>  
-                     
+              <h2>Hola, <span>Usuario</span></h2>        
             }
-            <img src={imgMuestra} width="100px" alt="photo"></img>
-          </div>
-
+       </div>
           {usuarioConectado.firstName!==null && <span>
           <div className="saldo">
             {wallet ? 
@@ -68,6 +62,7 @@ function Cliente({ usuarioConectado, wallet, transactions, getProfile, getWallet
           </div>
           </span>}
           </div> 
+          <Image id="ondasclient" src="https://fotos.subefotos.com/e07505b47575212c24ec5fdb5ffc1cb8o.png" ></Image>
           <div className="clientegeneral">
           {usuarioConectado.firstName!==null && <span><General transacciones={transactions}/>
           <div id="navbarcont">
@@ -75,13 +70,11 @@ function Cliente({ usuarioConectado, wallet, transactions, getProfile, getWallet
           </div>
           </span>}
           </div>
-
-        {usuarioConectado.firstName===null && 
-    <form className="form-signin needs-validation"> 
-            <h1>Tu cuenta aún no ha sido activada, por favor, revisa tu mail y sigue los pasos para activarla.</h1>
-            <div>             
-           </div>
-    </form>}
+            {usuarioConectado.firstName===null && 
+            <form className="form-signin needs-validation"> 
+              <h1>Tu cuenta aún no ha sido activada, por favor, revisa tu mail y sigue los pasos para activarla.</h1>
+            </form>}
+            <Image id="footerclient" src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png" ></Image>
       </div>  
     </Container>
   )

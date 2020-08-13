@@ -1,19 +1,28 @@
+/* Container Cliente */
 #contecliente1 {
-  width: 100%!important;
+  width: 70%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(rgb(53, 53, 53), rgb(255, 255, 255));
+  box-shadow: none !important;
+  border-color: transparent !important;
+  margin-top: 0px!important;
 }
-
+/* Subcontainer Cliente */
+.contecliente2 {
+  display: flex;
+  flex-direction: column;
+}
+/* Header Container */
 .contecliente2 .header{
   display: flex;
-  width: 600px;
-  height: 350px;
-  margin-top: 2%;
-  margin-bottom: 0%;
-  margin-left: 25%;
-  margin-right: 20%;
+  align-self: center;
+  width: 70%;
+  height: 100%;
   background-color: black;
-  border-radius: 15px;
-  opacity: 0.8;
+
+
 }
 
 #contecliente1 .contecliente2 .buttonsUser .log {
@@ -45,52 +54,40 @@
 .contecliente2 .header .perfil img{
   width: 200px;
   height: 200px;
-  border-radius: 15px;
-  border-style: solid;
-  margin-left: 10%;
-  margin-top: 3%;
-  margin-right:5%;
-  margin-bottom:5%;
+ 
 }
 .contecliente2 .header .saldo {
   width: 100%;
-  height: 80%;
-  margin-left: 20%;
-  margin-top:15%;
-  margin-right: 5%;
-  margin-bottom: 5%;
-  border-style: solid;
-  border-color: gray;
-  border-radius: 15px;
+  height: 100%;
 
 }
 
 .contecliente2 .header .saldo h3{
   font-size: 30px;
-  margin-bottom: 5%;
-  margin-top: 20%;
-  margin-left: 15%;
-  margin-right: 15%;
   color: white;
   text-align: center;
 
 }
 
+#ondasclient {
+width:70%;
+align-self: center;
+}
+
 .contecliente2 .clientegeneral {
   display: flex;
-  width: 600px;
-  height: 350px;
-  margin-top: 0%;
-  margin-bottom: 0%;
-  margin-left: 25%;
-  margin-right: 20%;
-  background-color: black;
-  border-radius: 20px;
-  opacity: 0.8;
-}
-
-#contecliente1 .contecliente2 .clientegeneral #navbarcont{
-
+  width: 70%;
+  height: auto;
+  background-color: whitesmoke;
+  margin-top: 0;
 
 }
 
+#navbarcont{
+  font-weight: 20px;
+  background-color: whitesmoke;
+}
+
+#footerclient {
+  width:70%;
+}

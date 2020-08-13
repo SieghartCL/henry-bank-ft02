@@ -36,14 +36,15 @@ export default function LoginForm() {
         <Image id="ondas" src="https://fotos.subefotos.com/e07505b47575212c24ec5fdb5ffc1cb8o.png" ></Image>
           <div className="form-group col-md-6 inicio">
             <input type="submit"  className="btn btn-outline-dark" value="Iniciar Sesión" />
-            <button type="button"  className="btn btn-outline-danger" value="Cancelar"  onClick={cancelar} >Cancelar</button>
+            <button type="button"  className="btn btn-outline-light" value="Cancelar"  onClick={cancelar} >Volver</button>
           </div> 
-          <div class="form-row contenedor">
+          <div class="form-row help">
           <div className="form-group col-md-6 link" >
             <a id="ayudaa" href="/">¿Necesitas ayuda?</a>
           </div>
         </div>
       </form>
+      <Image id="footerlogin" src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png" ></Image>
     </Container>
   )
 }

@@ -1,24 +1,34 @@
-#login{
-    margin: 20px auto;
+#altaclientecont {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  background-image: linear-gradient(rgb(99, 99, 99), rgb(255, 255, 255));
+
+}
+
+#altacliente{
+    align-self: center;
     width: 400px;
-    background-color: rgba(243, 242, 242, 0.233);
+    background-image: linear-gradient(rgb(99, 99, 99), rgb(255, 255, 255));
   }
-  #login img{
-    width: 400px;
+
+img{
+    width:100%;
   }
-  #login h2{
+
+  #altacliente h2{
     font-size: 1.5rem;
     position: relative;
     top: -5px;
     margin-bottom: 30px;
     text-align: center;
   }
-  #login div p{
-    position: relative;
-    margin-top: 10px;
-    margin-left: 10%;
-    margin-bottom: 0px;
-    text-align: left;
+  #altacliente div p{
+   margin-left: 20px;
+   margin-top: 20px;
+   font-weight: bold;
+   
+    
   }
 
   .form-control {
@@ -36,6 +46,7 @@
   display: flex;
   justify-content: center;
   margin-top: 35px;
+  flex-direction: column;
 }
 
 #buttons {
@@ -44,41 +55,43 @@
   border: none;
   font-weight: 500;
   border-radius: 0%;
-  margin-right: 5px;
-  margin-left: 5px;
   font-size: 18px;
   background-color: rgba(200, 196, 196, 0.664);
 box-shadow: 3px 3px 5px rgba(68, 68, 68, 0.575);
 
 }
 
-  #login .contenedor{
+#altacliente.contenedor{
     margin-top: 30px;
     padding-bottom: 20px;
   }
   
-  #login a{
-    display: flex;
-    justify-content: center;
-margin-top: 20px;
-    color: #666666;
-    font-size: 15px;
-    position: relative;
+#altacliente a{
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  color: #666666;
+  font-size: 20px;
+  position: relative;
+  margin-bottom: 10%;
+  margin-top: 5%;
    
   }
 
-  #login .altaButtons input{
-    margin-left: 20px;
+#altacliente .altaButtons input{
+    height: 60px;
     background-color: yellow;
     color: #000;
     border: none;
     font-weight: bold;
+    font-size: 20px;
     border-radius: 0%;
     padding: 10px 40px !important;
     box-shadow: 5px 5px 5px rgb(167, 167, 167);
+    margin-bottom: 5%;
   }
 
-  #login .altaButtons input:hover{
+#altacliente .altaButtons input:hover{
     color: #fff;
     box-shadow: none;
   }

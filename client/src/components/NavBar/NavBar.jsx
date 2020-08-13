@@ -1,5 +1,6 @@
 import React from 'react';
 import Navbar from "react-bootstrap/Navbar";
+import Container from 'react-bootstrap/Container'
 import Button from 'react-bootstrap/Button';
 import { IoIosPaperPlane } from "react-icons/io";
 import { BsGraphUp } from "react-icons/bs";
@@ -11,41 +12,42 @@ import './navbar.css'
 
 const NavBar = () => {
   return (
+    <Container id="conteinernavbar">
     <Navbar  className='contenavbar'   expand={"md"}  >           
       <div className="conttop" align="center">
-        <Button className="buttonSB" href="/transactions"  variant="bbtn btn-dark" size="lg">
+        <Button className="buttonSB" href="/transactions"  variant="bbtn btn-dark" >
           <IoIosPaperPlane size="32" />
             <br></br>
               Transacciones
         </Button>
-        <Button className="buttonSW" href="/stadistics"  variant="bbtn btn-light" size="lg">
+        <Button className="buttonSW" href="/stadistics"  variant="bbtn btn-light" >
           <BsGraphUp size="32" />
             <br></br>              
               Estadisticas
         </Button>
-        <Button className="buttonSW" href="/myinfo"  variant="bbtn btn-light" size="lg">
+        <Button className="buttonSW" href="/myinfo"  variant="bbtn btn-light" >
           <MdLanguage size="32"/>
             <br></br>            
               Mis Datos
         </Button>  
-        <Button className="buttonSB" href="/myproducts"  variant="bbtn btn-dark" size="lg">
+        <Button className="buttonSB" href="/myproducts"  variant="bbtn btn-dark" >
             <RiProductHuntLine size="32"/>
                <br></br>
                 Mis Productos
         </Button>
       </div>
       <div className="contbot" align="center">
-        <Button className="buttonRB" href="/reloadmoney'"  variant="bbtn btn-dark" size="sm" >
+        <Button className="buttonRB" href="/recargar'"  variant="bbtn btn-dark"  >
             <RiDownload2Line size="32"/>
                 Recargar Dinero
         </Button>
-        <Button className="buttonWR" href="/sendmoney"  variant="bbtn btn-light" size="sm">
+        <Button className="buttonWR" href="/enviar"  variant="bbtn btn-light" >
             <RiUpload2Line size="32"/>
                 Mandar Dinero
         </Button>
       </div>
     </Navbar>
-    
+    </Container>
 
 
   );

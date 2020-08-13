@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import "./CSS/altaCliente.css";
 import header from "./Images/header.png";
 import swal from 'sweetalert';
+import Container from 'react-bootstrap/Container';
 
 
 function AddUserForm ({ id, getAddress, usuarioConectado, getProfile }){
@@ -50,8 +51,8 @@ function AddUserForm ({ id, getAddress, usuarioConectado, getProfile }){
  }
 
   return (
-    <div>
-      <div id="login">
+    <Container id="altaclientecont">
+      <div id="altacliente">
         <img src={header} alt="header" />
         <form
           onSubmit={(event) => {
@@ -107,7 +108,7 @@ function AddUserForm ({ id, getAddress, usuarioConectado, getProfile }){
               onChange={handleInputChange} 
               required
             />
-            <p>Fecha de nacimiento</p>
+            <div><p>Fecha de nacimiento</p></div>
             <input
               class="form-control"
               type="date"
@@ -151,13 +152,13 @@ function AddUserForm ({ id, getAddress, usuarioConectado, getProfile }){
           </div>
         
           <div className="altaButtons">
-          <input type="submit" className="btn btn-outline-dark" value="Crear" />
+          <input type="submit" className="btn btn-outline-dark" value="Dar de Alta" />
               <button type="button" className="btn btn-outline-danger" value="Cancelar"  onClick={cancelar} >Cancelar</button>
           </div>
         </form>
         <a href="/help">¿Necesitás ayuda?</a>
       </div>
-    </div>
+    </Container>
   );
 };
 
