@@ -15,11 +15,12 @@ const {
 //Se le puede pasar un ID o un número predefinido como ahora
 server.post("/loadBalance/:idUser", async (req, res) => {
   const { idUser } = req.params;
+  const valor = req.body;
+  console.log(req.body);
   const saldo = await Wallet.findOne({
     where: { userId: idUser },
   });
-  const { value } = req.body;
-  const saldoConsolidado = parseFloat(saldo.balance) + parseFloat(value);
+  const saldoConsolidado = parseFloat(saldo.balance) + parseFloat(valor);
   // const randomToken = function () {
   //   return Math.floor(Math.random() * 5 + 1);
   // };

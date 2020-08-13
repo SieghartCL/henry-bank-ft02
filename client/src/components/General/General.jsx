@@ -41,7 +41,6 @@ function General({
         <Link to="/transactions/day">Day</Link>
         <Link to="/transactions/week">Week</Link>
         <Link to="/transactions/month">Month</Link>
-        <Link to="/transactions/year">Year</Link>
       </div>
     </div>
   );

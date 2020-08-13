@@ -182,10 +182,14 @@ export function getAddress(address, id, user) {
   };
 }
 
-export function cargarDinero(id, value) {
+export function cargarDinero(id, valor) {
   return function (dispatch) {
     axios
-      .post(`http://localhost:3001/transactions/loadBalance/${id}`, { value })
+      .post(
+        `http://localhost:3001/transactions/loadBalance/${id}`,
+
+        { valor: valor }
+      )
       .then((res) => {
         Swal.fire({
           title: "Recarga exitosa!",

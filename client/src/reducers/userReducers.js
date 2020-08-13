@@ -107,7 +107,7 @@ export default function usuario(state = initialState, action) {
     case TRANSACTIONS_HISTORY:
       return {
         ...state,
-        history: action.data,
+        history: action.payload,
       };
 
     default:

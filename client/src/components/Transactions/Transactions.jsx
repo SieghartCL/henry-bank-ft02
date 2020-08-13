@@ -4,40 +4,46 @@ import { Container, Row, Col } from "react-bootstrap";
 import "./Transactions.css";
 import OneTransaction from "./OneTransaction";
 import { transactionsHistory, getProfile } from "../../actions/UserActions";
-import { MdCallToAction } from "react-icons/md";
 
 function Transactions({
   usuarioConectado,
   moment,
-  getProfile,
   history,
   transactionsHistory,
 }) {
-  // const transactioners = transactionsHistory(usuarioConectado.id, moment);
-
+  console.log("history");
+  console.log(history);
   useEffect(() => {
-    console.log("Usuario conectado: ", usuarioConectado);
-    console.log("Moment: ", moment);
     transactionsHistory(usuarioConectado.id, moment);
   }, []);
+
   return (
     <Container className="">
       <Row>
+        {console.log("history dentro del return")}
+        {console.log(history.income)}
         <Col sm={4}></Col>
         <Col sm={8} className="">
-          {/*   {history &&
-            history.income.map((transactionsHistory) => (
+          {history.income &&
+            history.income.map((e) => (
               <OneTransaction
-                key={transactionsHistory.id}
-                state={transactionsHistory.state}
+                key={e.id}
+                transactionNumber={e.transactionNumber}
+                state={e.state}
+                value={e.value}
+                transactions_type={e.transactions_type}
               />
-            ))}*/}
-          {/*  {history.outcome.map((transactionsHistory) => (
-            <OneTransaction
-              key={transactionsHistory.id}
-              state={transactionsHistory.state}
-            />
-          ))} */}
+            ))}
+          {history.outcome &&
+            history.outcome.map((e) => (
+              <OneTransaction
+                key={e.id}
+                transactionNumber={e.transactionNumber}
+                state={e.state}
+                value={e.value}
+                transactions_type={e.transactions_type}
+              />
+            ))}
         </Col>
       </Row>
     </Container>
@@ -56,4 +62,5 @@ function mapDispatchToProps(dispatch) {
       dispatch(transactionsHistory(id, moment)),
   };
 }
+
 export default connect(mapStateToProps, mapDispatchToProps)(Transactions);
