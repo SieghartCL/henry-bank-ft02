@@ -13,6 +13,7 @@ import Contacts from "./components/Contactos/contactos";
 import ResetearContrasena from "./components/Cliente/ResetearContrasena";
 import ValidResetPassword from "./components/Cliente/validResetPassword";
 import Transactions from "./components/Transactions/Transactions";
+import EditUsuario from "./components/Cliente/FormularioEditCliente.jsx";
 function App() {
   return (
     <div>
@@ -21,6 +22,11 @@ function App() {
         exact
         path="/new/:id"
         component={({ match }) => <AltaUsuario id={match.params.id} />}
+      />
+      <Route
+        exact
+        path="/update/:id"
+        component={({ match }) => <EditUsuario id={match.params.id} />}
       />
       <Route exact path="/login" component={Login} />
       <Route exact path="/resetpassword" component={ResetearContrasena} />
