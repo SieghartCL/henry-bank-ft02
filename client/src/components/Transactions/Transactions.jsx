@@ -5,18 +5,20 @@ import "./Transactions.css";
 import OneTransaction from "./OneTransaction";
 import { transactionsHistory, getProfile } from "../../actions/UserActions";
 
-function Transactions({ usuarioConectado, moment, getProfile, history }) {
-  const transactioners = transactionsHistory(usuarioConectado.id, moment);
+function Transactions({
+  usuarioConectado,
+  moment,
+  getProfile,
+  history,
+  transactionsHistory,
+}) {
+  // const transactioners = transactionsHistory(usuarioConectado.id, moment);
 
   useEffect(() => {
-    console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAA");
-    transactioners();
-    // getProfile();
+    console.log("Usuario conectado: ", usuarioConectado);
+    console.log("Moment: ", moment);
+    transactionsHistory(usuarioConectado.id, moment);
   }, []);
-
-  console.log(usuarioConectado.id);
-  console.log(`Rango Horario: ${moment}`);
-  console.log("HISTORIAAAAAAAAAAA: ", history); //ISTORIAAAAAAAAAAA:  history: {income:[], outcome:[] }   __proto__: Object
 
   return (
     <Container className="">
@@ -43,16 +45,16 @@ function Transactions({ usuarioConectado, moment, getProfile, history }) {
   );
 }
 function mapStateToProps(state) {
-  console.log("state.history");
-  console.log(state);
   return {
     history: state.usuario.history,
     usuarioConectado: state.usuario.usuarioConectado,
   };
 }
+
 function mapDispatchToProps(dispatch) {
   return {
-    transactionsHistory: (data) => dispatch(transactionsHistory(data)),
+    transactionsHistory: (id, moment) =>
+      dispatch(transactionsHistory(id, moment)),
   };
 }
 
