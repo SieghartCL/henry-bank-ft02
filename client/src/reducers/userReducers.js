@@ -23,7 +23,7 @@ const initialState = {
   listContact: [],
   contacts: [],
   contactSelected: "",
-  history: [],
+  history: {},
 };
 
 export default function usuario(state = initialState, action) {

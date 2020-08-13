@@ -4,6 +4,7 @@ import { Container, Row, Col } from "react-bootstrap";
 import "./Transactions.css";
 import OneTransaction from "./OneTransaction";
 import { transactionsHistory, getProfile } from "../../actions/UserActions";
+import { MdCallToAction } from "react-icons/md";
 
 function Transactions({
   usuarioConectado,
@@ -19,7 +20,6 @@ function Transactions({
     console.log("Moment: ", moment);
     transactionsHistory(usuarioConectado.id, moment);
   }, []);
-
   return (
     <Container className="">
       <Row>
@@ -31,14 +31,13 @@ function Transactions({
                 key={transactionsHistory.id}
                 state={transactionsHistory.state}
               />
-            ))}
-            {history &&
-            history.outcome.map((transactionsHistory) => (
-              <OneTransaction
-                key={transactionsHistory.id}
-                state={transactionsHistory.state}
-              />
-            ))} */}
+            ))}*/}
+          {/*  {history.outcome.map((transactionsHistory) => (
+            <OneTransaction
+              key={transactionsHistory.id}
+              state={transactionsHistory.state}
+            />
+          ))} */}
         </Col>
       </Row>
     </Container>
@@ -57,5 +56,4 @@ function mapDispatchToProps(dispatch) {
       dispatch(transactionsHistory(id, moment)),
   };
 }
-
 export default connect(mapStateToProps, mapDispatchToProps)(Transactions);

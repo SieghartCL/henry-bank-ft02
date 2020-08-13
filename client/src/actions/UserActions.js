@@ -9,6 +9,7 @@ import {
   ENVIAR_DINERO,
   LISTA_CONTACTOS,
   TRANSACTIONS_HISTORY,
+  RECARGAR_DINERO,
 } from "../constants/userConstants";
 import axios from "axios";
 import swal from "sweetalert";
@@ -160,7 +161,7 @@ export function getAddress(address, id, user) {
                 dispatch({ type: MODIFY_USER, payload: res.data });
                 swal({
                   title: "¡Buen trabajo!",
-                  text: "Tus datos fueron creados con exito",
+                  text: "Tus datos fueron ingresados correctamente",
                   icon: "success",
                 }).then((value) => {
                   swal(
@@ -211,9 +212,9 @@ export function transactionsHistory(id, moment) {
         `http://localhost:3001/transactions/history/time/${id}?moment=${moment}`
       )
       .then((result) => {
-        console.log("esto es data");
+        console.log("esto es result.data");
         console.log(result.data);
-        dispatch({ type: TRANSACTIONS_HISTORY, payload: result.data }); //TypeError: dispatch is not a function
+        dispatch({ type: TRANSACTIONS_HISTORY, payload: result.data });
       })
       .catch((error) => {
         Swal.fire({
