@@ -11,7 +11,7 @@ import {
   LISTA_CONTACTOS 
 } from "../constants/userConstants";
 import axios from "axios";
-import swal from 'sweetalert';
+import swal from 'sweetalert2';
 
 
 
@@ -21,18 +21,18 @@ export function addUser(user) {
     axios.post("http://localhost:3001/auth/register", user)
     .then((res) => {
       if (res.status === 200) {
-        swal({
+        swal.fire({
           title: "¡Registro realizado!",
           text: "Se ha enviado un email de validación a " + user.email + " =)",
           icon: "success",
         })
         .then((value) => {
-          swal(dispatch({ type: ADD_USER }) && window.location.replace('http://localhost:3000/login'));
+          swal.fire(dispatch({ type: ADD_USER }) && window.location.replace('http://localhost:3000/login'));
         });  
       }       
     })
     .catch(() => {
-      swal({
+      swal.fire({
         title: "¡Qué mal!",
         text: "E-mail " + user.email + " ya está en uso =c" ,
         icon: "error",
@@ -75,18 +75,18 @@ export function logout() {
   return function (dispatch) {
     axios.get('http://localhost:3001/auth/logout').then((res) => {
       if (res.status === 200) {
-        swal({
+        swal.fire({
           title: "¡Buen trabajo!",
           text: "Se ha deslogueado satisfactoriamente",
           icon: "success",
         })
         .then((value) => {
-          swal(dispatch({ type: LOGOUT }) && window.location.replace('http://localhost:3000/login'));
+          swal.fire(dispatch({ type: LOGOUT }) && window.location.replace('http://localhost:3000/login'));
         });  
       }       
     })
     .catch(() => {
-      swal({
+      swal.fire({
         title: "¡Qué mal!",
         text: "No se pudo desloguear =c",
         icon: "error",
@@ -104,19 +104,19 @@ export function enviarDinero(from, to, money) {
     axios.put(`http://localhost:3001/transactions/${from}/${to.idContacto}`, myBody)
     .then(res => {
       if (res.status === 200) {
-          swal({
+          swal.fire({
           title: "¡Buen trabajo!",
           text: "Se ha enviado $" + money + " a " + to.nombreContacto,
           icon: "success",
         })
         .then((value) => {
-          swal(dispatch({ type: ENVIAR_DINERO }) && window.location.replace('http://localhost:3000/cliente'));
+          swal.fire(dispatch({ type: ENVIAR_DINERO }) && window.location.replace('http://localhost:3000/cliente'));
         });   
       } 
     })
     .catch((error) => {
       const { data } = error.response;
-      swal({
+      swal.fire({
         title: "¡Qué mal!",
         text: data.message,
         icon: "error",
@@ -151,20 +151,20 @@ export function getAddress(address, id, user) {
           .then((res) => {
             if (res.status === 200) {
               dispatch({ type: MODIFY_USER, payload: res.data });          
-            swal({
+            swal.fire({
               title: "¡Buen trabajo!",
               text: "Tus datos fueron modificados con éxitos",
               icon: "success",
             })
             .then((value) => {
-              swal(window.location.replace('http://localhost:3000/cliente'));
+              swal.fire(window.location.replace('http://localhost:3000/cliente'));
             });
             } 
           })
         } 
       })   
       .catch(() => {
-        swal({
+        swal.fire({
           title: "¡Qué mal!",
           text: "La dirección ingresada no es válida =(",
           icon: "error",
@@ -179,13 +179,13 @@ export function cargarDinero(id) {
     .then(res => {
       
       if (res.status === 200) {
-        swal({
+        swal.fire({
           title: "¡Buen trabajo!",
           text: "Se ha realizado la carga satisfactoriamente",
           icon: "success",
         })
         .then((value) => {
-          swal(window.location.replace('http://localhost:3000/cliente') &&  dispatch({ type: CARGAR_DINERO }));
+          swal.fire(window.location.replace('http://localhost:3000/cliente') &&  dispatch({ type: CARGAR_DINERO }));
         });       
       } 
     })
