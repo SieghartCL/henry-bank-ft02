@@ -73,6 +73,10 @@ export default function usuario(state = initialState, action) {
       return {
         ...state,
         usuarioConectado: {},
+        usuarios: [],
+        usuarioConectado: {},
+        wallet: {},
+        transactions: {},
       };
 
     case RESET_PASS_USER:

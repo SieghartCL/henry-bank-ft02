@@ -1,18 +1,15 @@
-import React from 'react'
-
+import React from "react";
 
 const NotFound = () => {
+  return (
+    <div className="container">
+      <h1>
+        Uy, llegaste a un lugar conocido solo por el desarrollador. Vuelve al
+        inicio, por favor.
+      </h1>
+      <br />
+    </div>
+  );
+};
 
-
-
-    return(
-        <div className="container">
-           <h1>
-               Uy, llegaste a un mundo desconocido. Mejor regresa al inicio.
-           </h1>
-            <br/>
-        </div>
-    )
-}
-
-export default NotFound
+export default NotFound;

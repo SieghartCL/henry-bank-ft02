@@ -19,11 +19,8 @@ server.post(
   }
 );
 
-/* server.get("/logout"); */
-
-server.get("/logout", function (req, res) {
+server.get("/logout", function (req, res, next) {
   req.logout();
-  req.session.destroy(function (err) {});
   res.sendStatus(200);
 });
 

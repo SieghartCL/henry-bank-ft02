@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { getAddress, getProfile } from "../../actions/UserActions";
 import { connect } from "react-redux";
 import "./CSS/altaCliente.css";
-import header from "./Images/header.png";
+import header from "./Images/editPerfil.png";
 
 function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
   const [user, setUser] = useState({});

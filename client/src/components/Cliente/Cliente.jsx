@@ -7,6 +7,7 @@ import {
   getProfile,
   getWallet,
   getTransactions,
+  logout,
 } from "../../actions/UserActions";
 import BotonLogout from "./BotonLogout.jsx";
 import { AiFillEdit } from "react-icons/ai";
@@ -25,6 +26,9 @@ function Cliente({
     getProfile();
   }, []);
 
+  const logout_user = () => {
+    logout();
+  };
   useEffect(() => {
     if (usuarioConectado.id) {
       getWallet(usuarioConectado.id);
@@ -56,6 +60,10 @@ function Cliente({
                       id="blogout"
                       history={history}
                       title="Log Out"
+                      onClick={(e) => {
+                        e.preventDefault();
+                        logout_user();
+                      }}
                     />
 
                     <AiFillEdit

@@ -83,23 +83,17 @@ export function logout() {
   return function (dispatch) {
     axios
       .get("http://localhost:3001/auth/logout")
-      .then((res) => {
-        if (res.status === 200) {
-          swal
-            .fire({
-              title: "¡Nos vemos pronto!",
-              text: "Se ha deslogueado satisfactoriamente",
-              icon: "success",
-            })
-            .then((value) => {
-              swal.fire(
-                dispatch({ type: LOGOUT }) &&
-                  window.location.replace("http://localhost:3000/login")
-              );
-            });
-        }
+      .then((value) => {
+        console.log(value);
+        swal.fire({
+          title: "¡Nos vemos pronto!",
+          text: "Se ha deslogueado satisfactoriamente",
+          icon: "success",
+        });
+        dispatch({ type: LOGOUT }) &&
+          window.location.replace("http://localhost:3000/login");
       })
-      .catch(() => {
+      .catch((error) => {
         swal.fire({
           title: "¡Qué mal!",
           text: "No se pudo desloguear =c",
@@ -129,8 +123,8 @@ export function enviarDinero(from, to, money, transactions_type) {
               icon: "success",
             })
             .then((value) => {
-                dispatch({ type: ENVIAR_DINERO }) &&
-                  window.location.replace("http://localhost:3000/cliente")
+              dispatch({ type: ENVIAR_DINERO }) &&
+                window.location.replace("http://localhost:3000/cliente");
             });
         }
       })
@@ -227,8 +221,6 @@ export function transactionsHistory(id, moment) {
         `http://localhost:3001/transactions/history/time/${id}?moment=${moment}`
       )
       .then((result) => {
-        console.log("esto es result.data");
-        console.log(result.data);
         dispatch({ type: TRANSACTIONS_HISTORY, payload: result.data });
       })
       .catch((error) => {
