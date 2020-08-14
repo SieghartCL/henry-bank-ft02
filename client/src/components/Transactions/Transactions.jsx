@@ -1,29 +1,46 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import "./Transactions.css";
 import OneTransaction from "./OneTransaction";
 import { transactionsHistory, getProfile } from "../../actions/UserActions";
 
-function Transactions({
-  usuarioConectado,
-  moment,
-  history,
-  transactionsHistory,
-}) {
-  console.log("history");
-  console.log(history);
+function Transactions({ moment, getProfile, usuarioConectado, history, transactionsHistory }) {
   useEffect(() => {
-    transactionsHistory(usuarioConectado.id, moment);
+    getProfile()
   }, []);
 
-  return (
-    <Container className="">
+  useEffect(() => {
+    if(usuarioConectado.id){
+      transactionsHistory(usuarioConectado.id, moment);
+    }
+  }, [usuarioConectado]);
+
+  // a elección 
+  const titulo = {
+    day: 'DE HOY',
+    week: 'DE LA SEMANA',
+    month: 'DEL MES'
+  }
+  return(
+    <div id="transacciones">
       <Row>
-        {console.log("history dentro del return")}
-        {console.log(history.income)}
-        <Col sm={4}></Col>
-        <Col sm={8} className="">
+      <h2>TRANSACCIONES {titulo[moment]}</h2>
+        <Col sm={12}>
+        <div className="item">
+          <div className="prop-1">
+            <h4>Transacción</h4>
+          </div>
+          <div className="prop-2">
+            <h4>Valor</h4>
+          </div>
+          <div className="prop-3">
+            <h4>Estado</h4>
+          </div>
+          <div className="prop-4">
+            <h4>Tipo Transacción</h4>
+          </div>
+        </div>
           {history.income &&
             history.income.map((e) => (
               <OneTransaction
@@ -46,21 +63,14 @@ function Transactions({
             ))}
         </Col>
       </Row>
-    </Container>
-  );
+    </div>
+  )
 }
 function mapStateToProps(state) {
   return {
     history: state.usuario.history,
-    usuarioConectado: state.usuario.usuarioConectado,
+    usuarioConectado: state.usuario.usuarioConectado
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    transactionsHistory: (id, moment) =>
-      dispatch(transactionsHistory(id, moment)),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Transactions);
+export default connect(mapStateToProps, { getProfile, transactionsHistory })(Transactions);
