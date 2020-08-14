@@ -3,6 +3,7 @@ import "./recargardinero.css";
 import Button from "react-bootstrap/Button";
 import { getProfile, cargarDinero } from "../../actions/UserActions";
 import { connect } from "react-redux";
+import swal from "sweetalert2";
 import montoRecarga from "./montoRecarga";
 
 function CargarDinero(props) {
@@ -44,7 +45,7 @@ function CargarDinero(props) {
           </p>
         </div>
         <div className="codigo">
-          <span> 0800 222 7749</span>
+          <span> 654671397 </span>
         </div>
         <div>
           <p>(Mostrar el código al cajero en RapiPago o Pago Fácil)</p>

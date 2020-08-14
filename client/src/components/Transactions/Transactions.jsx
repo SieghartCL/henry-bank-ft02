@@ -25,25 +25,29 @@ function Transactions({
         <Col sm={4}></Col>
         <Col sm={8} className="">
           {history.income &&
-            history.income.map((e) => (
-              <OneTransaction
-                key={e.id}
-                transactionNumber={e.transactionNumber}
-                state={e.state}
-                value={e.value}
-                transactions_type={e.transactions_type}
-              />
-            ))}
+            history.income
+              .reverse()
+              .map((e) => (
+                <OneTransaction
+                  key={e.id}
+                  transactionNumber={e.transactionNumber}
+                  state={e.state}
+                  value={e.value}
+                  transactions_type={e.transactions_type}
+                />
+              ))}
           {history.outcome &&
-            history.outcome.map((e) => (
-              <OneTransaction
-                key={e.id}
-                transactionNumber={e.transactionNumber}
-                state={e.state}
-                value={e.value}
-                transactions_type={e.transactions_type}
-              />
-            ))}
+            history.outcome
+              .reverse()
+              .map((e) => (
+                <OneTransaction
+                  key={e.id}
+                  transactionNumber={e.transactionNumber}
+                  state={e.state}
+                  value={e.value}
+                  transactions_type={e.transactions_type}
+                />
+              ))}
         </Col>
       </Row>
     </Container>

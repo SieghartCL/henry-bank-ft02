@@ -74,7 +74,7 @@ server.put("/:idSender/:idReceiver", async (req, res) => {
   //busqueda de wallets
 
   let userSender = await Wallet.findOne({ where: { userId: idSender } });
-  let moneyFloat = parseFloat(money);
+  let moneyFloat = parseFloat(parseInt(money));
   switch (transactions_type) {
     //Transferencia entre usuarios billetera
     case "UsertoUser":

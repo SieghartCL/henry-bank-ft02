@@ -61,13 +61,6 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
             />
             <input
               class="form-control"
-              name="documentType"
-              placeholder="Tipo de documento"
-              value={user.lastName}
-              readonly
-            />
-            <input
-              class="form-control"
               name="identification"
               placeholder="Número"
               value={user.identification}
@@ -142,6 +135,7 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
         </form>
         <div></div>
         <div>
+          <br />
           Si necesitas actualizar otro dato, por favor contacto a
           soporte@henrybank.com
         </div>

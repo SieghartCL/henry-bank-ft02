@@ -183,12 +183,8 @@ function validateEmail(email, email_hash) {
   });
 
   const message = {
-    attachment: [
-      {
-        data: `<html>Bienvenid@. Se adjunta enlace para validar y continuar con el registro: <a href="${valUrl}"> Clickea Aquí</a></html>`,
-        alternative: true,
-      },
-    ],
+    alternative: true,
+    text: `Bienvenid@. Se adjunta enlace para validar y continuar con el registro: <a href="${valUrl}"> Clickea Aquí</a>`,
     from: "Henry Bank FT02 <henrybank@mauricioarizaga.com.ar>",
     to: `Nuevo Usuario <${email}>`,
     // cc: 'else <else@your-email.com>',
