@@ -22,41 +22,38 @@ function App() {
   return (
     <div>
       <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route
-            exact
-            path="/new/:id"
-            component={({ match }) => <AltaUsuario id={match.params.id} />}
-          />
-          <Route
-            exact
-            path="/update/:id"
-            component={({ match }) => <EditUsuario id={match.params.id} />}
-          />
-          <Route exact path="/login" component={Login} />
-          <Route exact path="/resetpassword" component={ResetearContrasena} />
-          <Route
-            exact
-            path="/resetpassword/:idUser"
-            component={ValidResetPassword}
-          />
-          <Route exact path="/registrarse" component={exportCrearUsuario} />
-          <Route exact path="/cliente" component={Cliente} />
-          <Route exact path="/recargar" component={RecargarDinero} />
-          <Route exact path="/enviar" component={EnviarDinero} />
-          <Route exact path="/logout" component={BotonLogout} />
-          <Route path="/contactos" component={Contacts} />
-          <Route path="*" component={NotFound} status={404} />
-          <Route
-            exact
-            path="/transactions/:moment"
-            component={({ match }) => (
-              <Transactions moment={match.params.moment} />
-            )}
-          />
-          <Route path="/montorecarga" component={MontoRecarga} />
-        </Switch>
+        <Route exact path="/" component={Home} />
+        <Route
+          exact
+          path="/new/:id"
+          component={({ match }) => <AltaUsuario id={match.params.id} />}
+        />
+        <Route
+          exact
+          path="/update/:id"
+          component={({ match }) => <EditUsuario id={match.params.id} />}
+        />
+        <Route exact path="/login" component={Login} />
+        <Route exact path="/resetpassword" component={ResetearContrasena} />
+        <Route
+          exact
+          path="/resetpassword/:idUser"
+          component={ValidResetPassword}
+        />
+        <Route exact path="/registrarse" component={exportCrearUsuario} />
+        <Route exact path="/cliente" component={Cliente} />
+        <Route exact path="/recargar" component={RecargarDinero} />
+        <Route exact path="/enviar" component={EnviarDinero} />
+        <Route exact path="/logout" component={BotonLogout} />
+        <Route path="/contactos" component={Contacts} />
+        <Route
+          exact
+          path="/transactions/:moment"
+          component={({ match }) => (
+            <Transactions moment={match.params.moment} />
+          )}
+        />
+        <Route path="/montorecarga" component={MontoRecarga} />
       </Router>
     </div>
   );

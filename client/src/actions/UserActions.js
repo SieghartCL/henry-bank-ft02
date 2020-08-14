@@ -122,21 +122,23 @@ export function enviarDinero(from, to, money, transactions_type) {
       )
       .then((res) => {
         if (res.status === 200) {
-          swal({
-            title: "¡Buen trabajo!",
-            text: "Se ha enviado $" + money + " a " + to.nombreContacto,
-            icon: "success",
-          }).then((value) => {
-            swal(
-              dispatch({ type: ENVIAR_DINERO }) &&
-                window.location.replace("http://localhost:3000/cliente")
-            );
-          });
+          swal
+            .fire({
+              title: "¡Buen trabajo!",
+              text: "Se ha enviado $" + money + " a " + to.nombreContacto,
+              icon: "success",
+            })
+            .then((value) => {
+              swal.fire(
+                dispatch({ type: ENVIAR_DINERO }) &&
+                  window.location.replace("http://localhost:3000/cliente")
+              );
+            });
         }
       })
       .catch((error) => {
         const { data } = error.response;
-        swal({
+        swal.fire({
           title: "¡Qué mal!",
           text: data.message,
           icon: "error",
@@ -172,21 +174,23 @@ export function getAddress(address, id, user) {
             .then((res) => {
               if (res.status === 200) {
                 dispatch({ type: MODIFY_USER, payload: res.data });
-                swal({
-                  title: "¡Buen trabajo!",
-                  text: "Tus datos fueron ingresados correctamente",
-                  icon: "success",
-                }).then((value) => {
-                  swal(
-                    window.location.replace("http://localhost:3000/cliente")
-                  );
-                });
+                swal
+                  .fire({
+                    title: "¡Buen trabajo!",
+                    text: "Tus datos fueron ingresados correctamente",
+                    icon: "success",
+                  })
+                  .then((value) => {
+                    swal(
+                      window.location.replace("http://localhost:3000/cliente")
+                    );
+                  });
               }
             });
         }
       })
-      .catch(() => {
-        swal({
+      .catch((error) => {
+        swal.fire({
           title: "¡Qué mal!",
           text: "La dirección ingresada no es válida =(",
           icon: "error",
@@ -201,15 +205,17 @@ export function cargarDinero(id, value) {
     .post(`http://localhost:3001/transactions/loadBalance/${id}`, { value })
     .then((res) => {
       console.log(res.data);
-      Swal.fire({
-        title: "Recarga exitosa!",
-        icon: "success",
-      }).then(() => {
-        window.location.replace("http://localhost:3000/cliente");
-      });
+      swal
+        .fire({
+          title: "Recarga exitosa!",
+          icon: "success",
+        })
+        .then(() => {
+          window.location.replace("http://localhost:3000/cliente");
+        });
     })
     .catch((res) => {
-      swal({
+      swal.fire({
         title: "Error",
         text: "No se pudo recargar dinero",
         icon: "error",
@@ -229,7 +235,7 @@ export function transactionsHistory(id, moment) {
         dispatch({ type: TRANSACTIONS_HISTORY, payload: result.data });
       })
       .catch((error) => {
-        swal({
+        swal.fire({
           title: error,
           text: "Hubo un error inesperado.",
           icon: "error",

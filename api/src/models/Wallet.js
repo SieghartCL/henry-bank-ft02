@@ -1,12 +1,6 @@
 const Wallet = (sequelize, S) => {
   // defino el modelo
   const W = sequelize.define("wallet", {
-    id: {
-      type: S.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     type: {
       type: S.ENUM,
       values: ["Cuenta Corriente", "Cuenta de Ahorro", "Línea de Crédito"],

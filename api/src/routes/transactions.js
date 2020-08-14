@@ -16,11 +16,12 @@ const {
 server.post("/loadBalance/:idUser", async (req, res) => {
   const { idUser } = req.params;
   const valor = req.body;
-  console.log(req.body);
   const saldo = await Wallet.findOne({
     where: { userId: idUser },
   });
-  const saldoConsolidado = parseFloat(saldo.balance) + parseFloat(valor);
+
+  const saldoConsolidado =
+    parseFloat(saldo.balance) + parseFloat(parseInt(valor.value));
   // const randomToken = function () {
   //   return Math.floor(Math.random() * 5 + 1);
   // };
@@ -45,7 +46,7 @@ server.post("/loadBalance/:idUser", async (req, res) => {
         idSender: 0,
         idReceiver: idUser,
         transactions_type: "Recarga billetera",
-        value: value,
+        value: parseFloat(parseInt(valor.value)),
         state: "Aceptada",
         transactionNumber: idUser.toString() + randomTransactionNumber(),
       });
