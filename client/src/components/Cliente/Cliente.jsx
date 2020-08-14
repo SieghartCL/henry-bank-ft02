@@ -55,7 +55,7 @@ function Cliente({ usuarioConectado, wallet, transactions, getProfile, getWallet
               <h3>$2,002.50</h3>
             }      
             <div className="balance">     
-            <h3>Balance de mi cuenta</h3>
+            <h2>Balance de mi cuenta</h2>
           </div>
           </div>
           </span>}
