@@ -135,10 +135,9 @@ export function enviarDinero(from, to, money, transactions_type) {
         }
       })
       .catch((error) => {
-        const { data } = error.response;
         swal.fire({
           title: "¡Qué mal!",
-          text: data.message,
+          text: "data.message",
           icon: "error",
         });
       });

@@ -42,7 +42,8 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
             getAddress(address, id, user);
           }}
         >
-          <div class="input-gruop mb-3">
+          <div class="input-group mb-3">
+            <p>Nombre</p>
             <input
               class="form-control"
               name="firstName"
@@ -51,6 +52,7 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               onChange={handleInputChange}
               required
             />
+            <p>Apellido</p>
             <input
               class="form-control"
               name="lastName"
@@ -59,13 +61,7 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               onChange={handleInputChange}
               required
             />
-            <input
-              class="form-control"
-              name="documentType"
-              placeholder="Tipo de documento"
-              value={user.lastName}
-              readonly
-            />
+            <p>DNI</p>
             <input
               class="form-control"
               name="identification"
@@ -73,6 +69,7 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               value={user.identification}
               readonly
             />
+            <p>Teléfono</p>
             <input
               class="form-control"
               name="phone"
@@ -91,6 +88,7 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               readonly
               required
             />
+            <p>Dirección</p>
             <input
               class="form-control"
               name="street"
@@ -106,6 +104,7 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               value={user.complemento}
               onChange={handleInputChange}
             />
+            <p>Ciudad</p>
             <input
               class="form-control"
               name="city"
@@ -114,6 +113,7 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               onChange={handleInputChange}
               required
             />
+            <p>País</p>
             <input
               class="form-control"
               name="country"
@@ -142,6 +142,7 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
         </form>
         <div></div>
         <div>
+          <br />
           Si necesitas actualizar otro dato, por favor contacto a
           soporte@henrybank.com
         </div>
