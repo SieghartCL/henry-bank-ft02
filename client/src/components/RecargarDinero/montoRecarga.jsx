@@ -19,7 +19,14 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
         }
     }, [usuarioConectado])
 
-    const [value, setCantidad] = useState(0);
+    const [value, setCantidad] = useState(50);
+
+    const handleChange = event => {
+        let { value, min, max } = event.target;
+        value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+
+        setCantidad(value);
+    };
 
     return (
         <div id="enviardinero">
@@ -36,12 +43,24 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
                 <path fill="#ff0330" fill-opacity="1" d='M0,288L48,266.7C96,245,192,203,288,202.7C384,203,480,245,576,256C672,267,768,245,864,208C960,171,1056,117,1152,106.7C1248,96,1344,128,1392,144L1440,160L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z'></path>
             </svg>
             <div className="form-group col-md-5 envia">
+                {value === 50 ? 
+                    <div className="alert alert-info alert-dismissible fade show">
+                        <strong>Info!</strong> Recuerde que este es el mínimo de dinero admitido para enviar.
+                        <button type="button" className="close" data-dismiss="alert">&times;</button>
+                    </div>
+                : <div></div>}
+                {value === 100000 ? 
+                    <div className="alert alert-info alert-dismissible fade show">
+                        <strong>Info!</strong> Recuerde que este es el máximo de dinero admitido para enviar.
+                        <button type="button" className="close" data-dismiss="alert">&times;</button>
+                    </div>
+                : <div></div>}
                 <div className="total">
                     <h1>${value}</h1>
                 </div>
                 <div class="input-group input-group-sm mb-3">
-                    <input type="number" max="100000" min="0" class="form-control mensaje" placeholder="Modificar Cantidad"
-                        onInput={e => setCantidad(e.target.value)}
+                    <input type="number" min={50} max={100000} value={value} class="form-control mensaje" placeholder="Modificar Cantidad"
+                        onChange={e => handleChange(e)}
                     />
                 </div>
                 <div>

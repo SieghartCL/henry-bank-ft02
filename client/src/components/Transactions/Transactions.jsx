@@ -24,8 +24,9 @@ function Transactions({
         {console.log(history.income)}
         <Col sm={4}></Col>
         <Col sm={8} className="">
+          {/* Ajustar más tarde con orden por fecha descendente */}
           {history.income &&
-            history.income.map((e) => (
+            history.income.reverse().map((e) => (
               <OneTransaction
                 key={e.id}
                 transactionNumber={e.transactionNumber}
@@ -35,7 +36,7 @@ function Transactions({
               />
             ))}
           {history.outcome &&
-            history.outcome.map((e) => (
+            history.outcome.reverse().map((e) => (
               <OneTransaction
                 key={e.id}
                 transactionNumber={e.transactionNumber}

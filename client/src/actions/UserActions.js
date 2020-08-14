@@ -113,7 +113,7 @@ export function enviarDinero(from, to, money, transactions_type) {
   return function (dispatch) {
     const myBody = {
       money: money,
-      transactions_type: transactions_type,
+      transactions_type: "UsertoUser",
     };
     axios
       .put(
@@ -129,10 +129,8 @@ export function enviarDinero(from, to, money, transactions_type) {
               icon: "success",
             })
             .then((value) => {
-              swal.fire(
                 dispatch({ type: ENVIAR_DINERO }) &&
                   window.location.replace("http://localhost:3000/cliente")
-              );
             });
         }
       })

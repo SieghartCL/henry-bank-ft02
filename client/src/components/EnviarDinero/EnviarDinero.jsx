@@ -5,6 +5,7 @@ import { FaUsers , FaUserPlus} from "react-icons/fa";
 import { connect } from 'react-redux';
 import { getProfile, enviarDinero, listaContactos } from "../../actions/UserActions";
 import SearchContact from "./searchContact.js";
+import swal from "sweetalert2";
 
 function RecargarDinero({ usuarioConectado, getProfile, enviarDinero, listContact, listaContactos }) {
 
@@ -19,12 +20,20 @@ function RecargarDinero({ usuarioConectado, getProfile, enviarDinero, listContac
     })
   }
   }, [usuarioConectado])
-
-  const [cantidad, setCantidad] = useState(0); 
+  
+  const [checked, setChecked] = useState(false);
+  const [cantidad, setCantidad] = useState(50); 
   
   const addcontactos = function (e) {
     window.location.replace('http://localhost:3000/contactos')
- }
+  }
+
+  const handleChange = event => {
+    let { value, min, max } = event.target;
+    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+
+    setCantidad(value);
+  };
 
   return (  
       <div id="enviardinero">  
@@ -57,12 +66,14 @@ function RecargarDinero({ usuarioConectado, getProfile, enviarDinero, listContac
           <h1>${cantidad}</h1>
           </div>
           <div class="input-group input-group-sm mb-3">
-            <input type="number" max="100000" min ="0" class="form-control mensaje" placeholder="Modificar Cantidad" 
-              onInput={e => setCantidad(e.target.value)} 
+            <input type="number" min={50} max={100000} value={cantidad} class="form-control mensaje" placeholder="Modificar Cantidad" 
+              onChange={e => handleChange(e)}
             />
           </div>
           <div class="form-check confirmar">
-            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1"/>
+            <input class="form-check-input" type="checkbox" checked={checked} id="defaultCheck1"
+              onChange={e => {setChecked(e.target.checked)}}
+            />
             <label class="form-check-label" for="defaultCheck1">
               Acepto usar la sección amigos solo con fines personales, no comerciales
             </label>
@@ -71,11 +82,20 @@ function RecargarDinero({ usuarioConectado, getProfile, enviarDinero, listContac
           {usuarioConectado.contacts && usuarioConectado.contacts.length !== 0 ?
               <Button className="btn btn-dark" size="lg"
                 onClick={() => {
-                  const nombre = document.getElementById('myInput').value;
-                  for( let i = 0; i < listContact.length; i++ ){
-                    if (listContact[i].nombreContacto === nombre) {
-                      enviarDinero(usuarioConectado.id, listContact[i], cantidad)
+                  if (checked) {
+                    const nombre = document.getElementById('myInput').value;
+                    for( let i = 0; i < listContact.length; i++ ){
+                      if (listContact[i].nombreContacto === nombre) {
+                        enviarDinero(usuarioConectado.id, listContact[i], cantidad)
+                      }
                     }
+                  } else {
+                    swal
+                    .fire({
+                      title: "Error",
+                      text: "Debes aceptar la condición de uso para poder enviar dinero",
+                      icon: "error",
+                    });
                   }
                 }}
               >Enviar Dinero</Button>
