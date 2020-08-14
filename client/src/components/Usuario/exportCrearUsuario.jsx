@@ -27,11 +27,11 @@ function handleSubmit(values) {
  }
     return (
     <Container id="crearusuario">
+        <Image id="henrybankcreateuser" src="https://fotos.subefotos.com/f807c25bc9510155673fc2acf1d82a39o.png" ></Image>
         <div id="usuario">
         <Formik initialValues={initialValues} onSubmit={handleSubmit} validationSchema={validations}>
         <FormikForm className="Form">
         <div className="form-group col-md-12">     
-        <Image id="henrybankcreateuser" src="https://fotos.subefotos.com/f807c25bc9510155673fc2acf1d82a39o.png" ></Image>
             <h4>Crear Usuario</h4>
             <div className="Form-Group">
                 <Field className="Form-Field" name="email" placeholder="E-mail" type="email"/>
@@ -43,18 +43,19 @@ function handleSubmit(values) {
             </div>
             <div className="form-group col-md-6 inicio">
               <input type="submit" className="btn btn-outline-dark" value="Crear Usuario" />
-              <button type="button" className="btn btn-outline-danger" value="Cancelar"  onClick={cancelar} >Cancelar</button>
+              <button type="button" className="btn btn-outline-light" value="Cancelar"  onClick={cancelar} >Cancelar</button>
             </div>
             </div>
-            <div class="form-row contenedor">
-            <div className="form-group col-md-6 link" >
+    
+            <div className="link">
               <a href="/">¿Olvidaste tu contraseña?</a>
               <a href="/">¿Necesitas ayuda?</a>
-            </div>
         </div>
         </FormikForm>
     </Formik>
     </div>
+    <Image id="footercrearusuario" src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png" ></Image>
+
     </Container>
     )
 

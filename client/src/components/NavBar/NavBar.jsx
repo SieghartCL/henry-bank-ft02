@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
 import { IoIosPaperPlane } from "react-icons/io";
 import { BsGraphUp } from "react-icons/bs";
@@ -11,60 +12,38 @@ import "./navbar.css";
 
 const NavBar = () => {
   return (
-    <Navbar
-      className="m-auto"
-      id="nav"
-      fixed="bottom"
-      expand={"md"}
-      variant="light"
-      bg="light"
-    >
-      <div className="conttop">
-        <Button href="#" className="btn btn-dark" variant="top" size="lg">
-          <IoIosPaperPlane size="32" />
-          <br></br>
-          Transacciones
-        </Button>
-
-        <Button href="#" className="btn btn-light" variant="top" size="lg">
-          <BsGraphUp size="32" />
-          <br></br>
-          Estadisticas
-        </Button>
-
-        <Button href="#" className="btn btn-light" variant="top" size="lg">
-          <MdLanguage size="32" />
-          <br></br>
-          Mis Datos
-        </Button>
-
-        <Button href="#" className="btn btn-dark" variant="top" size="lg">
-          <RiProductHuntLine size="32" />
-          <br></br>
-          Mis Productos
-        </Button>
-      </div>
-      <div className="contbot" align="center">
-        <Button
-          href="/montorecarga"
-          className="btn btn-dark"
-          variant="bottom"
-          size="sm"
-        >
-          <RiDownload2Line size="32" />
-          Recargar Dinero
-        </Button>
-        <Button
-          href="/enviar"
-          className="btn btn-light"
-          variant="bottom"
-          size="sm"
-        >
-          <RiUpload2Line size="32" />
-          Mandar Dinero
-        </Button>
-      </div>
-    </Navbar>
+    <Container id="conteinernavbar">
+      <Navbar className="contenavbar">
+        <div className="conttop">
+          <Button className="buttonSB" href="/transactions" type="button">
+            <IoIosPaperPlane size="32" />
+            Transacciones
+          </Button>
+          <Button className="buttonSW" href="/stadistics" type="button">
+            <BsGraphUp size="32" />
+            Estadisticas
+          </Button>
+          <Button className="buttonSW" href="/myinfo" type="button">
+            <MdLanguage size="32" />
+            Mis Datos
+          </Button>
+          <Button className="buttonSB" href="/myproducts" type="button">
+            <RiProductHuntLine size="32" />
+            Mis Productos
+          </Button>
+        </div>
+        <div className="contbot" align="center">
+          <Button className="buttonRB" href="/montorecarga" type="button">
+            <RiDownload2Line size="32" />
+            Recargar Dinero
+          </Button>
+          <Button className="buttonWR" href="/enviar" type="button">
+            <RiUpload2Line size="32" />
+            Mandar Dinero
+          </Button>
+        </div>
+      </Navbar>
+    </Container>
   );
 };
 

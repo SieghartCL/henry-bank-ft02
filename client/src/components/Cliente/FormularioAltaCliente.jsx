@@ -3,7 +3,9 @@ import { getAddress, getProfile } from "../../actions/UserActions";
 import { connect } from "react-redux";
 import "./CSS/altaCliente.css";
 import header from "./Images/header.png";
-import swal from "sweetalert2";
+import swal from "sweetalert";
+import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 
 function AddUserForm({ id, getAddress, usuarioConectado, getProfile }) {
   const [user, setUser] = useState({});
@@ -48,8 +50,8 @@ function AddUserForm({ id, getAddress, usuarioConectado, getProfile }) {
   };
 
   return (
-    <div>
-      <div id="login">
+    <Container id="altaclientecont">
+      <div id="altacliente">
         <img src={header} alt="header" />
         <form
           onSubmit={(event) => {
@@ -106,7 +108,9 @@ function AddUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               onChange={handleInputChange}
               required
             />
-            <p>Fecha de nacimiento</p>
+            <div>
+              <p>Fecha de nacimiento</p>
+            </div>
             <input
               class="form-control"
               type="date"
@@ -148,12 +152,11 @@ function AddUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               required
             />
           </div>
-
           <div className="altaButtons">
             <input
               type="submit"
               className="btn btn-outline-dark"
-              value="Crear"
+              value="Dar de Alta"
             />
             <button
               type="button"
@@ -167,7 +170,11 @@ function AddUserForm({ id, getAddress, usuarioConectado, getProfile }) {
         </form>
         <a href="/help">¿Necesitás ayuda?</a>
       </div>
-    </div>
+      <Image
+        id="footeralta"
+        src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
+      ></Image>
+    </Container>
   );
 }
 

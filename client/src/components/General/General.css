@@ -1,18 +1,16 @@
-.container {
-    background-color: rgba(53, 53, 53, 0.39);
-    border: solid 1px black;
-    top: 5px;
-    display: flex;
-    flex-direction: column;
-    height: 300px;
-    width: 600px;
-    margin: 0px auto;
+/* Container General  */
+#generalcont {
+ width:70%;
+ background-color: whitesmoke;
+ margin-top: 0%;
 }
-
+/* Subcontainer General */
 .general {
     text-align: center;
-    margin-top: 7%;
-    color: rgb(150, 150, 150)
+    color: rgb(0, 0, 0);
+}
+
+.general h4 {
 }
 
 .props {
@@ -20,7 +18,8 @@
     margin: 35px;
 }
 .props h3{
-    color: white;
+    color: rgb(2, 2, 2);
+    
 }
 
 .income {
@@ -35,78 +34,45 @@
     width: 150px;
     color: rgb(150, 150, 150)
 }
+/* Container de Historial de movimientos por fecha  */
+.record {
+    display: flex;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+}
+/* Links de historial por separado */
+.record .historylink{
+    text-align: center;
+    color: #131313;
+    width: 20%;
+}
 
-.record{
-    background: transparent;
-    text-align: center; 
-}
-.record .link{
-    color: #fffe00;
-}
-.record .link:not(:last-child){
-    margin-right: 20px;
-}
-.record .link:hover{
+.record .historylink:hover{
     text-decoration: none;
-    color: oldlace;
+    color: yellow;
 }
 
-.value {
+.containervalor {
     color: black;
 }
 
 
-@media only screen and (max-width: 850px){
-    .container{
-        width: 75%;
-        height: 30%;
-        margin-top: 15%;
-        min-width: 380px;
-    }
-    .general{
-        margin-top: 10px;
-    }
-    .props{
-        margin: 20px;
-    }
-}
 
-@media only screen and (max-width: 650px){
-    .container {
-        padding: 0px;
-        width: 90%;
-        min-width: 300px;
-        height: 25%;
-        min-height: 160px;
-        margin-top: 0px;
-        position: relative;
-        top: 5em;
-        background-color: white;
-        border-color: transparent;
-    }
-    .general h4{
-        font-size: 20px;
-        margin-bottom: 0px;
-        margin-top: 10px;
-    }
-    .props{
-        margin: 10px;
-    }
-    .props h5{
-        font-size: 15px;
-    }
-    .props h3{
-        font-size: 23px;
-        color: black;
-    }
-    .record .link{
-        color: black;
-    }
-    .record .link:hover{
-        color: #fffe00;
-        font-weight: bold;
-    }
-    .record .link:not(:last-child){
-        margin-right: 5px;
-    }
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    #generalcont {
+        width:50%;
+        background-color: whitesmoke;
+        margin-top: -10%;
+       }
+
+    /* Container de Historial de movimientos por fecha  */
+.record {
+    display: flex;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
+}
 }

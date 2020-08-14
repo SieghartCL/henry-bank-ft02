@@ -12,6 +12,7 @@ import {
 import BotonLogout from "./BotonLogout.jsx";
 import { AiFillEdit } from "react-icons/ai";
 import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 
 function Cliente({
   usuarioConectado,
@@ -51,41 +52,20 @@ function Cliente({
         <div className="header">
           <div className="perfil">
             {usuarioConectado ? (
-              <h2>
-                Hola,{" "}
-                <span>
-                  {usuarioConectado.firstName}
-                  <div className="buttonsUser">
-                    <BotonLogout
-                      id="blogout"
-                      history={history}
-                      title="Log Out"
-                      onClick={(e) => {
-                        e.preventDefault();
-                        logout_user();
-                      }}
-                    />
-
-                    <AiFillEdit
-                      className="btn"
-                      type="button"
-                      size={60}
-                      onClick={editUser}
-                      color="yellow"
-                      title="Editar"
-                    />
-                  </div>
-                  <div></div>
-                </span>
-              </h2>
+              <div className="divperfil">
+                <h2>
+                  Hola, <span>{usuarioConectado.firstName}</span>
+                </h2>
+                <div className="buttonsUser">
+                  <BotonLogout id="blogout" history={history} title="Log Out" />
+                </div>
+              </div>
             ) : (
               <h2>
                 Hola, <span>Usuario</span>
               </h2>
             )}
-            <img src={imgMuestra} width="100px" alt="photo"></img>
           </div>
-
           {usuarioConectado.firstName !== null && (
             <span>
               <div className="saldo">
@@ -97,6 +77,10 @@ function Cliente({
             </span>
           )}
         </div>
+        <Image
+          id="ondasclient"
+          src="https://fotos.subefotos.com/e07505b47575212c24ec5fdb5ffc1cb8o.png"
+        ></Image>
         <div className="clientegeneral">
           {usuarioConectado.firstName !== null && (
             <span>
@@ -107,16 +91,18 @@ function Cliente({
             </span>
           )}
         </div>
-
         {usuarioConectado.firstName === null && (
           <form className="form-signin needs-validation">
             <h1>
               Tu cuenta aún no ha sido activada, por favor, revisa tu mail y
               sigue los pasos para activarla.
             </h1>
-            <div></div>
           </form>
         )}
+        <Image
+          id="footerclient"
+          src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
+        ></Image>
       </div>
     </Container>
   );
