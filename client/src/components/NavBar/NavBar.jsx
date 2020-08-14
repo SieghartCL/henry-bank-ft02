@@ -55,7 +55,7 @@ const NavBar = () => {
           Recargar Dinero
         </Button>
         <Button
-          href="/mandardinero"
+          href="/enviar"
           className="btn btn-light"
           variant="bottom"
           size="sm"
