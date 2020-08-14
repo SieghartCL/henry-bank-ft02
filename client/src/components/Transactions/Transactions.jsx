@@ -27,11 +27,11 @@ function Transactions({
           {/* Ajustar más tarde con orden por fecha descendente */}
           {history.income &&
             history.income
-              .reverse()
               .map((e) => (
                 <OneTransaction
                   key={e.id}
                   transactionNumber={e.transactionNumber}
+                  createdAt={`${e.createdAt.split('T')[0]}, ${e.createdAt.split('T')[1].split('.')[0]}`}
                   state={e.state}
                   value={e.value}
                   transactions_type={e.transactions_type}
@@ -39,11 +39,11 @@ function Transactions({
               ))}
           {history.outcome &&
             history.outcome
-              .reverse()
               .map((e) => (
                 <OneTransaction
                   key={e.id}
                   transactionNumber={e.transactionNumber}
+                  createdAt={`${e.createdAt.split('T')[0]}, ${e.createdAt.split('T')[1].split('.')[0]}`}
                   state={e.state}
                   value={e.value}
                   transactions_type={e.transactions_type}

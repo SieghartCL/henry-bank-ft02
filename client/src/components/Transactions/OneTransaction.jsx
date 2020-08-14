@@ -10,6 +10,10 @@ export default function OneTransaction(transaction, usuarioConectado) {
           <h5>{transaction.transactionNumber}</h5>
         </div>
         <div className="">
+          <h4>Fecha Transacción</h4>
+          <h5>{transaction.createdAt}</h5>
+        </div>
+        <div className="">
           <h4>Valor</h4>
           <h5>{transaction.value}</h5>
         </div>

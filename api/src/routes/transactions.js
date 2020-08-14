@@ -372,6 +372,7 @@ server.get("/history/time/:idUser", async (req, res) => {
             [Op.between]: [start, end],
           },
         },
+        order: [["createdAt", "DESC"]],
       });
       var outcome = await Transactions.findAll({
         where: {
@@ -380,6 +381,7 @@ server.get("/history/time/:idUser", async (req, res) => {
             [Op.between]: [start, end],
           },
         },
+        order: [["createdAt", "DESC"]],
       });
 
       Promise.all([income, outcome])
