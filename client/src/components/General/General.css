@@ -17,7 +17,7 @@
     margin: 35px;
 }
 .props h3{
-    color: white;
+    color: rgb(2, 2, 2);
     
 }
 
@@ -33,18 +33,23 @@
     width: 150px;
     color: rgb(150, 150, 150)
 }
-
+/* Container de Historial de movimientos por fecha  */
 .record {
-    background-color: whitesmoke;
-    text-align: center; 
+    display: flex;
+    background-color: transparent;
+    justify-content: center;
+    align-items: center;
 }
-.record .link{
-    color: #fffe00;
+/* Links de historial por separado */
+.record .historylink{
+    text-align: center;
+    color: #131313;
+    width: 20%;
 }
 
-.record .link:hover{
+.record .historylink:hover{
     text-decoration: none;
-    color: oldlace;
+    color: yellow;
 }
 
 .containervalor {

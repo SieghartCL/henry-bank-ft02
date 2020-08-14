@@ -30,10 +30,10 @@ export default function General({transacciones}) {
                 </div>
             </div>
             <div className = "record" >
-                <Link to = '1day' className = 'link' > 1Day </Link>
-                <Link to = '7days'  className = 'link' > 7Days </Link>
-                <Link to = '30days' className = 'link' > 30Days </Link>
-                <Link to = '6months'  className = 'link' > 6Months </Link>
+                <Link to = '1day' className = 'historylink' > 1Day </Link>
+                <Link to = '7days'  className = 'historylink' > 7Days </Link>
+                <Link to = '30days' className = 'historylink' > 30Days </Link>
+                <Link to = '6months'  className = 'historylink' > 6Months </Link>
             </div>
         </Container>
     )

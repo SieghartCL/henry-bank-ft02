@@ -33,7 +33,7 @@ body {
   align-self: center;
   width: 70%;
   height: 100%;
-  background-image: linear-gradient(rgb(155, 155, 155), rgb(236, 236, 236));
+  background-color:transparent;
 }
 /* Button Login Container */
 .logconthome {
