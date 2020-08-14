@@ -8,7 +8,7 @@ export default function General({transacciones}) {
     return (
         <Container id="generalcont" >
             <div className = 'general' >
-                <h4> GENERAL </h4>
+                <h4> General </h4>
             </div>
             <div className = 'props' >
                 <div className = 'income'>
@@ -30,10 +30,9 @@ export default function General({transacciones}) {
                 </div>
             </div>
             <div className = "record" >
-                <Link to = '1day' className = 'historylink' > 1Day </Link>
-                <Link to = '7days'  className = 'historylink' > 7Days </Link>
-                <Link to = '30days' className = 'historylink' > 30Days </Link>
-                <Link to = '6months'  className = 'historylink' > 6Months </Link>
+                <Link to = '1day' className = 'historylink' > Diario </Link>
+                <Link to = '7days'  className = 'historylink' > Mensual </Link>
+                <Link to = '30days' className = 'historylink' > Anual </Link>
             </div>
         </Container>
     )

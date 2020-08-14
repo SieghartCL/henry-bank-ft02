@@ -36,15 +36,13 @@ function Cliente({ usuarioConectado, wallet, transactions, getProfile, getWallet
       <div className="contecliente2">
         <div className="header">
           <div className="perfil">
-            {usuarioConectado ?           
-              <h2>Hola, <span>{usuarioConectado.firstName}   
+          {usuarioConectado ?           
+          <div className="divperfil">
+            <h2>Hola, <span>{usuarioConectado.firstName}</span></h2> 
               <div className="buttonsUser">
                 <BotonLogout id="blogout" history={history} title="Log Out"/>
-                <AiFillEdit className="btn" type="button" size={60}  onClick={editUser} color="yellow" title="Editar" /> 
-              </div>
-          <div>
-        </div>
-              </span></h2>
+              </div>  
+          </div> 
             :            
               <h2>Hola, <span>Usuario</span></h2>        
             }

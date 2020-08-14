@@ -13,35 +13,31 @@ import './navbar.css'
 const NavBar = () => {
   return (
     <Container id="conteinernavbar">
-    <Navbar  className='contenavbar'   expand={"md"}  >           
-      <div className="conttop" align="center">
-        <Button className="buttonSB" href="/transactions"  variant="bbtn btn-dark" >
+    <Navbar  className='contenavbar'    >           
+      <div className="conttop" >
+        <Button className="buttonSB" href="/transactions" type="button"   >
           <IoIosPaperPlane size="32" />
-            <br></br>
               Transacciones
         </Button>
-        <Button className="buttonSW" href="/stadistics"  variant="bbtn btn-light" >
+        <Button className="buttonSW" href="/stadistics" type="button"   >
           <BsGraphUp size="32" />
-            <br></br>              
               Estadisticas
         </Button>
-        <Button className="buttonSW" href="/myinfo"  variant="bbtn btn-light" >
-          <MdLanguage size="32"/>
-            <br></br>            
+        <Button className="buttonSW" href="/myinfo" type="button"  >
+          <MdLanguage size="32"/>            
               Mis Datos
         </Button>  
-        <Button className="buttonSB" href="/myproducts"  variant="bbtn btn-dark" >
+        <Button className="buttonSB" href="/myproducts" type="button" >
             <RiProductHuntLine size="32"/>
-               <br></br>
                 Mis Productos
         </Button>
       </div>
       <div className="contbot" align="center">
-        <Button className="buttonRB" href="/recargar'"  variant="bbtn btn-dark"  >
+        <Button className="buttonRB" href="/recargar" type="button" >
             <RiDownload2Line size="32"/>
                 Recargar Dinero
         </Button>
-        <Button className="buttonWR" href="/enviar"  variant="bbtn btn-light" >
+        <Button className="buttonWR" href="/enviar" type="button"   >
             <RiUpload2Line size="32"/>
                 Mandar Dinero
         </Button>
