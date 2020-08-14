@@ -1,57 +1,84 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row, Col } from "react-bootstrap";
 import "./Transactions.css";
 import OneTransaction from "./OneTransaction";
 import { transactionsHistory, getProfile } from "../../actions/UserActions";
 
 function Transactions({
-  usuarioConectado,
   moment,
+  getProfile,
+  usuarioConectado,
   history,
   transactionsHistory,
 }) {
-  console.log("history");
-  console.log(history);
   useEffect(() => {
-    transactionsHistory(usuarioConectado.id, moment);
+    getProfile();
   }, []);
 
+  useEffect(() => {
+    if (usuarioConectado.id) {
+      transactionsHistory(usuarioConectado.id, moment);
+    }
+  }, [usuarioConectado]);
+
+  // a elección
+  const titulo = {
+    day: "DE HOY",
+    week: "DE LA SEMANA",
+    month: "DEL MES",
+  };
   return (
-    <Container className="">
+    <div id="transacciones">
       <Row>
-        {console.log("history dentro del return")}
-        {console.log(history.income)}
-        <Col sm={4}></Col>
-        <Col sm={8} className="">
-          {/* Ajustar más tarde con orden por fecha descendente */}
+        <h2>TRANSACCIONES {titulo[moment]}</h2>
+        <Col sm={12}>
+          <div className="item">
+            <div className="prop-1">
+              <h4>Transacción</h4>
+            </div>
+            <div className="prop-1">
+              <h4>Fecha Realizada</h4>
+            </div>
+            <div className="prop-2">
+              <h4>Valor</h4>
+            </div>
+            <div className="prop-3">
+              <h4>Estado</h4>
+            </div>
+            <div className="prop-4">
+              <h4>Tipo Transacción</h4>
+            </div>
+          </div>
           {history.income &&
-            history.income
-              .map((e) => (
-                <OneTransaction
-                  key={e.id}
-                  transactionNumber={e.transactionNumber}
-                  createdAt={`${e.createdAt.split('T')[0]}, ${e.createdAt.split('T')[1].split('.')[0]}`}
-                  state={e.state}
-                  value={e.value}
-                  transactions_type={e.transactions_type}
-                />
-              ))}
+            history.income.map((e) => (
+              <OneTransaction
+                key={e.id}
+                transactionNumber={e.transactionNumber}
+                createdAt={`${e.createdAt.split("T")[0]}, ${
+                  e.createdAt.split("T")[1].split(".")[0]
+                }`}
+                state={e.state}
+                value={e.value}
+                transactions_type={e.transactions_type}
+              />
+            ))}
           {history.outcome &&
-            history.outcome
-              .map((e) => (
-                <OneTransaction
-                  key={e.id}
-                  transactionNumber={e.transactionNumber}
-                  createdAt={`${e.createdAt.split('T')[0]}, ${e.createdAt.split('T')[1].split('.')[0]}`}
-                  state={e.state}
-                  value={e.value}
-                  transactions_type={e.transactions_type}
-                />
-              ))}
+            history.outcome.map((e) => (
+              <OneTransaction
+                key={e.id}
+                transactionNumber={e.transactionNumber}
+                createdAt={`${e.createdAt.split("T")[0]}, ${
+                  e.createdAt.split("T")[1].split(".")[0]
+                }`}
+                state={e.state}
+                value={e.value}
+                transactions_type={e.transactions_type}
+              />
+            ))}
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 }
 function mapStateToProps(state) {
@@ -61,11 +88,6 @@ function mapStateToProps(state) {
   };
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    transactionsHistory: (id, moment) =>
-      dispatch(transactionsHistory(id, moment)),
-  };
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Transactions);
+export default connect(mapStateToProps, { getProfile, transactionsHistory })(
+  Transactions
+);

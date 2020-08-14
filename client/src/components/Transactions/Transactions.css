@@ -1,112 +1,111 @@
-.container {
-    background-color: rgba(53, 53, 53, 0.39);
-    border: solid 1px black;
-    top: 5px;
+*{
+    margin: 0px;
+    padding: 0px;
+}
+#root{
+    padding: 0px;
+}
+#transacciones{
+    position: relative;
+    width: 900px;
+    margin: 0px auto;
+    top: 50px;
+    padding: 30px 0px 15px 0px;
     display: flex;
-    flex-direction: column;
-    height: 300px;
-    width: 600px;
+    background-color: rgba(226, 248, 100, 0.815);
+}
+#transacciones .row{
+    width: 95%;
     margin: 0px auto;
+    padding: 0px;
 }
-
-.general {
-    text-align: center;
-    margin-top: 7%;
-    color: rgb(150, 150, 150)
+#transacciones .row > h2{
+    padding-left: 2%;
+    width: 100%;
 }
-
-.props {
+#transacciones .item{
+    margin: 5px 0px;
     display: flex;
-    margin: 35px;
+    justify-content: space-around;
+    background-color: #eeeeee;
+    padding: 15px 0px;
 }
-.props h3{
-    color: white;
+#transacciones .item:first-child{
+    margin-bottom: 35px;
 }
-
-.income {
+#transacciones .item > div{
     text-align: center;
-    margin: 0px auto;
-    width: 150px;
-    color: rgb(150, 150, 150)
 }
-.expenses {
-    text-align: center;
-    margin: 0px auto;
-    width: 150px;
-    color: rgb(150, 150, 150)
+#transacciones .item .prop-1{
+    width: 25%;
 }
-
-.record{
-    background: transparent;
-    text-align: center; 
+#transacciones .item .prop-2{
+    width: 18%;
 }
-.record .link{
-    color: #fffe00;
+#transacciones .item .prop-3{
+    width: 22%;
 }
-.record .link:not(:last-child){
-    margin-right: 20px;
+#transacciones .item .prop-4{
+    width: 35%;
 }
-.record .link:hover{
-    text-decoration: none;
-    color: oldlace;
+#transacciones .item .prop-4 h5{
+    font-size: 17px;
 }
-
-.value {
-    color: black;
+#transacciones .item div[class^="prop-"]{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#transacciones .item div[class^="prop-"] h5{
+    margin-bottom: 0px;
 }
 
 
-@media only screen and (max-width: 850px){
-    .container{
-        width: 75%;
-        height: 30%;
-        margin-top: 15%;
-        min-width: 380px;
+@media only screen and (max-width: 400px){ 
+    #transacciones{
+        width: 100%;
+        top: 0px;
+        padding: 30px 0px 0px 0px;
+        display: flex;
+        background: rgba(255,242,0,1);
+        background: linear-gradient(
+            to bottom, 
+            rgba(255,242,0,1) 0%, 
+            rgba(255,253,133,1) 27%,
+            rgba(255,255,255,1) 60%, 
+            rgba(166,166,166,1) 82%, 
+            rgba(43,43,43,1) 98%, 
+            rgba(0,0,0,1) 100%
+        );
     }
-    .general{
-        margin-top: 10px;
-    }
-    .props{
-        margin: 20px;
-    }
-}
-
-@media only screen and (max-width: 650px){
-    .container {
+    #transacciones .row{
+        width: 100%;
+        margin: 0px auto;
         padding: 0px;
-        width: 90%;
-        min-width: 300px;
-        height: 25%;
-        min-height: 160px;
-        margin-top: 0px;
-        position: relative;
-        top: 5em;
-        background-color: white;
-        border-color: transparent;
     }
-    .general h4{
+    #transacciones .row > h2{
+        padding-left: 5%;
         font-size: 20px;
-        margin-bottom: 0px;
-        margin-top: 10px;
     }
-    .props{
-        margin: 10px;
+    #transacciones .item{
+        align-items: center;
+        background-color: white;
+        padding: 15px 0px;
+        flex-wrap: wrap;
     }
-    .props h5{
-        font-size: 15px;
+    #transacciones .item .prop-1{
+        width: 50%;
     }
-    .props h3{
-        font-size: 23px;
-        color: black;
+    #transacciones .item .prop-2{
+        width: 50%;
     }
-    .record .link{
-        color: black;
+    #transacciones .item .prop-3{
+        width: 50%;
     }
-    .record .link:hover{
-        color: #fffe00;
-        font-weight: bold;
+    #transacciones .item .prop-4{
+        width: 50%;
     }
-    .record .link:not(:last-child){
-        margin-right: 5px;
+    #transacciones .item .prop-4 h4{
+        font-size: 20px;
     }
 }
