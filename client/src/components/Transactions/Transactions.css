@@ -12,7 +12,13 @@
     top: 50px;
     padding: 30px 0px 15px 0px;
     display: flex;
-    background-color: rgba(226, 248, 100, 0.815);
+    background: linear-gradient(
+        to bottom, 
+        rgb(255, 245, 53) 0%, 
+        rgba(255,253,133,1) 27%,
+        rgba(255,255,255,1) 50%, 
+        rgb(216, 216, 216) 82%
+    );
 }
 #transacciones .row{
     width: 95%;
@@ -23,12 +29,29 @@
     padding-left: 2%;
     width: 100%;
 }
+#transacciones .row > a{
+    width: 40%;
+    padding-left: 2%;
+    font-size: 20px;
+    color: #2b2b2b;
+}
+#transacciones .row > a:hover{
+    text-decoration: none;
+    font-weight: bold;
+}
 #transacciones .item{
     margin: 5px 0px;
     display: flex;
     justify-content: space-around;
-    background-color: #eeeeee;
-    padding: 15px 0px;
+    background-color: #faffdb !important;
+    padding: 10px 0px !important;
+    color: black
+}
+#transacciones .income:hover{
+    background-color: #9fff9f !important;
+}
+#transacciones .outcome:hover{
+    background-color: #ff8282 !important;
 }
 #transacciones .item:first-child{
     margin-bottom: 35px;

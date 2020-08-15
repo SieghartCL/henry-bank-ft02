@@ -32,6 +32,7 @@ function Transactions({
     <div id="transacciones">
       <Row>
         <h2>TRANSACCIONES {titulo[moment]}</h2>
+        <a href="/cliente">Volver a Mi Posición consolidada</a>
         <Col sm={12}>
           <div className="item">
             <div className="prop-1">
@@ -50,9 +51,11 @@ function Transactions({
               <h4>Tipo Transacción</h4>
             </div>
           </div>
-          {history.income &&
-            history.income.map((e) => (
+          {history.income && history.income.map(
+            (e) => (
               <OneTransaction
+                color="income"
+                type="+"
                 key={e.id}
                 transactionNumber={e.transactionNumber}
                 createdAt={`${e.createdAt.split("T")[0]} ${
@@ -62,10 +65,13 @@ function Transactions({
                 value={e.value}
                 transactions_type={e.transactions_type}
               />
-            ))}
-          {history.outcome &&
-            history.outcome.map((e) => (
+            )
+          )}
+          {history.outcome && history.outcome.map(
+            (e) => (
               <OneTransaction
+                color="outcome"
+                type="-"
                 key={e.id}
                 transactionNumber={e.transactionNumber}
                 createdAt={`${e.createdAt.split("T")[0]}, ${
@@ -75,7 +81,8 @@ function Transactions({
                 value={e.value}
                 transactions_type={e.transactions_type}
               />
-            ))}
+            )
+          )}
         </Col>
       </Row>
     </div>

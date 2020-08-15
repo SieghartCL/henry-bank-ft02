@@ -3,7 +3,7 @@ import "./Transactions.css";
 
 export default function OneTransaction(transaction) {
   return (
-    <div className="item">
+    <div className={`item ${transaction.color}`}>
       <div className="prop-1">
         <h5>N° {transaction.transactionNumber}</h5>
       </div>
@@ -11,7 +11,7 @@ export default function OneTransaction(transaction) {
         <h5>{transaction.createdAt}</h5>
       </div>
       <div className="prop-2">
-        <h5>${transaction.value}</h5>
+        <h5><b>{transaction.type}</b>${transaction.value}</h5>
       </div>
       <div className="prop-3">
         <h5>{transaction.state}</h5>
