@@ -1,41 +1,50 @@
-import {GET_VALID_USER} from '../constants/userConstants'
-import axios from 'axios'
-
-export function getValidUser (id){
-    return (dispatch => {
-        axios.get('http://localhost:3001/users/' + id)
-            .then(res => {
-                dispatch({type: GET_VALID_USER, payload: res.data})
-            })
-    }) 
+import { GET_VALID_USER } from "../constants/userConstants";
+import axios from "axios";
+import swal from "sweetalert2";
+export function getValidUser(id) {
+  return (dispatch) => {
+    axios.get("http://localhost:3001/users/" + id).then((res) => {
+      dispatch({ type: GET_VALID_USER, payload: res.data });
+    });
+  };
 }
 
-export function validEmailUser (email) {
-  
-    axios.post('http://localhost:3001/auth/validate/resetpassword/', {email})
-      .then(res =>{
-        alert('Por favor, verifica tu casilla de correos')
-        // window.location.replace('http://localhost:3000/resetpassword/'+ res.data[1][0].id)
-        window.location.replace('http://localhost:3000/login');
-      }
-        
-      )
-      .catch(()=>alert('email invalido'));
-
+export function validEmailUser(email) {
+  axios
+    .post("http://localhost:3001/auth/validate/resetpassword/", {
+      email,
+    })
+    .then((res) => {
+      swal.fire({
+        title: "",
+        text: "Por favor, verifica tu casilla de correos",
+        icon: "success",
+        timer: 5000,
+      });
+    })
+    .then((res) => {
+      window.location.replace("http://localhost:3000/login");
+    })
+    .catch((error) => {
+      swal.fire({
+        text: "Por favor, ingresa un mail válido",
+        icon: "error",
+      });
+    });
 }
 
+export function resetPassUser(data) {
+  swal
+    .fire({
+      text: "¡Su contraseña se ha cambiada con exito!",
+      icon: "success",
+    })
+    .then((res) => {
+      axios.put("http://localhost:3001/auth/resetpassword/" + data.code, data);
+    })
+    .then((res) => {
+      window.location.replace("http://localhost:3000/login");
+    })
 
-export function resetPassUser (data) {
-
-    axios.put('http://localhost:3001/auth/resetpassword/'+ data.code, data)
-      .then(res => {
-        alert('¡contraseña cambiada con exito!');
-        window.location.replace('http://localhost:3000/login')
-      })
-
-      .catch(()=>alert('datos invalidos'))
-
-
-  
-
+    .catch(() => alert("datos invalidos"));
 }
