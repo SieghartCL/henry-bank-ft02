@@ -16,6 +16,10 @@ const {
 server.post("/loadBalance/:idUser", async (req, res) => {
   const { idUser } = req.params;
   const valor = req.body;
+
+  var baseDate = new Date();
+  baseDate.setMinutes(baseDate.getMinutes() - baseDate.getTimezoneOffset());
+
   const saldo = await Wallet.findOne({
     where: { userId: idUser },
   });
@@ -49,6 +53,7 @@ server.post("/loadBalance/:idUser", async (req, res) => {
         value: parseFloat(parseInt(valor.value)),
         state: "Aceptada",
         transactionNumber: idUser.toString() + randomTransactionNumber(),
+        createdAt: baseDate
       });
       const prom = await Promise.all([result, balanceUpdate, transactions]);
       res.status(200).json(prom);
@@ -75,6 +80,9 @@ server.put("/:idSender/:idReceiver", async (req, res) => {
 
   let userSender = await Wallet.findOne({ where: { userId: idSender } });
   let moneyFloat = parseFloat(parseInt(money));
+  var baseDate = new Date();
+  baseDate.setMinutes(baseDate.getMinutes() - baseDate.getTimezoneOffset());
+
   switch (transactions_type) {
     //Transferencia entre usuarios billetera
     case "UsertoUser":
@@ -128,6 +136,7 @@ server.put("/:idSender/:idReceiver", async (req, res) => {
                   state: "Aceptada",
                   transactionNumber:
                     stringSender + stringReceiver + randomTransactionNumber(),
+                  createdAt: baseDate
                 })
                   .then((transaccion) =>
                     res.status(200).json({
@@ -203,6 +212,7 @@ server.put("/:idSender/:idReceiver", async (req, res) => {
                   state: "Aceptada",
                   transactionNumber:
                     stringSender + stringReceiver + randomTransactionNumber(),
+                  createdAt: baseDate
                 })
                   .then((transaccion) =>
                     res.status(200).json({
@@ -278,6 +288,7 @@ server.put("/:idSender/:idReceiver", async (req, res) => {
                   state: "Aceptada",
                   transactionNumber:
                     stringSender + stringReceiver + randomTransactionNumber(),
+                  createdAt: baseDate
                 })
                   .then((transaccion) =>
                     res.status(200).json({
