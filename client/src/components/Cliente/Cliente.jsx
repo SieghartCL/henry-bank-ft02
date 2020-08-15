@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import General from "../General/General.jsx";
 import NavBar from "../NavBar/NavBar.jsx";
 import "./CSS/client.css";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import {
   getProfile,
   getWallet,
@@ -24,13 +24,6 @@ function Cliente({
 }) {
   const [user, setUser] = useState({});
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setUser({
-      ...user,
-      [name]: value,
-    });
-  };
   console.log(usuarioConectado);
   useEffect(() => {
     getProfile();

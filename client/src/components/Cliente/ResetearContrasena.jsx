@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { validEmailUser } from "../../actions/resetPasswordActions";
 import "./CSS/resetpassword.css";
 import Container from "react-bootstrap/Container";
-import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
 const ResetearContrasena = () => {

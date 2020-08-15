@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./enviardinero.css";
 import Button from "react-bootstrap/Button";
-import { FaUsers, FaUserPlus } from "react-icons/fa";
+import { FaUserPlus } from "react-icons/fa";
 import { connect } from "react-redux";
 import {
   getProfile,
@@ -141,11 +141,16 @@ function RecargarDinero({
           )}
         </div>
         <div>
-        <Button onClick={volver} className="btn btn-dark" variant="top" size="lg">
-          {" "}
-          Volver
-        </Button>
-      </div>
+          <Button
+            onClick={volver}
+            className="btn btn-dark"
+            variant="top"
+            size="lg"
+          >
+            {" "}
+            Volver
+          </Button>
+        </div>
       </div>
       <Image
         id="footerenviar"
