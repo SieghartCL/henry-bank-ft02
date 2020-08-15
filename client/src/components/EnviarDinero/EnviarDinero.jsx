@@ -11,6 +11,7 @@ import {
 import SearchContact from "./searchContact.js";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
+import swal from "sweetalert2";
 
 function RecargarDinero({
   usuarioConectado,
