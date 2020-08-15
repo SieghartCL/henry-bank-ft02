@@ -6,11 +6,7 @@ import Button from "react-bootstrap/Button";
 import Image from "react-bootstrap/Image";
 
 const ResetearContrasena = () => {
-  var email = "";
-
-  const handleInputChange = (e) => {
-    email = e.target.value;
-  };
+  var [email, setEmail] = useState("");
 
   const handlerClick = () => {
     validEmailUser(email);

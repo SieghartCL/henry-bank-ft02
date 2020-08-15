@@ -5,11 +5,9 @@ import {
   GET_WALLET,
   LOGOUT,
   GET_TRANSACTIONS,
-  CARGAR_DINERO,
   ENVIAR_DINERO,
   LISTA_CONTACTOS,
   TRANSACTIONS_HISTORY,
-  RECARGAR_DINERO,
   ALL_WALLETS,
 } from "../constants/userConstants";
 import axios from "axios";
@@ -155,10 +153,12 @@ export function listaContactos(idContact) {
 
 export function getAddress(address, id, user) {
   return function (dispatch) {
+    console.log(user);
     axios
       .post("http://localhost:3001/auth/validate/street", address)
       .then((res) => {
         if (res.status === 200) {
+          console.log(user);
           axios
             .put(`http://localhost:3001/users/modify/${id}`, user)
             .then((res) => {
@@ -171,7 +171,7 @@ export function getAddress(address, id, user) {
                     icon: "success",
                   })
                   .then((value) => {
-                    window.location.replace("http://localhost:3000/cliente");
+                    window.location.replace("http://localhost:3000/login");
                   });
               }
             });

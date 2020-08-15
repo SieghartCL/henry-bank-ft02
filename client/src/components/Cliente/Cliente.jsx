@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import General from "../General/General.jsx";
 import NavBar from "../NavBar/NavBar.jsx";
 import "./CSS/client.css";
@@ -23,13 +23,29 @@ function Cliente({
   getTransactions,
   history,
 }) {
+  const [user, setUser] = useState({});
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setUser({
+      ...user,
+      [name]: value,
+    });
+  };
+  console.log(usuarioConectado);
   useEffect(() => {
     getProfile();
   }, []);
-
   const logout_user = () => {
     logout();
   };
+  useEffect(() => {
+    getProfile();
+  }, []);
+  useEffect(() => {
+    setUser(usuarioConectado);
+  }, [usuarioConectado]);
+
   useEffect(() => {
     if (usuarioConectado.id) {
       getWallet(usuarioConectado.id);

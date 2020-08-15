@@ -74,7 +74,6 @@ export default function usuario(state = initialState, action) {
     case LOGOUT:
       return {
         ...state,
-        usuarioConectado: {},
         usuarios: [],
         usuarioConectado: {},
         wallet: {},

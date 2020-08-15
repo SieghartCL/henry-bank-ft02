@@ -125,7 +125,7 @@ server.post("/validate/street", async (req, res) => {
 
 server.get("/me");
 server.get("/profileuser", (req, res) => {
-  const profile = Users.findOne({
+  Users.findOne({
     where: {
       id: req.user.id,
     },
@@ -182,7 +182,7 @@ function validateEmail(email, email_hash) {
 
   const message = {
     alternative: true,
-    text: `Bienvenid@. Se adjunta enlace para validar y continuar con el registro: <a href="${valUrl}"> Clickea Aquí</a>`,
+    text: `Bienvenid@. Se adjunta enlace para validar y continuar con el registro: ${valUrl}`,
     from: "Henry Bank FT02 <henrybank@mauricioarizaga.com.ar>",
     to: `Nuevo Usuario <${email}>`,
     // cc: 'else <else@your-email.com>',
@@ -206,7 +206,7 @@ function resetPassword(email, req, res) {
     }
   ).then((user) => {
     // const valUrl = `http://localhost:3001/auth/resetpassword/${hash}`;
-
+    console.log(user[1][0]);
     const ressetLink = "http://localhost:3000/resetpassword/" + user[1][0].id;
     const client = new SMTPClient({
       user: "henrybank@mauricioarizaga.com.ar",
