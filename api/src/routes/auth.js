@@ -217,7 +217,7 @@ function resetPassword(email, req, res) {
     });
 
     const message = {
-      text: `Se adjunta codigo para resetear contraseña :${user[1][0].password_hash}, ingresa tu clave aqui: ${ressetLink}`,
+      text: `Se adjunta codigo para resetear contraseña: ${user[1][0].password_hash}, ingresa tu clave aqui: ${ressetLink}`,
       from: "Henry Bank FT02 <henrybank@mauricioarizaga.com.ar>",
       to: `Reset password <${email}>`,
       // cc: 'else <else@your-email.com>',

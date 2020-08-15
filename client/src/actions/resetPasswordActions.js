@@ -14,8 +14,8 @@ export function validEmailUser(email) {
     .post("http://localhost:3001/auth/validate/resetpassword/", {
       email,
     })
-    .then((res) => {
-      swal.fire({
+    .then(async (res) => {
+      await swal.fire({
         title: "",
         text: "Por favor, verifica tu casilla de correos",
         icon: "success",
@@ -25,8 +25,8 @@ export function validEmailUser(email) {
     .then((res) => {
       window.location.replace("http://localhost:3000/login");
     })
-    .catch((error) => {
-      swal.fire({
+    .catch(async (error) => {
+      await swal.fire({
         text: "Por favor, ingresa un mail válido",
         icon: "error",
       });

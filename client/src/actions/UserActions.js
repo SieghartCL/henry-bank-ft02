@@ -80,9 +80,9 @@ export function logout() {
   return function (dispatch) {
     axios
       .get("http://localhost:3001/auth/logout")
-      .then((value) => {
+      .then(async (value) => {
         console.log(value);
-        swal.fire({
+        await swal.fire({
           title: "¡Nos vemos pronto!",
           text: "Se ha deslogueado satisfactoriamente",
           icon: "success",
@@ -90,8 +90,8 @@ export function logout() {
         dispatch({ type: LOGOUT }) &&
           window.location.replace("http://localhost:3000/");
       })
-      .catch((error) => {
-        swal.fire({
+      .catch(async (error) => {
+        await swal.fire({
           title: "¡Qué mal!",
           text: "No se pudo desloguear =c",
           icon: "error",

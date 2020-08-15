@@ -46,6 +46,10 @@ function RecargarDinero({
     setCantidad(value);
   };
 
+  const volver = function (e) {
+    window.location.replace("http://localhost:3000/cliente");
+  };
+
   return (
     <Container id="enviarcont">
       <Image
@@ -136,6 +140,12 @@ function RecargarDinero({
             </Button>
           )}
         </div>
+        <div>
+        <Button onClick={volver} className="btn btn-dark" variant="top" size="lg">
+          {" "}
+          Volver
+        </Button>
+      </div>
       </div>
       <Image
         id="footerenviar"
