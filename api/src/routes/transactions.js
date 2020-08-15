@@ -53,7 +53,7 @@ server.post("/loadBalance/:idUser", async (req, res) => {
         value: parseFloat(parseInt(valor.value)),
         state: "Aceptada",
         transactionNumber: idUser.toString() + randomTransactionNumber(),
-        createdAt: baseDate
+        createdAt: baseDate,
       });
       const prom = await Promise.all([result, balanceUpdate, transactions]);
       res.status(200).json(prom);
@@ -136,7 +136,7 @@ server.put("/:idSender/:idReceiver", async (req, res) => {
                   state: "Aceptada",
                   transactionNumber:
                     stringSender + stringReceiver + randomTransactionNumber(),
-                  createdAt: baseDate
+                  createdAt: baseDate,
                 })
                   .then((transaccion) =>
                     res.status(200).json({
@@ -212,7 +212,7 @@ server.put("/:idSender/:idReceiver", async (req, res) => {
                   state: "Aceptada",
                   transactionNumber:
                     stringSender + stringReceiver + randomTransactionNumber(),
-                  createdAt: baseDate
+                  createdAt: baseDate,
                 })
                   .then((transaccion) =>
                     res.status(200).json({
@@ -288,7 +288,7 @@ server.put("/:idSender/:idReceiver", async (req, res) => {
                   state: "Aceptada",
                   transactionNumber:
                     stringSender + stringReceiver + randomTransactionNumber(),
-                  createdAt: baseDate
+                  createdAt: baseDate,
                 })
                   .then((transaccion) =>
                     res.status(200).json({

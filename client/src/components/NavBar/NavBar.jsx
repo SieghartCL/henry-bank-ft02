@@ -16,24 +16,24 @@ const NavBar = () => {
       <Navbar className="contenavbar">
         <div className="conttop">
           <Button className="buttonSB" href="/transactions" type="button">
-            <IoIosPaperPlane size="32" />
+            <IoIosPaperPlane size="50%" />
             Transacciones
           </Button>
           <Button className="buttonSW" href="/stadistics" type="button">
-            <BsGraphUp size="32" />
+            <BsGraphUp size="50%" />
             Estadisticas
           </Button>
           <Button className="buttonSW" href="/perfil" type="button">
-            <MdLanguage size="32" />
+            <MdLanguage size="50%" />
             Mis Datos
           </Button>
           <Button className="buttonSB" href="/billetera" type="button">
-            <RiProductHuntLine size="32" />
+            <RiProductHuntLine size="50%" />
             Mis Productos
           </Button>
         </div>
         <div className="contbot" align="center">
-          <Button className="buttonRB" href="/montorecarga" type="button">
+          <Button className="buttonRB" href="/recargarecarga" type="button">
             <RiDownload2Line size="32" />
             Recargar Dinero
           </Button>
