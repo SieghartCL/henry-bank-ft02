@@ -91,9 +91,9 @@
 /* #backSend{
 } */
 
-#input {
+#inputContacts {
   border-color: black;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 #tableCont {
@@ -110,6 +110,14 @@
 #btnsDisplay {
   display: inline-flex;
   justify-content: space-between;
+}
+
+#rowTable{
+  cursor: pointer;
+}
+
+#rowData{
+  background-color: lightgrey;
 }
 
 /*table responsive*/

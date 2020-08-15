@@ -28,6 +28,10 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
         setCantidad(value);
     };
 
+    const volver = function (e) {
+        window.location.replace("http://localhost:3000/cliente");
+      };
+    
     return (
         <div id="enviardinero">
             <div className="titulo">
@@ -71,6 +75,12 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
                     }><Button className="btn btn-dark" size="lg">Recargar</Button>
                     </Link>
 
+                </div>
+                <div>
+                    <Button onClick={volver} className="btn btn-dark" variant="top" size="lg">
+                        {" "}
+                        Volver
+                    </Button>
                 </div>
             </div>
         </div>

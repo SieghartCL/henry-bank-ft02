@@ -12,6 +12,10 @@ const ResetearContrasena = () => {
     validEmailUser(email);
   };
 
+  const volver = function (e) {
+    window.location.replace("http://localhost:3000/login");
+  };
+
   return (
     <div className="container">
       <form className="form-signin" onSubmit={(e) => e.preventDefault()}>
@@ -35,6 +39,10 @@ const ResetearContrasena = () => {
           onClick={() => handlerClick()}
         >
           ¡Recibir codigo de validación!
+        </button>
+        <button onClick={volver} className=" btn-lg btn-primary btn-block">
+          {" "}
+          Volver
         </button>
       </form>
       <br />

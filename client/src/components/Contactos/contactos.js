@@ -50,19 +50,14 @@ const Contacts = () => {
       <div id="contactoscont2" class="row justify-content-center">
         <div class="col-auto">
           <Table id="contactostable" size="lg" borderless="true" hover="true">
-            <thead>
-              <tr>
-                <th>Nombre</th>
-                <th>Email</th>
-              </tr>
-            </thead>
-            {console.log(contacts)}
             {contacts.length == 0 ? (
               <th>No tiene contactos aún!</th>
             ) : (
               <tbody>
-                {contacts.map((contact) => (
-                  <tr>
+                {contacts.map((contact) => {
+                  return (
+                    contact.id == userSelected.id ? (
+                  <tr id="rowData">
                     <td>
                       {contact.firstName} {contact.lastName}
                     </td>
@@ -70,7 +65,15 @@ const Contacts = () => {
                       {contact.email}
                     </td>
                   </tr>
-                ))}
+                  ) : (
+                    <tr id="rowTable">
+                      <td>
+                        {contact.firstName} {contact.lastName}
+                      </td>
+                      <td onClick={() => selectedUser(contact)}>{contact.email}</td>
+                    </tr>
+                  ))
+                  })}
               </tbody>
             )}
           </Table>
@@ -78,6 +81,8 @@ const Contacts = () => {
       </div>
       <div class="btns">
         <input
+          id ="inputContacts"
+          placeholder="Ingrese email de contacto"
           value={emailValue}
           onChange={(e) => {
             setEmailValue(e.target.value);
