@@ -4,15 +4,13 @@ const axios = require("axios");
 const { SMTPClient } = require("emailjs");
 const { Users } = require("../models/index.js");
 const { GOOGLE_API_KEY } = require("../env-config.js");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
 
 server.post("/changepassword");
 
 server.post(
   "/login",
   function (req, res, next) {
-    console.log("routes/auth.js, login, req.body: ");
-    console.log(req.body);
     next();
   },
   passport.authenticate("local-signin"),
@@ -21,11 +19,9 @@ server.post(
   }
 );
 
-/* server.get("/logout"); */
-
-server.get("/logout", function (req, res) {
+server.get("/logout", function (req, res, next) {
   req.logout();
-  req.session.destroy(function (err) {});
+  req.session = null;
   res.sendStatus(200);
 });
 
@@ -105,7 +101,7 @@ server.post("/validate/street", async (req, res) => {
           const results = response.data.predictions;
           var addressArr = [];
           results.forEach((r) => {
-            var streetArr = r.description.split(',');
+            var streetArr = r.description.split(",");
             var street = streetArr[0];
             var city = streetArr[streetArr.length - 2];
             var country = streetArr[streetArr.length - 1];
@@ -185,7 +181,8 @@ function validateEmail(email, email_hash) {
   });
 
   const message = {
-    text: `Bienvenid@. Se adjunta enlace para validar y continuar con el registro :${valUrl}`,
+    alternative: true,
+    text: `Bienvenid@. Se adjunta enlace para validar y continuar con el registro: <a href="${valUrl}"> Clickea Aquí</a>`,
     from: "Henry Bank FT02 <henrybank@mauricioarizaga.com.ar>",
     to: `Nuevo Usuario <${email}>`,
     // cc: 'else <else@your-email.com>',
@@ -199,73 +196,71 @@ function validateEmail(email, email_hash) {
 }
 
 function resetPassword(email, req, res) {
-
-  Users.update({
-    password_hash: 1000000
-
-  }, {
-    returning: true, where: { email: email }
-  })
-    .then(user => {
-      // const valUrl = `http://localhost:3001/auth/resetpassword/${hash}`;
-
-      const ressetLink = 'http://localhost:3000/resetpassword/'+user[1][0].id
-      const client = new SMTPClient({
-        user: "henrybank@mauricioarizaga.com.ar",
-        password: "Henrybank12345",
-        host: "smtp.hostinger.com.ar",
-        ssl: false,
-        port: 587,
-      });
-
-      const message = {
-        text: `Se adjunta codigo para resetear contraseña: ${user[1][0].password_hash}, ingresa tu clave aqui: ${ressetLink}`,
-        from: "Henry Bank FT02 <henrybank@mauricioarizaga.com.ar>",
-        to: `Reset password <${email}>`,
-        // cc: 'else <else@your-email.com>',
-        subject: "Henry Bank - RESET PASSWORD",
-      };
-
-      // send the message and get a callback with an error or details of the message that was sent
-      client.send(message, function (err, message) {
-        //console.log(err || message);
-      });
-
-      res.json(user).sendStatus(200);
+  Users.update(
+    {
+      password_hash: 1000000,
+    },
+    {
+      returning: true,
+      where: { email: email },
     }
-   
-  )
-  .catch(err => res.send(400))
+  ).then((user) => {
+    // const valUrl = `http://localhost:3001/auth/resetpassword/${hash}`;
 
+    const ressetLink = "http://localhost:3000/resetpassword/" + user[1][0].id;
+    const client = new SMTPClient({
+      user: "henrybank@mauricioarizaga.com.ar",
+      password: "Henrybank12345",
+      host: "smtp.hostinger.com.ar",
+      ssl: false,
+      port: 587,
+    });
+
+    const message = {
+      text: `Se adjunta codigo para resetear contraseña :${user[1][0].password_hash}, ingresa tu clave aqui: ${ressetLink}`,
+      from: "Henry Bank FT02 <henrybank@mauricioarizaga.com.ar>",
+      to: `Reset password <${email}>`,
+      // cc: 'else <else@your-email.com>',
+      subject: "Henry Bank - RESET PASSWORD",
+    };
+
+    // send the message and get a callback with an error or details of the message that was sent
+    client.send(message, function (err, message) {
+      //console.log(err || message);
+    });
+
+    res.json(user).sendStatus(200);
+  });
 }
 
-server.post ('/validate/resetpassword', (req,res) => {
+server.post("/validate/resetpassword", (req, res) => {
   resetPassword(req.body.email, req, res);
-})
+});
 
-server.put('/resetpassword/:hash', (req,res) => {
+server.put("/resetpassword/:hash", (req, res) => {
   const hash = req.params.hash;
-  const {newPassword , email} = req.body;
+  const { newPassword, email } = req.body;
   const contraseñahash = bcrypt.hashSync(newPassword, 10);
-  
-  Users.findOne({where: {email: email, password_hash: hash}})
-    .then(user => {
-      Users.update({
-        password: contraseñahash,
-        password_hash: null
-      }, {
-        returning: true, where: {id: user.id}
-      })
-        res.status(200).json({message: "Su contraseña ha sido cambiada!"})     
-    })
-    .catch(err => {
-      res.status(404).json({message: "El codigo es incorrecto o ocurrio un error, intente de nuevo"})
-    })
-})
 
-server.get("/logout", function (req, res) {
-  req.logout();
-  res.redirect("/");
+  Users.findOne({ where: { email: email, password_hash: hash } })
+    .then((user) => {
+      Users.update(
+        {
+          password: contraseñahash,
+          password_hash: null,
+        },
+        {
+          returning: true,
+          where: { id: user.id },
+        }
+      );
+      res.status(200).json({ message: "Su contraseña ha sido cambiada!" });
+    })
+    .catch((err) => {
+      res.status(404).json({
+        message: "El codigo es incorrecto o ocurrio un error, intente de nuevo",
+      });
+    });
 });
 
 module.exports = server;

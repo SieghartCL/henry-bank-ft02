@@ -10,8 +10,8 @@ import "./contactos.css";
 import Button from "react-bootstrap/Button";
 import Table from "react-bootstrap/Table";
 import { getProfile } from "../../actions/UserActions";
-import Image from 'react-bootstrap/Image';
-import Container from 'react-bootstrap/Container';
+import Image from "react-bootstrap/Image";
+import Container from "react-bootstrap/Container";
 
 const Contacts = () => {
   const dispatch = useDispatch();
@@ -19,11 +19,10 @@ const Contacts = () => {
   const userSelected = useSelector((store) => store.usuario.contactSelected);
   const userContected = useSelector((store) => store.usuario.usuarioConectado);
 
-  const [emailValue, setEmailValue] = useState('');
+  const [emailValue, setEmailValue] = useState("");
 
   useEffect(() => dispatch(getProfile()), []);
   useEffect(() => dispatch(getContacts(userContected.id)), [userContected]);
-  
 
   const selectedUser = (user) => {
     dispatch({ type: SELECT_CONTACT, payload: user });
@@ -35,19 +34,22 @@ const Contacts = () => {
 
   const addHandler = () => {
     dispatch(addContact(emailValue, userContected.id));
-    setEmailValue('');
+    setEmailValue("");
   };
 
   const volver = function (e) {
-    window.location.replace('http://localhost:3000/enviar')
- }
+    window.location.replace("http://localhost:3000/enviar");
+  };
 
   return (
     <Container id="contactoscont">
-      <Image id="logomiscontactos" src="https://fotos.subefotos.com/42c7f4c4e2f06d48681a4a5094ca38b5o.png" ></Image>
+      <Image
+        id="logomiscontactos"
+        src="https://fotos.subefotos.com/42c7f4c4e2f06d48681a4a5094ca38b5o.png"
+      ></Image>
       <div id="contactoscont2" class="row justify-content-center">
         <div class="col-auto">
-          <Table id="contactostable"size="lg" borderless="true" hover="true">
+          <Table id="contactostable" size="lg" borderless="true" hover="true">
             <thead>
               <tr>
                 <th>Nombre</th>
@@ -57,19 +59,20 @@ const Contacts = () => {
             {console.log(contacts)}
             {contacts.length == 0 ? (
               <th>No tiene contactos aún!</th>
-            ):(
+            ) : (
               <tbody>
-              {contacts.map((contact) => (
-                <tr>
-                  <td>
-                    {contact.firstName} {contact.lastName}
-                  </td>
-                  <td onClick={() => selectedUser(contact)}>{contact.email}</td>
-                </tr>
-              ))}
-            </tbody>
+                {contacts.map((contact) => (
+                  <tr>
+                    <td>
+                      {contact.firstName} {contact.lastName}
+                    </td>
+                    <td onClick={() => selectedUser(contact)}>
+                      {contact.email}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
             )}
-            
           </Table>
         </div>
       </div>
@@ -97,7 +100,9 @@ const Contacts = () => {
               className="btn btn-dark"
               variant="top"
               size="lg"
-              onClick={() => deleteHandler(userSelected.email, userContected.id)}
+              onClick={() =>
+                deleteHandler(userSelected.email, userContected.id)
+              }
             >
               Eliminar Contacto
             </Button>
@@ -113,28 +118,34 @@ const Contacts = () => {
             >
               Agregar Contacto
             </Button>
-            <Button 
-            id="elimbtn"
-            disabled className="btn btn-dark" 
-            variant="top" 
-            size="lg">
+            <Button
+              id="elimbtn"
+              disabled
+              className="btn btn-dark"
+              variant="top"
+              size="lg"
+            >
               Eliminar Contacto
             </Button>
-                        
           </div>
         )}
       </div>
-      <div className="volvercont"> 
+      <div className="volvercont">
         <Button
           onClick={volver}
           id="volverbutton"
           className="btn btn-dark"
           variant="top"
           size="lg"
-        > Volver a Enviar Dinero
+        >
+          {" "}
+          Volver a Enviar Dinero
         </Button>
       </div>
-      <Image id="footercontactos" src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png" ></Image>
+      <Image
+        id="footercontactos"
+        src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
+      ></Image>
     </Container>
   );
 };

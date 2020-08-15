@@ -1,16 +1,10 @@
 const Wallet = (sequelize, S) => {
   // defino el modelo
   const W = sequelize.define("wallet", {
-    id: {
-      type: S.INTEGER,
-      allowNull: false,
-      primaryKey: true,
-      autoIncrement: true,
-    },
     type: {
-      type: S.STRING,
+      type: S.ENUM,
+      values: ["Cuenta Corriente", "Cuenta de Ahorro", "Línea de Crédito"],
       defaultValue: "Cuenta Corriente",
-      allowNull: true,
     },
     balance: {
       type: S.DECIMAL(10, 2),
@@ -21,8 +15,9 @@ const Wallet = (sequelize, S) => {
       },
     },
     currency: {
-      type: S.TEXT,
-      allowNull: true,
+      type: S.ENUM,
+      values: ["Pesos", "Dólares", "Euros"],
+      defaultValue: "Pesos",
     },
   });
 

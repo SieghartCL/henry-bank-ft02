@@ -1,44 +1,74 @@
-import React, {useEffect} from 'react'
-import axios from 'axios'
-import { resetPassUser , getValidUser} from '../../actions/resetPasswordActions'
+import React, { useEffect } from "react";
+import axios from "axios";
+import {
+  resetPassUser,
+  getValidUser,
+} from "../../actions/resetPasswordActions";
 
-
-import { useSelector, useDispatch } from 'react-redux'
-import { useState } from 'react'
+import { useSelector, useDispatch } from "react-redux";
 
 const ValidResetPassword = (props) => {
+  const dispatch = useDispatch();
+  const user = useSelector((store) => store.usuario.usuarios);
 
-    const dispatch = useDispatch()
-    useEffect(()=>dispatch(getValidUser(id)),[])
-    const user = useSelector(store => store.usuario.usuarios)
-    const [data, setData] = useState({ code:0,email:'', newPassword:''})
+  var data = {
+    email: user.email,
+    code: "",
+    newPassword: "",
+  };
 
-    const id = props.match.params.idUser
-    
-    const handleInputChange = (e) => {
-        const {name, value} = e.target
-        setData(state => ({...state, [name]: value}))
-        setData(state => ({...state, email:user.email}))
-    }
+  const id = props.match.params.idUser;
 
-    const handlerClick =() => {
-        resetPassUser(data)
-    }
-    
+  useEffect(() => dispatch(getValidUser(id)), []);
 
-    return(
-        <div className="container">
-            <form  className="form-signin" onSubmit={(e)=>e.preventDefault()}>
-                <h2>hola {user.firstName}! ingresa el codigo y nueva contraseña</h2>
-                <label  htmlFor="contraUser" className="sr-only">Nueva Constraseña</label>
-                <input  className="form-control" required type="text" placeholder="Codigo" name="code"  onChange={(e)=>handleInputChange(e)}/>
-                <input  className="form-control" required type="password" placeholder="Nueva contraseña" name="newPassword"  onChange={(e)=>handleInputChange(e)}/>
-                           
-                <button type="submit" className=" btn-lg btn-primary btn-block"  value="Enviar" onClick={() => handlerClick()} >Confirmar cambio</button>
-            </form>
-            <br/>
-        </div>
-    )
-}
+  const handleKeyChange = (e) => {
+    data.code = e.target.value;
+  };
 
-export default ValidResetPassword
+  const handlePassChange = (e) => {
+    data.newPassword = e.target.value;
+  };
+
+  const handlerClick = () => {
+    resetPassUser(data);
+  };
+
+  return (
+    <div className="container">
+      <form className="form-signin" onSubmit={(e) => e.preventDefault()}>
+        <h2>hola {user.firstName}! ingresa el codigo y nueva contraseña</h2>
+        <label htmlFor="contraUser" className="sr-only">
+          Nueva Constraseña
+        </label>
+        <input
+          className="form-control"
+          required
+          type="text"
+          placeholder="Codigo"
+          name="codigo"
+          onChange={(e) => handleKeyChange(e)}
+        />
+        <input
+          className="form-control"
+          required
+          type="password"
+          placeholder="Nueva contraseña"
+          name="password"
+          onChange={(e) => handlePassChange(e)}
+        />
+
+        <button
+          type="submit"
+          className=" btn-lg btn-primary btn-block"
+          value="Enviar"
+          onClick={() => handlerClick()}
+        >
+          Confirmar cambio
+        </button>
+      </form>
+      <br />
+    </div>
+  );
+};
+
+export default ValidResetPassword;
