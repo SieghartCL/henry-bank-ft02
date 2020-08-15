@@ -263,9 +263,4 @@ server.put("/resetpassword/:hash", (req, res) => {
     });
 });
 
-server.get("/logout", function (req, res) {
-  req.logout();
-  res.redirect("/");
-});
-
 module.exports = server;
