@@ -60,7 +60,7 @@ function Cliente({ usuarioConectado, wallet, transactions, getProfile, getWallet
           </div>
           </span>}
           </div> 
-          <Image id="ondasclient" src="https://fotos.subefotos.com/e07505b47575212c24ec5fdb5ffc1cb8o.png" ></Image>
+          <Image id="ondasclient" src="https://fotos.subefotos.com/d83f93902c81c6d36ea46de95b39864ao.png" ></Image>
           <div className="clientegeneral">
           {usuarioConectado.firstName!==null && <span><General transacciones={transactions}/>
           <div id="navbarcont">
