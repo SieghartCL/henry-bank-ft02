@@ -16,6 +16,7 @@ import ValidResetPassword from "./components/Cliente/validResetPassword";
 import NotFound from "./components/404/Notfound";
 import MontoRecarga from "./components/RecargarDinero/montoRecarga.jsx";
 import Transactions from "./components/Transactions/Transactions";
+import Wallets from "./components/Wallets/Wallets";
 import EditUsuario from "./components/Cliente/FormularioEditCliente.jsx";
 
 function App() {
@@ -56,7 +57,8 @@ function App() {
             )}
           />
           <Route path="/montorecarga" component={MontoRecarga} />
-
+          <Route path="/billetera" component={Wallets} />
+          <Route path="/perfil" component={EditUsuario} />
           <Route component={NotFound} />
         </Switch>
       </Router>

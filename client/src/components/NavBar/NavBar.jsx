@@ -23,11 +23,11 @@ const NavBar = () => {
             <BsGraphUp size="32" />
             Estadisticas
           </Button>
-          <Button className="buttonSW" href="/myinfo" type="button">
+          <Button className="buttonSW" href="/perfil" type="button">
             <MdLanguage size="32" />
             Mis Datos
           </Button>
-          <Button className="buttonSB" href="/myproducts" type="button">
+          <Button className="buttonSB" href="/billetera" type="button">
             <RiProductHuntLine size="32" />
             Mis Productos
           </Button>

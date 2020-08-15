@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { getAddress, getProfile } from "../../actions/UserActions";
 import { connect } from "react-redux";
-import "./CSS/altaCliente.css";
+import "./CSS/editCliente.css";
 import header from "./Images/editPerfil.png";
-
+import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
   const [user, setUser] = useState({});
 
@@ -33,17 +34,17 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
   };
 
   return (
-    <div>
-      <div id="login">
+    <Container id="altaclientecont">
+      <div id="altacliente">
         <img src={header} alt="header" />
         <form
           onSubmit={(event) => {
             event.preventDefault();
+
             getAddress(address, id, user);
           }}
         >
-          <div class="input-group mb-3">
-            <p>Nombre</p>
+          <div class="input-gruop mb-3">
             <input
               class="form-control"
               name="firstName"
@@ -52,7 +53,6 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               onChange={handleInputChange}
               required
             />
-            <p>Apellido</p>
             <input
               class="form-control"
               name="lastName"
@@ -61,15 +61,15 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               onChange={handleInputChange}
               required
             />
-            <p>DNI</p>
+
             <input
               class="form-control"
               name="identification"
               placeholder="Número"
               value={user.identification}
+              required
               readonly
             />
-            <p>Teléfono</p>
             <input
               class="form-control"
               name="phone"
@@ -78,17 +78,18 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               onChange={handleInputChange}
               required
             />
-            <p>Fecha de nacimiento</p>
+            <div>
+              <p>Fecha de nacimiento</p>
+            </div>
             <input
               class="form-control"
               type="date"
               name="birthDate"
               placeholder="Fecha de nacimiento"
               value={user.birthDate}
-              readonly
               required
+              readonly
             />
-            <p>Dirección</p>
             <input
               class="form-control"
               name="street"
@@ -104,7 +105,6 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               value={user.complemento}
               onChange={handleInputChange}
             />
-            <p>Ciudad</p>
             <input
               class="form-control"
               name="city"
@@ -113,7 +113,6 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               onChange={handleInputChange}
               required
             />
-            <p>País</p>
             <input
               class="form-control"
               name="country"
@@ -123,12 +122,11 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
               required
             />
           </div>
-
           <div className="altaButtons">
             <input
               type="submit"
               className="btn btn-outline-dark"
-              value="Actualizar"
+              value="Modificar"
             />
             <button
               type="button"
@@ -140,14 +138,13 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
             </button>
           </div>
         </form>
-        <div></div>
         <div>
           <br />
           Si necesitas actualizar otro dato, por favor contacto a
           soporte@henrybank.com
         </div>
       </div>
-    </div>
+    </Container>
   );
 }
 

@@ -13,6 +13,7 @@ import {
   CARGAR_DINERO,
   GET_VALID_USER,
   TRANSACTIONS_HISTORY,
+  ALL_WALLETS,
 } from "../constants/userConstants";
 
 const initialState = {
@@ -24,6 +25,7 @@ const initialState = {
   contacts: [],
   contactSelected: "",
   history: {},
+  wallets: [],
 };
 
 export default function usuario(state = initialState, action) {
@@ -112,6 +114,11 @@ export default function usuario(state = initialState, action) {
       return {
         ...state,
         history: action.payload,
+      };
+    case ALL_WALLETS:
+      return {
+        ...state,
+        wallets: action.payload,
       };
 
     default:

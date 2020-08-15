@@ -57,7 +57,13 @@ function Cliente({
                   Hola, <span>{usuarioConectado.firstName}</span>
                 </h2>
                 <div className="buttonsUser">
-                  <BotonLogout id="blogout" history={history} title="Log Out" />
+                  <BotonLogout
+                    id="blogout"
+                    title="Log Out"
+                    onClick={(e) => {
+                      logout_user();
+                    }}
+                  />
                 </div>
               </div>
             ) : (

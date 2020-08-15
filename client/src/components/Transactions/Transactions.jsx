@@ -55,7 +55,7 @@ function Transactions({
               <OneTransaction
                 key={e.id}
                 transactionNumber={e.transactionNumber}
-                createdAt={`${e.createdAt.split("T")[0]}, ${
+                createdAt={`${e.createdAt.split("T")[0]} ${
                   e.createdAt.split("T")[1].split(".")[0]
                 }`}
                 state={e.state}

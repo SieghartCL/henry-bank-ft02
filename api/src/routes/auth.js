@@ -21,6 +21,7 @@ server.post(
 
 server.get("/logout", function (req, res, next) {
   req.logout();
+  req.session = null;
   res.sendStatus(200);
 });
 

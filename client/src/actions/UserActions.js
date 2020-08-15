@@ -10,6 +10,7 @@ import {
   LISTA_CONTACTOS,
   TRANSACTIONS_HISTORY,
   RECARGAR_DINERO,
+  ALL_WALLETS,
 } from "../constants/userConstants";
 import axios from "axios";
 import swal from "sweetalert2";
@@ -28,10 +29,8 @@ export function addUser(user) {
               icon: "success",
             })
             .then((value) => {
-              swal.fire(
-                dispatch({ type: ADD_USER }) &&
-                  window.location.replace("http://localhost:3000/login")
-              );
+              dispatch({ type: ADD_USER }) &&
+                window.location.replace("http://localhost:3000/login");
             });
         }
       })
@@ -91,7 +90,7 @@ export function logout() {
           icon: "success",
         });
         dispatch({ type: LOGOUT }) &&
-          window.location.replace("http://localhost:3000/login");
+          window.location.replace("http://localhost:3000/");
       })
       .catch((error) => {
         swal.fire({
@@ -172,9 +171,7 @@ export function getAddress(address, id, user) {
                     icon: "success",
                   })
                   .then((value) => {
-                    swal(
-                      window.location.replace("http://localhost:3000/cliente")
-                    );
+                    window.location.replace("http://localhost:3000/cliente");
                   });
               }
             });
@@ -230,5 +227,12 @@ export function transactionsHistory(id, moment) {
           icon: "error",
         });
       });
+  };
+}
+export function AllUserWallets(id) {
+  return (dispatch) => {
+    axios.get(`http://localhost:3001/wallet/myWallets/${id}`).then((result) => {
+      return dispatch({ type: ALL_WALLETS, payload: result.data });
+    });
   };
 }
