@@ -30,6 +30,7 @@
   .Form {
     display: flex;
     flex-direction: column;
+    background-color: transparent;
   }
 /* Div Container  */
   .form-group {
@@ -177,6 +178,7 @@ background-color: transparent;
     display: flex;
     flex-direction: column;
     background-color: transparent;
+
   }
 /* Div Container  */
   .form-group {

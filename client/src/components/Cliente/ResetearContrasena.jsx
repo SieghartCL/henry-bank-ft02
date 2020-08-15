@@ -12,10 +12,6 @@ const ResetearContrasena = () => {
     validEmailUser(email);
   };
 
-  const volver = function (e) {
-    window.location.replace("http://localhost:3000/login");
-  };
-
   return (
     <Container id="resetpasscontainer">
       <Image
@@ -42,10 +38,6 @@ const ResetearContrasena = () => {
           onClick={() => handlerClick()}
         >
           ¡Recibir codigo de validación!
-        </button>
-        <button onClick={volver} className=" btn-lg btn-primary btn-block">
-          {" "}
-          Volver
         </button>
       </form>
       <Image

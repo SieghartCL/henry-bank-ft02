@@ -4,7 +4,7 @@ import "./css/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AltaUsuario from "./components/Cliente/FormularioAltaCliente.jsx";
 import Login from "./components/Usuario/LoginForm.jsx";
-import Home from "./components/Usuario/Onboarding.jsx";
+import Home from "./components/Usuario/Home.jsx";
 import Cliente from "./components/Cliente/Cliente.jsx";
 import RecargarDinero from "./components/RecargarDinero/RecargarDinero.jsx";
 import EnviarDinero from "./components/EnviarDinero/EnviarDinero.jsx";

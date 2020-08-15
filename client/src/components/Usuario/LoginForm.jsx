@@ -33,10 +33,10 @@ export default function LoginForm() {
           </div>
           <Button className="forgotpass" href="/resetpassword">¿Olvidaste tu contraseña?</Button>
         </div>
-        <Image id="ondas" src="https://fotos.subefotos.com/e07505b47575212c24ec5fdb5ffc1cb8o.png" ></Image>
+        
           <div className="form-group col-md-6 inicio">
             <input type="submit"  className="btn btn-outline-dark" value="Iniciar Sesión" />
-            <button type="button"  className="btn btn-outline-light" value="Cancelar"  onClick={cancelar} >Volver</button>
+            <button className="buttonback" type="button"   onClick={cancelar} >Volver</button>
           </div> 
       </form>
       <Image id="footerlogin" src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png" ></Image>

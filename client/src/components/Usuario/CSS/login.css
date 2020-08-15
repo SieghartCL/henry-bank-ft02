@@ -19,14 +19,23 @@
 }
 /* Form Container  */
 #login #formlogin {
+  width: 100%;
   background-color: linear-gradient(rgb(112, 112, 112), rgb(61, 61, 61));
   border-radius: 15px;
-  width: 70%;
-  height: 70%;
   align-self: center;
+  background-color: transparent;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 100%!important;
+  height: 100%;
+  background: transparent;
 }
 /* Container 2 Login */
 #login #contelogin2 {
+width:70%!important;
 padding-bottom: 4px;
 padding-top: 4px!important;
 background-color: black;
@@ -70,25 +79,25 @@ margin:0!important;
 }
 /* Imagen de Ondas  */
 #login #formlogin #ondas {
-  width: 100%;
+  width: 70%;
   height: 100%;
   align-self: center;
   margin-left: 0%!important;
 }
 /* Container Buttons  */
 #login .inicio {
-  width: 100%!important;
-  height: 30%;
+  width: 70%!important;
+  height: 50%;
   margin-top: 0%!important;
   display: flex!important;
   align-items: flex-start!important;
   flex-direction: column!important;
   max-width: none!important;
-  background-color: whitesmoke;
+  background-color: transparent;
 }
 /* Iniciar Sesion Button */
 #login .inicio input{
-width: 100%;
+ width: 50%;
  align-self: center;
  background-color: yellow;
  color: #000;
@@ -96,8 +105,8 @@ width: 100%;
  font-weight: bold;
  font-size: 80%;
  box-shadow: 5px 5px 5px rgb(167, 167, 167);
- margin-top: 0%!important;
- margin-bottom: 5%;
+ margin-top: 10%!important;
+
 }
 
 #login .inicio input:hover{
@@ -105,13 +114,18 @@ width: 100%;
   box-shadow: none;
 }
 /* Cancelar Button */
-#login .inicio button{
-  width: 50%;
-  box-shadow: 5px 5px 5px rgb(167, 167, 167);
-  align-self: center!important;
-  margin-top: 5%;
+.inicio .buttonback {
+  width: 60%;
+  height: 80%;
   margin-bottom: 10%;
+  align-self: center;
+  text-align: center;
   color: black;
+  font-size: 80%;
+  font-weight: 500;
+  box-shadow: 5px 5px 5px rgb(73, 70, 70);
+  background-color: white;
+  border-color: transparent !important;
 }
 
 #login .inicio button:hover {
@@ -150,6 +164,7 @@ width: 100%;
   width: 70%;
   height: 70%;
   align-self: center;
+  margin-top: -5%;
 }
 
 
@@ -159,6 +174,11 @@ width: 100%;
 #login{
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(rgb(99, 99, 99), rgb(255, 255, 255));
+  box-shadow: none !important;
+  border-color: transparent !important;
   margin-top: 0%;
   margin-bottom: 0%;
 }
@@ -171,24 +191,148 @@ width: 100%;
 }
 /* Form Container  */
 #login #formlogin {
-  background-color: linear-gradient(rgb(112, 112, 112), rgb(61, 61, 61));
+  width: 100%;
   border-radius: 15px;
+  align-self: center;
+  background-color: transparent;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 100%!important;
+  height: 100%;
+  background: transparent;
+}
+/* Container 2 Login */
+#login #contelogin2 {
+width:100%!important;
+padding-bottom: 4px;
+padding-top: 4px!important;
+margin:0!important;
+
+}
+/* Container 3 Login */
+#contelogin3 {
+  width: 100%;
+  align-self: center!important;
+  padding-bottom: 4px;
+}
+/* Inputs  */
+.form-control {
+  width: 100%;
+  align-self: center;
+  margin-left: 5%!important;
+  margin-bottom: 2%!important;
+  margin-top: 5%;
+}
+/* Container 4  */
+#login #contelogin4 {
+  width: 100%;
+  align-items: center;
+  margin-bottom: 0%;
+}
+/* Olvidaste contraseña Button */
+.forgotpass {
+  color: white;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  margin-left: 10%;
+  width: 80%
+}
+
+.forgotpass:hover {
+  background-color: rgb(122, 122, 122);
+  width: 80%;
+}
+/* Imagen de Ondas  */
+#login #formlogin #ondas {
   width: 100%;
   height: 100%;
   align-self: center;
-  margin-bottom: -5%;
+  margin-left: 0%!important;
+}
+/* Container Buttons  */
+#login .inicio {
+  width: 100%!important;
+  height: 50%;
+  margin-top: 0%!important;
+  display: flex!important;
+  align-items: flex-start!important;
+  flex-direction: column!important;
+  max-width: none!important;
+  background-color: transparent;
 }
 /* Iniciar Sesion Button */
 #login .inicio input{
-  
-   font-size: 80%;
-   box-shadow: 5px 5px 5px rgb(167, 167, 167);
-   margin-top: -5%!important;
-   margin-bottom: 5%;
-  }
+ width: 50%;
+ align-self: center;
+ background-color: yellow;
+ color: #000;
+ border: none;
+ font-weight: bold;
+ font-size: 80%;
+ box-shadow: 5px 5px 5px rgb(167, 167, 167);
+ margin-top: 10%!important;
+
+}
+
+#login .inicio input:hover{
+  color: #fff;
+  box-shadow: none;
+}
+/* Cancelar Button */
+.buttonback {
+  width: 60%;
+  height: 80%;
+  margin-bottom: 10%;
+  align-self: center;
+  text-align: center;
+  color: black;
+  font-size: 80%;
+  font-weight: 500;
+  box-shadow: 5px 5px 5px rgb(73, 70, 70);
+  background-color: white;
+  border-color: transparent !important;
+}
+
+#login .inicio button:hover {
+  color: #fff;
+  box-shadow: none;
+  background-color: yellow;
+}
+
+.help{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+ 
+
+}
+
+.link {
+  width: 100%;
+  flex-direction: column;
+  background-color: transparent;
+  width: 100%!important;
+  align-self: center;
+
+
+}
+
+#login .link #ayudaa{
+  color: #5c5c5c;
+  font-size: 80%;
+  align-self: center;
+  background-color: transparent;
+ 
+}
+
 #footerlogin {
   width: 100%;
   height: 100%;
   align-self: center;
+  margin-top: -5%;
 }
 }
