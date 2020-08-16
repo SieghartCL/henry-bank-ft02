@@ -13,7 +13,7 @@ import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import swal from "sweetalert2";
 
-function RecargarDinero({
+function EnviarDinero({
   usuarioConectado,
   getProfile,
   enviarDinero,
@@ -33,7 +33,7 @@ function RecargarDinero({
   }, [usuarioConectado]);
 
   const [checked, setChecked] = useState(false);
-  const [cantidad, setCantidad] = useState(50);
+  const [cantidad, setCantidad] = useState('');
 
   const addcontactos = function (e) {
     window.location.replace("http://localhost:3000/contactos");
@@ -41,9 +41,8 @@ function RecargarDinero({
 
   const handleChange = (event) => {
     let { value, min, max } = event.target;
-    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
-
-    setCantidad(value);
+    // value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+    if (value.length < 8 && value >= 0) setCantidad(value);
   };
 
   const volver = function (e) {
@@ -75,14 +74,16 @@ function RecargarDinero({
             />
           )}
         </div>
-        <div className="total">
-          <h1>${cantidad}</h1>
-        </div>
+        {cantidad == '' ? 
+          <div className="total">
+            <h1>$0</h1>
+          </div> :
+          <div className="total">
+            <h1>${cantidad}</h1>
+          </div>
+        }
         <div class="input-group input-group-sm mb-3">
           <input
-            type="number"
-            min='50'
-            max='100000'
             value={cantidad}
             class="form-control mensaje"
             placeholder="Modificar Cantidad"
@@ -135,8 +136,8 @@ function RecargarDinero({
               Enviar Dinero
             </Button>
           ) : (
-            <Button className="btn btn-dark" href="/cliente" size="lg">
-              Atrás
+            <Button disabled className="btn btn-dark" href="/cliente" size="lg">
+              Enviar Dinero
             </Button>
           )}
         </div>
@@ -171,4 +172,4 @@ export default connect(mapStateToProps, {
   getProfile,
   enviarDinero,
   listaContactos,
-})(RecargarDinero);
+})(EnviarDinero);
