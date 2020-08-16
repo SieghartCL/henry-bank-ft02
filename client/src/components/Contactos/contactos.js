@@ -105,6 +105,7 @@ const Contacts = () => {
               className="btn btn-dark"
               variant="top"
               size="lg"
+              
               onClick={() =>
                 deleteHandler(userSelected.email, userContected.id)
               }
