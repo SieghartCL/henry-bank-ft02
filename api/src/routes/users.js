@@ -31,7 +31,7 @@ server.post("/new", async (req, res) => {
     street,
     city,
     country,
-    complemento
+    complemento,
   } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
   Users.create({
@@ -64,9 +64,11 @@ server.post("/new", async (req, res) => {
 //Edita un Usuario por ID
 server.put("/modify/:id", async (req, res) => {
   const { id } = req.params;
+  console.log(id);
+
   const user = await Users.findOne({
     where: {
-      id,
+      id: id,
     },
   });
   if (user === null) {
@@ -83,7 +85,7 @@ server.put("/modify/:id", async (req, res) => {
       street,
       city,
       country,
-      complemento
+      complemento,
     } = req.body;
     Users.update(
       {
@@ -95,17 +97,17 @@ server.put("/modify/:id", async (req, res) => {
         street,
         city,
         country,
-        complemento
+        complemento,
       },
       {
         where: {
-          id,
+          id: id,
         },
       }
     )
       .then(() => {
         res.send({
-          status: `El Usuario ${user.email} ha sido actualizado correctamente`,
+          status: `Sus datos ${user.name} han sido validados correctamente`,
         });
       })
       .catch((err) => {

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./enviardinero.css";
 import Button from "react-bootstrap/Button";
-import { FaUsers, FaUserPlus } from "react-icons/fa";
+import { FaUserPlus } from "react-icons/fa";
 import { connect } from "react-redux";
 import {
   getProfile,
@@ -44,6 +44,10 @@ function RecargarDinero({
     value = Math.max(Number(min), Math.min(Number(max), Number(value)));
 
     setCantidad(value);
+  };
+
+  const volver = function (e) {
+    window.location.replace("http://localhost:3000/cliente");
   };
 
   return (
@@ -135,6 +139,17 @@ function RecargarDinero({
               Atrás
             </Button>
           )}
+        </div>
+        <div>
+          <Button
+            onClick={volver}
+            className="btn btn-dark"
+            variant="top"
+            size="lg"
+          >
+            {" "}
+            Volver
+          </Button>
         </div>
       </div>
       <Image

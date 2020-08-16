@@ -1,23 +1,26 @@
 import React, { useState } from "react";
 import { validEmailUser } from "../../actions/resetPasswordActions";
+import "./CSS/resetpassword.css";
+import Container from "react-bootstrap/Container";
+import Image from "react-bootstrap/Image";
 
 const ResetearContrasena = () => {
-  var email = "";
-
-  const handleInputChange = (e) => {
-    email = e.target.value;
-  };
+  var [email, setEmail] = useState("");
 
   const handlerClick = () => {
     validEmailUser(email);
   };
 
   return (
-    <div className="container">
+    <Container id="resetpasscontainer">
+      <Image
+        id="headerresetpass"
+        src="https://fotos.subefotos.com/beae292ac669e32496a3b392aadf27e6o.png"
+      ></Image>
       <form className="form-signin" onSubmit={(e) => e.preventDefault()}>
         <h1>Ingrese su email: </h1>
         <label htmlFor="contraUser" className="sr-only">
-          Contraseña*
+          Constraseña*
         </label>
         <input
           className="form-control"
@@ -25,9 +28,8 @@ const ResetearContrasena = () => {
           type="email"
           placeholder="Email"
           name="email"
-          onChange={(e) => handleInputChange(e)}
+          onChange={(e) => setEmail(e.target.value)}
         />
-
         <button
           type="submit"
           className=" btn-lg btn-primary btn-block"
@@ -37,8 +39,11 @@ const ResetearContrasena = () => {
           ¡Recibir codigo de validación!
         </button>
       </form>
-      <br />
-    </div>
+      <Image
+        id="footerresetpass"
+        src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
+      ></Image>
+    </Container>
   );
 };
 

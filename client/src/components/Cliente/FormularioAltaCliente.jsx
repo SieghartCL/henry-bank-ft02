@@ -3,13 +3,13 @@ import { getAddress, getProfile } from "../../actions/UserActions";
 import { connect } from "react-redux";
 import "./CSS/altaCliente.css";
 import header from "./Images/header.png";
-import swal from "sweetalert";
+import swal from "sweetalert2";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 
 function AddUserForm({ id, getAddress, usuarioConectado, getProfile }) {
   const [user, setUser] = useState({});
-
+  console.log(usuarioConectado);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUser({

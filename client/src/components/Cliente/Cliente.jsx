@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import General from "../General/General.jsx";
 import NavBar from "../NavBar/NavBar.jsx";
 import "./CSS/client.css";
-import { connect, useDispatch } from "react-redux";
+import { connect } from "react-redux";
 import {
   getProfile,
   getWallet,
@@ -10,7 +10,6 @@ import {
   logout,
 } from "../../actions/UserActions";
 import BotonLogout from "./BotonLogout.jsx";
-import { AiFillEdit } from "react-icons/ai";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";
 
@@ -23,13 +22,22 @@ function Cliente({
   getTransactions,
   history,
 }) {
+  const [user, setUser] = useState({});
+
+  console.log(usuarioConectado);
   useEffect(() => {
     getProfile();
   }, []);
-
   const logout_user = () => {
     logout();
   };
+  useEffect(() => {
+    getProfile();
+  }, []);
+  useEffect(() => {
+    setUser(usuarioConectado);
+  }, [usuarioConectado]);
+
   useEffect(() => {
     if (usuarioConectado.id) {
       getWallet(usuarioConectado.id);
@@ -98,10 +106,10 @@ function Cliente({
           )}
         </div>
         {usuarioConectado.firstName === null && (
-          <form className="form-signin needs-validation">
+          <form id="formvalidation" className="form-signin needs-validation">
             <h1>
-              Tu cuenta aún no ha sido activada, por favor, revisa tu mail y
-              sigue los pasos para activarla.
+              ¡Tu cuenta aún no ha sido activada, por favor, revisa tu mail y
+              sigue los pasos para activarla!.
             </h1>
           </form>
         )}

@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import "./Transactions.css";
 import OneTransaction from "./OneTransaction";
 import { transactionsHistory, getProfile } from "../../actions/UserActions";
+import Button from "react-bootstrap/Button";
 
 function Transactions({
   moment,
@@ -21,6 +22,10 @@ function Transactions({
       transactionsHistory(usuarioConectado.id, moment);
     }
   }, [usuarioConectado]);
+
+  const volver = function (e) {
+    window.location.replace("http://localhost:3000/cliente");
+  };
 
   // a elección
   const titulo = {
@@ -84,7 +89,13 @@ function Transactions({
             )
           )}
         </Col>
-      </Row>
+        <div>
+          <Button onClick={volver} className="btn btn-dark" variant="top" size="lg">
+            {" "}
+            Volver
+          </Button>
+        </div>
+      </Row> 
     </div>
   );
 }

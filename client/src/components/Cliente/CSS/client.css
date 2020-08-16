@@ -1,6 +1,6 @@
 /* Container Cliente */
 #contecliente1 {
-  width: 100%;
+  width: 70%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -105,6 +105,10 @@
   width: 100%;
   align-self: center;
   margin-top: 0%;
+}
+#formvalidation {
+  width: 100%;
+  background-color:rgb(248, 248, 248)!important;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -227,5 +231,16 @@
     width: 100%;
     margin-top: 15%;
     align-self: center;
+  }
+  #formvalidation {
+    width: 100%;
+    display: flex;
+    background-color:transparent!important;
+    margin-bottom: 37%;
+  }
+  #formvalidation h1 {
+    text-align: center;
+    margin-top: 20%;
+    margin-right: 7%;
   }
 }

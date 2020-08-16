@@ -4,6 +4,7 @@ import { Row, Col } from "react-bootstrap";
 import "./Wallets.css";
 import OneWallet from "./OneWallet";
 import { AllUserWallets, getProfile } from "../../actions/UserActions";
+import Button from "react-bootstrap/Button";
 
 function Wallets({ AllUserWallets, getProfile, usuarioConectado, wallets }) {
   useEffect(() => {
@@ -15,6 +16,10 @@ function Wallets({ AllUserWallets, getProfile, usuarioConectado, wallets }) {
       AllUserWallets(usuarioConectado.id);
     }
   }, [usuarioConectado]);
+
+  const volver = function (e) {
+    window.location.replace("http://localhost:3000/cliente");
+  };
 
   return (
     <div id="transacciones">
@@ -46,6 +51,12 @@ function Wallets({ AllUserWallets, getProfile, usuarioConectado, wallets }) {
               />
             ))}
         </Col>
+        <div>
+          <Button onClick={volver} className="btn btn-dark" variant="top" size="lg">
+            {" "}
+            Volver
+          </Button>
+        </div>
       </Row>
     </div>
   );
