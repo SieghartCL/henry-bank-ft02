@@ -35,7 +35,7 @@ export default function LoginForm() {
         </div>
         
           <div className="form-group col-md-6 inicio">
-            <input type="submit"  className="btn btn-outline-dark" value="Iniciar Sesión" />
+            <input className="btn btn-outline-dark" type="submit" value="Iniciar Sesión" />
             <button className="buttonback" type="button"   onClick={cancelar} >Volver</button>
           </div> 
       </form>

@@ -4,6 +4,9 @@ import { connect } from "react-redux";
 import "./CSS/editCliente.css";
 import header from "./Images/editPerfil.png";
 import Container from "react-bootstrap/Container";
+import Image from 'react-bootstrap/Image';
+
+
 function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
   const [user, setUser] = useState({});
 
@@ -34,8 +37,9 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
 
   return (
     <Container id="altaclientecont">
+      <Image id="headereditcliente" src="https://fotos.subefotos.com/18feda68f26ec2e8e43d1aba90209e83o.png" ></Image>
       <div id="altacliente">
-        <img src={header} alt="header" />
+
         <form
           onSubmit={(event) => {
             event.preventDefault();

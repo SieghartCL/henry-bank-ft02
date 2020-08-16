@@ -4,6 +4,9 @@ import "./General.css";
 import { Link } from "react-router-dom";
 import { transactionsHistory, getProfile } from "../../actions/UserActions";
 import Container from "react-bootstrap/Container";
+import Button from 'react-bootstrap/Button';
+
+
 function General({
   usuarioConectado,
   getProfile,
@@ -38,9 +41,9 @@ function General({
         </div>
       </div>
       <div className="record">
-        <Link to="/transactions/day">Day</Link>
-        <Link to="/transactions/week">Week</Link>
-        <Link to="/transactions/month">Month</Link>
+        <Button id="recordbtn" href="/transactions/day">Diario</Button>
+        <Button id="recordbtn" href="/transactions/week">Semanal</Button>
+        <Button id="recordbtn" href="/transactions/month">Anual</Button>
       </div>
     </Container>
   );

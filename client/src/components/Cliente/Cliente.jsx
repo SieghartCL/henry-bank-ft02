@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import General from "../General/General.jsx";
 import NavBar from "../NavBar/NavBar.jsx";
 import "./CSS/client.css";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import {
   getProfile,
   getWallet,
@@ -22,22 +22,13 @@ function Cliente({
   getTransactions,
   history,
 }) {
-  const [user, setUser] = useState({});
-
-  console.log(usuarioConectado);
   useEffect(() => {
     getProfile();
   }, []);
+
   const logout_user = () => {
     logout();
   };
-  useEffect(() => {
-    getProfile();
-  }, []);
-  useEffect(() => {
-    setUser(usuarioConectado);
-  }, [usuarioConectado]);
-
   useEffect(() => {
     if (usuarioConectado.id) {
       getWallet(usuarioConectado.id);
@@ -45,8 +36,6 @@ function Cliente({
     }
   }, [usuarioConectado]);
 
-  const imgMuestra =
-    "https://images.vexels.com/media/users/3/136558/isolated/preview/43cc80b4c098e43a988c535eaba42c53-icono-de-usuario-de-la-persona-by-vexels.png";
 
   function editUser() {
     window.location.replace(
@@ -56,6 +45,7 @@ function Cliente({
 
   return (
     <Container id="contecliente1">
+      <Image id="headercliente" src="https://fotos.subefotos.com/50b878115e68056e9d7657a65c68d481o.png" ></Image>
       <div className="contecliente2">
         <div className="header">
           <div className="perfil">
@@ -63,7 +53,6 @@ function Cliente({
               <div className="divperfil">
                 <h2>
                   Hola, <span>{usuarioConectado.firstName}</span>
-                </h2>
                 <div className="buttonsUser">
                   <BotonLogout
                     id="blogout"
@@ -73,6 +62,7 @@ function Cliente({
                     }}
                   />
                 </div>
+                </h2>
               </div>
             ) : (
               <h2>
@@ -85,16 +75,12 @@ function Cliente({
               <div className="saldo">
                 {wallet ? <h3>${wallet.balance}</h3> : <h3>$2,002.50</h3>}
                 <div className="balance">
-                  <h3>Balance de mi cuenta</h3>
+                  <h3>Saldo</h3>
                 </div>
               </div>
             </span>
           )}
         </div>
-        <Image
-          id="ondasclient"
-          src="https://fotos.subefotos.com/e07505b47575212c24ec5fdb5ffc1cb8o.png"
-        ></Image>
         <div className="clientegeneral">
           {usuarioConectado.firstName !== null && (
             <span>

@@ -37,19 +37,23 @@
     width:100%;
     display: flex;
     background-color: transparent;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-around;
+
 }
 /* Links de historial por separado */
-.record .historylink{
+.record #recordbtn {
     text-align: center;
-    color: #131313;
-    width: 100%;
+    color: #131313!important;
+    width: 50%;
+    font-weight: 600;
+    border: transparent;
+    background-color: transparent;
 }
 
-.record .historylink:hover{
+.record #recordbtn:hover{
     text-decoration: none;
-    color: yellow;
+    color: rgb(251, 255, 0)!important;
+    background-color: gray;
 }
 
 .containervalor {
