@@ -81,8 +81,8 @@ function RecargarDinero({
         <div class="input-group input-group-sm mb-3">
           <input
             type="number"
-            min={50}
-            max={100000}
+            min='50'
+            max='100000'
             value={cantidad}
             class="form-control mensaje"
             placeholder="Modificar Cantidad"
