@@ -53,9 +53,9 @@ function RecargarDinero({
   return (
     <Container id="enviarcont">
       <Image
-        id="henrybankenviar"
-        src="https://fotos.subefotos.com/64bf11a0a60617c000baae47b53883fbo.png "
-      ></Image>
+        id="headerenviar"
+        src="https://fotos.subefotos.com/64bf11a0a60617c000baae47b53883fbo.png ">     
+      </Image>
       <div className="form-group col-md-5 envia">
         <div class="input-group mb-3 destino">
           <div class="input-group-prepend">
@@ -109,6 +109,7 @@ function RecargarDinero({
           usuarioConectado.contacts.length !== 0 ? (
             <Button
               className="btn btn-dark"
+              id="buttonenviar"
               size="lg"
               onClick={() => {
                 if (checked) {
@@ -135,8 +136,11 @@ function RecargarDinero({
               Enviar Dinero
             </Button>
           ) : (
-            <Button className="btn btn-dark" href="/cliente" size="lg">
-              Atrás
+            <Button 
+              className="btn btn-dark" 
+              id="buttonatras"
+              href="/cliente" size="lg">
+                Atrás
             </Button>
           )}
         </div>
@@ -144,6 +148,7 @@ function RecargarDinero({
           <Button
             onClick={volver}
             className="btn btn-dark"
+            id="buttonback"
             variant="top"
             size="lg"
           >
