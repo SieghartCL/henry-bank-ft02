@@ -4,108 +4,108 @@
 }
 #root{
     padding: 0px;
+    background-image: linear-gradient(
+        rgb(82, 82, 82), 
+        rgb(255, 255, 255)
+    );
+    height: 100vh;
 }
-#transacciones{
+#wallet{
     position: relative;
     width: 900px;
     margin: 0px auto;
     top: 50px;
     padding: 30px 0px 15px 0px;
     display: flex;
-    background-color: rgba(226, 248, 100, 0.815);
+    background: linear-gradient(
+        to bottom, 
+        rgba(255,242,0,1) 0%,
+        rgba(255,253,133,1) 37%,
+        rgb(235, 235, 235) 75%
+    );
+    border: solid 1px #acacac9c;
 }
-#transacciones .row{
+#wallet .row{
     width: 95%;
     margin: 0px auto;
     padding: 0px;
 }
-#transacciones .row > h2{
+#wallet .row > h2{
     padding-left: 2%;
     width: 100%;
 }
-#transacciones .item{
+#wallet .item{
     margin: 5px 0px;
     display: flex;
     justify-content: space-around;
-    background-color: #eeeeee;
+    background-color: #e5f77f;
     padding: 15px 0px;
 }
-#transacciones .item:first-child{
+#wallet .item:first-child{
     margin-bottom: 35px;
+    background-color: #eeeeee;
 }
-#transacciones .item > div{
-    text-align: center;
-}
-#transacciones .item .prop-1{
+#wallet .item .props{
     width: 25%;
-}
-#transacciones .item .prop-2{
-    width: 18%;
-}
-#transacciones .item .prop-3{
-    width: 22%;
-}
-#transacciones .item .prop-4{
-    width: 35%;
-}
-#transacciones .item .prop-4 h5{
-    font-size: 17px;
-}
-#transacciones .item div[class^="prop-"]{
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#transacciones .item div[class^="prop-"] h5{
+
+#wallet .item div[class^="prop-"] h5{
     margin-bottom: 0px;
 }
-
+#wallet button{
+    margin-top: 10%;
+    margin-left: 16%;
+}
 
 @media only screen and (max-width: 400px){ 
-    #transacciones{
+    #root{
+        background: url("./Wallet.png") no-repeat;
+        background-size: cover;
+        position: relative;
+        display: flex;
+        flex-flow: row;
         width: 100%;
-        top: 0px;
+        height: 100%;
+    }
+    #wallet{
+        top:250px;
+        width: 100%;
         padding: 30px 0px 0px 0px;
         display: flex;
-        background: rgba(255,242,0,1);
-        background: linear-gradient(
-            to bottom, 
-            rgba(255,242,0,1) 0%, 
-            rgba(255,253,133,1) 27%,
-            rgba(255,255,255,1) 60%, 
-            rgba(166,166,166,1) 82%, 
-            rgba(43,43,43,1) 98%, 
-            rgba(0,0,0,1) 100%
-        );
+        background: transparent;
+        z-index: -100;    
+        border: none;
     }
-    #transacciones .row{
+    #wallet .row{
         width: 100%;
         margin: 0px auto;
         padding: 0px;
     }
-    #transacciones .row > h2{
-        padding-left: 5%;
-        font-size: 20px;
+    #wallet .row > h2{
+        visibility: hidden;
     }
-    #transacciones .item{
+    #wallet .item{
         align-items: center;
         background-color: white;
         padding: 15px 0px;
         flex-wrap: wrap;
     }
-    #transacciones .item .prop-1{
+    #wallet .item .prop-1{
         width: 50%;
     }
-    #transacciones .item .prop-2{
+    #wallet .item .props{
         width: 50%;
     }
-    #transacciones .item .prop-3{
+    #wallet .item .props{
         width: 50%;
     }
-    #transacciones .item .prop-4{
+    #wallet .item .props{
         width: 50%;
     }
-    #transacciones .item .prop-4 h4{
-        font-size: 20px;
+    #wallet button{
+       margin-bottom: 20px;
     }
 }

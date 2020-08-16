@@ -7,21 +7,21 @@
 }
 #transacciones{
     position: relative;
-    width: 900px;
+    width: 100%;
     margin: 0px auto;
-    top: 50px;
+    top: 0px;
     padding: 30px 0px 15px 0px;
     display: flex;
     background: linear-gradient(
         to bottom, 
-        rgb(255, 245, 53) 0%, 
+        rgba(255,242,0,1) 0%,
         rgba(255,253,133,1) 27%,
         rgba(255,255,255,1) 50%, 
         rgb(216, 216, 216) 82%
     );
 }
 #transacciones .row{
-    width: 95%;
+    width: 80%;
     margin: 0px auto;
     padding: 0px;
 }
@@ -29,29 +29,19 @@
     padding-left: 2%;
     width: 100%;
 }
-#transacciones .row > a{
-    width: 40%;
-    padding-left: 2%;
-    font-size: 20px;
-    color: #2b2b2b;
-}
-#transacciones .row > a:hover{
-    text-decoration: none;
-    font-weight: bold;
-}
 #transacciones .item{
     margin: 5px 0px;
     display: flex;
     justify-content: space-around;
-    background-color: #faffdb !important;
-    padding: 10px 0px !important;
+    background-color: #faffdb;
+    padding: 10px 0px;
     color: black
 }
 #transacciones .income:hover{
-    background-color: #9fff9f !important;
+    background-color: #9fff9f;
 }
 #transacciones .outcome:hover{
-    background-color: #ff8282 !important;
+    background-color: #ff8282;
 }
 #transacciones .item:first-child{
     margin-bottom: 35px;
@@ -60,19 +50,23 @@
     text-align: center;
 }
 #transacciones .item .prop-1{
-    width: 25%;
-}
-#transacciones .item .prop-2{
-    width: 18%;
-}
-#transacciones .item .prop-3{
     width: 22%;
 }
-#transacciones .item .prop-4{
-    width: 35%;
+#transacciones .item .prop-2{
+    width: 22%;
 }
-#transacciones .item .prop-4 h5{
+#transacciones .item .prop-3{
+    width: 19%;
+}
+#transacciones .item .prop-4{
+    width: 18%;
+}
+#transacciones .item .prop-5{
+    width: 19%;
+}
+#transacciones .item .prop-2 > h5, .prop-5 > h5{
     font-size: 17px;
+    width: 80%;
 }
 #transacciones .item div[class^="prop-"]{
     display: flex;
@@ -81,6 +75,11 @@
 }
 #transacciones .item div[class^="prop-"] h5{
     margin-bottom: 0px;
+}
+
+#transacciones button{
+    margin-left: 16%;
+    margin-top: 10%;
 }
 
 
@@ -116,19 +115,22 @@
         padding: 15px 0px;
         flex-wrap: wrap;
     }
-    #transacciones .item .prop-1{
+    #transacciones .item .prop-1, 
+    #transacciones .item .prop-3, 
+    #transacciones .item .prop-4, 
+    #transacciones .item .prop-5{
         width: 50%;
     }
     #transacciones .item .prop-2{
-        width: 50%;
+        display: none !important;
     }
-    #transacciones .item .prop-3{
-        width: 50%;
-    }
-    #transacciones .item .prop-4{
-        width: 50%;
-    }
-    #transacciones .item .prop-4 h4{
+    #transacciones .item .prop-5 h4{
         font-size: 20px;
+    }
+    #transacciones .item .prop-5 h5{
+        font-size: 17px;
+    }
+    #transacciones button{
+        margin-bottom: 30%;
     }
 }

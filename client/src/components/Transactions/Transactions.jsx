@@ -23,7 +23,7 @@ function Transactions({
     }
   }, [usuarioConectado]);
 
-  const volver = function (e) {
+  const volver = function() {
     window.location.replace("http://localhost:3000/cliente");
   };
 
@@ -37,23 +37,22 @@ function Transactions({
     <div id="transacciones">
       <Row>
         <h2>TRANSACCIONES {titulo[moment]}</h2>
-        <a href="/cliente">Volver a Mi Posición consolidada</a>
         <Col sm={12}>
           <div className="item">
             <div className="prop-1">
               <h4>Transacción</h4>
             </div>
-            <div className="prop-1">
-              <h4>Fecha Realizada</h4>
-            </div>
             <div className="prop-2">
-              <h4>Valor</h4>
+              <h4>Tipo Transacción</h4>
             </div>
             <div className="prop-3">
-              <h4>Estado</h4>
+              <h4>Valor</h4>
             </div>
             <div className="prop-4">
-              <h4>Tipo Transacción</h4>
+              <h4>Estado</h4>
+            </div>
+            <div className="prop-5">
+              <h4>Fecha Realizada</h4>
             </div>
           </div>
           {history.income && history.income.map(
@@ -91,7 +90,6 @@ function Transactions({
         </Col>
         <div>
           <Button onClick={volver} className="btn btn-dark" variant="top" size="lg">
-            {" "}
             Volver
           </Button>
         </div>
