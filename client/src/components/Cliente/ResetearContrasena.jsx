@@ -18,7 +18,7 @@ const ResetearContrasena = () => {
         src="https://fotos.subefotos.com/beae292ac669e32496a3b392aadf27e6o.png"
       ></Image>
       <form className="form-signin" onSubmit={(e) => e.preventDefault()}>
-        <h1>Ingrese su email: </h1>
+        <h1>Ingresa tu email: </h1>
         <label htmlFor="contraUser" className="sr-only">
           Constraseña*
         </label>
