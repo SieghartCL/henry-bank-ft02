@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { getAddress, getProfile } from "../../actions/UserActions";
+import { getUpdateProfile, getProfile } from "../../actions/UserActions";
 import { connect } from "react-redux";
-import "./CSS/editCliente.css";
-import header from "./Images/editPerfil.png";
+import "./CSS/client.css";
 import Container from "react-bootstrap/Container";
-import Image from 'react-bootstrap/Image';
+import Image from "react-bootstrap/Image";
 
-
-function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
+function EditUserForm({ id, getUpdateProfile, usuarioConectado, getProfile }) {
   const [user, setUser] = useState({});
 
   const handleInputChange = (event) => {
@@ -37,116 +35,112 @@ function EditUserForm({ id, getAddress, usuarioConectado, getProfile }) {
 
   return (
     <Container id="altaclientecont">
-      <Image id="headereditcliente" src="https://fotos.subefotos.com/18feda68f26ec2e8e43d1aba90209e83o.png" ></Image>
-      <div id="altacliente">
+      <Image
+        id="headeraltacliente"
+        src="https://fotos.subefotos.com/18feda68f26ec2e8e43d1aba90209e83o.png"
+      ></Image>
+      <form
+        id="form-alta"
+        onSubmit={(event) => {
+          event.preventDefault();
 
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-
-            getAddress(address, id, user);
-          }}
-        >
-          <div class="input-gruop mb-3">
-            <input
-              class="form-control"
-              name="firstName"
-              placeholder="Nombre"
-              value={user.firstName}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              class="form-control"
-              name="lastName"
-              placeholder="Apellido"
-              value={user.lastName}
-              onChange={handleInputChange}
-              required
-            />
-
-            <input
-              class="form-control"
-              name="identification"
-              placeholder="Número"
-              value={user.identification}
-              required
-              readonly
-            />
-            <input
-              class="form-control"
-              name="phone"
-              placeholder="Teléfono"
-              value={user.phone}
-              onChange={handleInputChange}
-              required
-            />
-            <div>
-              <p>Fecha de nacimiento</p>
-            </div>
-            <input
-              class="form-control"
-              type="date"
-              name="birthDate"
-              placeholder="Fecha de nacimiento"
-              value={user.birthDate}
-              required
-              readonly
-            />
-            <input
-              class="form-control"
-              name="street"
-              placeholder="Calle y altura"
-              value={user.street}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              class="form-control"
-              name="complemento"
-              placeholder="Piso y Depto"
-              value={user.complemento}
-              onChange={handleInputChange}
-            />
-            <input
-              class="form-control"
-              name="city"
-              placeholder="Ciudad"
-              value={user.city}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              class="form-control"
-              name="country"
-              placeholder="Pais"
-              value={user.country}
-              onChange={handleInputChange}
-              required
-            />
+          getUpdateProfile(address, usuarioConectado.id, user);
+        }}
+      >
+        <div class="container-control">
+          <input
+            class="form-control"
+            name="firstName"
+            placeholder="Nombre"
+            value={user.firstName}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="lastName"
+            placeholder="Apellido"
+            value={user.lastName}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="identification"
+            placeholder="Número"
+            value={user.identification}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="phone"
+            placeholder="Teléfono"
+            value={user.phone}
+            onChange={handleInputChange}
+            required
+          />
+          <div id="fecha">
+            <p>Fecha de nacimiento</p>
           </div>
-          <div className="altaButtons">
-            <input
-              type="submit"
-              className="btn btn-outline-dark"
-              value="Modificar"
-            />
-            <button
-              type="button"
-              className="btn btn-outline-danger"
-              value="Cancelar"
-              onClick={cancelar}
-            >
-              Cancelar
-            </button>
-          </div>
-        </form>
-        <div>
-          <br />
-          Si necesitas actualizar otro dato, por favor contacto a
-          soporte@henrybank.com
+          <input
+            class="form-control"
+            type="date"
+            name="birthDate"
+            placeholder="Fecha de nacimiento"
+            value={user.birthDate}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="street"
+            placeholder="Calle y altura"
+            value={user.street}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="complemento"
+            placeholder="Piso y Depto"
+            value={user.complemento}
+            onChange={handleInputChange}
+          />
+          <input
+            class="form-control"
+            name="city"
+            placeholder="Ciudad"
+            value={user.city}
+            onChange={handleInputChange}
+            Address
+            required
+          />
+          <input
+            class="form-control"
+            name="country"
+            placeholder="Pais"
+            value={user.country}
+            onChange={handleInputChange}
+            required
+          />
         </div>
-      </div>
+        <div className="altaButtons">
+          <input type="submit" id="buttonalta" value="Modificar datos" />
+          <button
+            type="button"
+            id="buttonalta"
+            value="Cancelar"
+            onClick={cancelar}
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+      <Image
+        id="footeralta"
+        src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
+      ></Image>
     </Container>
   );
 }
@@ -156,6 +150,6 @@ function mapStateToProps(state) {
     usuarioConectado: state.usuario.usuarioConectado,
   };
 }
-export default connect(mapStateToProps, { getAddress, getProfile })(
+export default connect(mapStateToProps, { getUpdateProfile, getProfile })(
   EditUserForm
 );

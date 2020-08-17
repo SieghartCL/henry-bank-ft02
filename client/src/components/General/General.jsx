@@ -4,8 +4,7 @@ import "./General.css";
 import { Link } from "react-router-dom";
 import { transactionsHistory, getProfile } from "../../actions/UserActions";
 import Container from "react-bootstrap/Container";
-import Button from 'react-bootstrap/Button';
-
+import Button from "react-bootstrap/Button";
 
 function General({
   usuarioConectado,
@@ -41,9 +40,15 @@ function General({
         </div>
       </div>
       <div className="record">
-        <Button id="recordbtn" href="/transactions/day">Diario</Button>
-        <Button id="recordbtn" href="/transactions/week">Semanal</Button>
-        <Button id="recordbtn" href="/transactions/month">Anual</Button>
+        <Button id="recordbtn" href="/transactions/day">
+          Diario
+        </Button>
+        <Button id="recordbtn" href="/transactions/week">
+          Semanal
+        </Button>
+        <Button id="recordbtn" href="/transactions/month">
+          Mensual
+        </Button>
       </div>
     </Container>
   );

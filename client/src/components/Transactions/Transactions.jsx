@@ -23,7 +23,7 @@ function Transactions({
     }
   }, [usuarioConectado]);
 
-  const volver = function() {
+  const volver = function () {
     window.location.replace("http://localhost:3000/cliente");
   };
 
@@ -55,8 +55,8 @@ function Transactions({
               <h4>Fecha Realizada</h4>
             </div>
           </div>
-          {history.income && history.income.map(
-            (e) => (
+          {history.income &&
+            history.income.map((e) => (
               <OneTransaction
                 color="income"
                 type="+"
@@ -69,10 +69,9 @@ function Transactions({
                 value={e.value}
                 transactions_type={e.transactions_type}
               />
-            )
-          )}
-          {history.outcome && history.outcome.map(
-            (e) => (
+            ))}
+          {history.outcome &&
+            history.outcome.map((e) => (
               <OneTransaction
                 color="outcome"
                 type="-"
@@ -85,15 +84,19 @@ function Transactions({
                 value={e.value}
                 transactions_type={e.transactions_type}
               />
-            )
-          )}
+            ))}
         </Col>
         <div>
-          <Button onClick={volver} className="btn btn-dark" variant="top" size="lg">
+          <Button
+            onClick={volver}
+            className="btn btn-dark"
+            variant="top"
+            size="lg"
+          >
             Volver
           </Button>
         </div>
-      </Row> 
+      </Row>
     </div>
   );
 }

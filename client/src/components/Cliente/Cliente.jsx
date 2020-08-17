@@ -36,7 +36,6 @@ function Cliente({
     }
   }, [usuarioConectado]);
 
-
   function editUser() {
     window.location.replace(
       "http://localhost:3000/update/" + usuarioConectado.id
@@ -45,7 +44,10 @@ function Cliente({
 
   return (
     <Container id="contecliente1">
-      <Image id="headercliente" src="https://fotos.subefotos.com/50b878115e68056e9d7657a65c68d481o.png" ></Image>
+      <Image
+        id="headercliente"
+        src="https://fotos.subefotos.com/9f8c7e29765088aa544359e1d9d2ca5fo.png"
+      ></Image>
       <div className="contecliente2">
         <div className="header">
           <div className="perfil">
@@ -53,20 +55,20 @@ function Cliente({
               <div className="divperfil">
                 <h2>
                   Hola, <span>{usuarioConectado.firstName}</span>
-                <div className="buttonsUser">
-                  <BotonLogout
-                    id="blogout"
-                    title="Log Out"
-                    onClick={(e) => {
-                      logout_user();
-                    }}
-                  />
-                </div>
+                  <div className="buttonsUser">
+                    <BotonLogout
+                      id="blogout"
+                      title="Log Out"
+                      onClick={(e) => {
+                        logout_user();
+                      }}
+                    />
+                  </div>
                 </h2>
               </div>
             ) : (
               <h2>
-                Hola, <span>Usuario</span>
+                Hola <span>Usuario</span>
               </h2>
             )}
           </div>
