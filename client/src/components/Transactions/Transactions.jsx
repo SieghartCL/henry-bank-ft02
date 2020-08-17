@@ -55,8 +55,11 @@ function Transactions({
               <h4>Tipo Transacción</h4>
             </div>
           </div>
+          <h2>INGRESOS</h2>
           {history.income &&
-            history.income.map((e) => (
+            history.income.filter((e) => 
+              e.transactions_type !== "Transferencia Bancaria" && 
+              e.transactions_type !== "Pago Comercio").map((e) => (
               <OneTransaction
                 key={e.id}
                 transactionNumber={e.transactionNumber}
@@ -68,6 +71,7 @@ function Transactions({
                 transactions_type={e.transactions_type}
               />
             ))}
+          <h2>EGRESOS</h2>
           {history.outcome &&
             history.outcome.map((e) => (
               <OneTransaction

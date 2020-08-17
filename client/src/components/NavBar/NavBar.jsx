@@ -15,7 +15,7 @@ const NavBar = () => {
     <Container id="conteinernavbar">
       <Navbar className="contenavbar">
         <div className="conttop">
-          <Button className="buttonSB" href="/Transactions/Transactions" type="button">
+          <Button className="buttonSB" href="/transactions" type="button">
             <IoIosPaperPlane size="50%" />
             Transacciones
           </Button>

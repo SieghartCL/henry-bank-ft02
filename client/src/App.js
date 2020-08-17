@@ -56,6 +56,11 @@ function App() {
               <Transactions moment={match.params.moment} />
             )}
           />
+          <Route
+            exact
+            path="/transactions"
+            component={ Transactions }
+          />
           <Route path="/montorecarga" component={MontoRecarga} />
           <Route path="/billetera" component={Wallets} />
           <Route path="/perfil" component={EditUsuario} />

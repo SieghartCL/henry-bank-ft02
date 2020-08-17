@@ -368,7 +368,7 @@ server.get("/history/:idUser", (req, res) => {
 
 //RUTA PARA RETORNAR SUMA GENERAL POR FECHA DE INGRESOS Y EGRESOS X USUARIO//
 //Fecha de incorporación a base: 10-08-2020
-//Última actualización: 11-08-2020
+//Última actualización: 17-08-2020
 server.get("/history/time/:idUser", async (req, res) => {
   const { idUser } = req.params;
   const { moment } = req.query;
@@ -376,24 +376,45 @@ server.get("/history/time/:idUser", async (req, res) => {
   async function moneyFlow(start, end, moment) {
     try {
       //busco todas las transacciones del cliente y las separo por ingresos y decrementos
-      var income = await Transactions.findAll({
-        where: {
-          idReceiver: idUser,
-          createdAt: {
-            [Op.between]: [start, end],
+      var income, outcome;
+      //Aplicar un Between de Fechas, solo si viene un moment declarado
+      if (moment) {
+        income = await Transactions.findAll({
+          where: {
+            idReceiver: idUser,
+            createdAt: {
+              [Op.between]: [start, end],
+            },
           },
-        },
-        order: [["createdAt", "DESC"]],
-      });
-      var outcome = await Transactions.findAll({
-        where: {
-          idSender: idUser,
-          createdAt: {
-            [Op.between]: [start, end],
+          order: [["createdAt", "DESC"]],
+        });
+        outcome = await Transactions.findAll({
+          where: {
+            idSender: idUser,
+            createdAt: {
+              [Op.between]: [start, end],
+            },
           },
-        },
-        order: [["createdAt", "DESC"]],
-      });
+          order: [["createdAt", "DESC"]],
+        });
+      }
+      //Caso contrario, traer las últimas 5 entradas y salidas de dinero
+      else {
+        income = await Transactions.findAll({
+          where: {
+            idReceiver: idUser,
+          },
+          order: [["createdAt", "DESC"]],
+          limit: 5,
+        });
+        outcome = await Transactions.findAll({
+          where: {
+            idSender: idUser,
+          },
+          order: [["createdAt", "DESC"]],
+          limit: 5,
+        });
+      }
 
       Promise.all([income, outcome])
         .then((transactions) => {
@@ -462,10 +483,7 @@ server.get("/history/time/:idUser", async (req, res) => {
       moneyFlow(startDate, endDate, "personalizado");
       break;
     default:
-      res.status(404).json({
-        message:
-          "Debe seleccionar un rango de fechas válido para consultar sus transacciones",
-      });
+      moneyFlow('', '', '');
       break;
   }
 });

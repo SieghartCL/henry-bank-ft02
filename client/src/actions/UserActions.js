@@ -104,135 +104,170 @@ export function enviarDinero(from, to, money, transactions_type) {
   return function (dispatch) {
     const myBody = {
       money: money,
-      transactions_type: "UsertoUser",
+      transactions_type,
     };
-    axios
-      .put(
-        `http://localhost:3001/transactions/${from}/${to.idContacto}`,
-        myBody
-      )
-      .then((res) => {
-        if (res.status === 200) {
-          swal
-            .fire({
-              title: "¡Buen trabajo!",
-              text: "Se ha enviado $" + money + " a " + to.nombreContacto,
-              icon: "success",
-            })
-            .then((value) => {
-              dispatch({ type: ENVIAR_DINERO }) &&
-                window.location.replace("http://localhost:3000/cliente");
+    console.log(`Valor de transactions_type: ${transactions_type}`)
+    switch (transactions_type) {
+      case "UsertoUser":
+        axios
+          .put(
+            `http://localhost:3001/transactions/${from}/${to.idContacto}`,
+            myBody
+          )
+          .then((res) => {
+            if (res.status === 200) {
+              swal
+                .fire({
+                  title: "¡Buen trabajo!",
+                  text: "Se ha enviado $" + money + " a " + to.nombreContacto,
+                  icon: "success",
+                })
+                .then((value) => {
+                  dispatch({ type: ENVIAR_DINERO }) &&
+                    window.location.replace("http://localhost:3000/cliente");
+                });
+            }
+          })
+          .catch((error) => {
+            swal.fire({
+              title: "¡Qué mal!",
+              text: "data.message",
+              icon: "error",
             });
-        }
-      })
-      .catch((error) => {
-        swal.fire({
-          title: "¡Qué mal!",
-          text: "data.message",
-          icon: "error",
-        });
-      });
-  };
-}
+          });
+        break;
 
-export function listaContactos(idContact) {
-  return function (dispatch) {
-    axios.get(`http://localhost:3001/users/${idContact}`).then((res) => {
-      if (res.status === 200) {
-        return dispatch({
-          type: LISTA_CONTACTOS,
-          payload: {
-            nombreContacto: res.data.firstName + " " + res.data.lastName,
-            idContacto: res.data.id,
-          },
-        });
-      }
-    });
-  };
-}
-
-export function getAddress(address, id, user) {
-  return function (dispatch) {
-    console.log(user);
-    axios
-      .post("http://localhost:3001/auth/validate/street", address)
-      .then((res) => {
-        if (res.status === 200) {
-          console.log(user);
-          axios
-            .put(`http://localhost:3001/users/modify/${id}`, user)
-            .then((res) => {
-              if (res.status === 200) {
-                dispatch({ type: MODIFY_USER, payload: res.data });
-                swal
-                  .fire({
-                    title: "¡Buen trabajo!",
-                    text: "Tus datos fueron ingresados correctamente",
-                    icon: "success",
-                  })
-                  .then((value) => {
-                    window.location.replace("http://localhost:3000/login");
-                  });
-              }
+      default:
+        axios
+          .put(
+            `http://localhost:3001/transactions/${from}/${to.id}`,
+            myBody
+          )
+          .then((res) => {
+            if (res.status === 200) {
+              swal
+                .fire({
+                  title: "¡Buen trabajo!",
+                  text: "Se ha enviado $" + money + " a " + to.name,
+                  icon: "success",
+                })
+                .then((value) => {
+                  dispatch({ type: ENVIAR_DINERO }) &&
+                    window.location.replace("http://localhost:3000/cliente");
+                });
+            }
+          })
+          .catch((error) => {
+            swal.fire({
+              title: "¡Qué mal!",
+              text: "data.message",
+              icon: "error",
             });
-        }
-      })
-      .catch((error) => {
-        swal.fire({
-          title: "¡Qué mal!",
-          text: "La dirección ingresada no es válida =(",
-          icon: "error",
-        });
-      });
-  };
+          });
+        break;
+    }
+  }
 }
 
-export function cargarDinero(id, value) {
-  console.log(value);
-  axios
-    .post(`http://localhost:3001/transactions/loadBalance/${id}`, { value })
-    .then((res) => {
-      console.log(res.data);
-      swal
-        .fire({
-          title: "Recarga exitosa!",
-          icon: "success",
+  export function listaContactos(idContact) {
+    return function (dispatch) {
+      axios.get(`http://localhost:3001/users/${idContact}`).then((res) => {
+        if (res.status === 200) {
+          return dispatch({
+            type: LISTA_CONTACTOS,
+            payload: {
+              nombreContacto: res.data.firstName + " " + res.data.lastName,
+              idContacto: res.data.id,
+            },
+          });
+        }
+      });
+    };
+  }
+
+  export function getAddress(address, id, user) {
+    return function (dispatch) {
+      console.log(user);
+      axios
+        .post("http://localhost:3001/auth/validate/street", address)
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(user);
+            axios
+              .put(`http://localhost:3001/users/modify/${id}`, user)
+              .then((res) => {
+                if (res.status === 200) {
+                  dispatch({ type: MODIFY_USER, payload: res.data });
+                  swal
+                    .fire({
+                      title: "¡Buen trabajo!",
+                      text: "Tus datos fueron ingresados correctamente",
+                      icon: "success",
+                    })
+                    .then((value) => {
+                      window.location.replace("http://localhost:3000/login");
+                    });
+                }
+              });
+          }
         })
-        .then(() => {
-          window.location.replace("http://localhost:3000/cliente");
+        .catch((error) => {
+          swal.fire({
+            title: "¡Qué mal!",
+            text: "La dirección ingresada no es válida =(",
+            icon: "error",
+          });
         });
-    })
-    .catch((res) => {
-      swal.fire({
-        title: "Error",
-        text: "No se pudo recargar dinero",
-        icon: "error",
-      });
-    });
-}
+    };
+  }
 
-export function transactionsHistory(id, moment) {
-  return function (dispatch) {
+  export function cargarDinero(id, value) {
+    console.log(value);
     axios
-      .get(
-        `http://localhost:3001/transactions/history/time/${id}?moment=${moment}`
-      )
-      .then((result) => {
-        dispatch({ type: TRANSACTIONS_HISTORY, payload: result.data });
+      .post(`http://localhost:3001/transactions/loadBalance/${id}`, { value })
+      .then((res) => {
+        console.log(res.data);
+        swal
+          .fire({
+            title: "Recarga exitosa!",
+            icon: "success",
+          })
+          .then(() => {
+            window.location.replace("http://localhost:3000/cliente");
+          });
       })
-      .catch((error) => {
+      .catch((res) => {
         swal.fire({
-          title: error,
-          text: "Hubo un error inesperado.",
+          title: "Error",
+          text: "No se pudo recargar dinero",
           icon: "error",
         });
       });
-  };
-}
-export function AllUserWallets(id) {
-  return (dispatch) => {
-    axios.get(`http://localhost:3001/wallet/myWallets/${id}`).then((result) => {
-      return dispatch({ type: ALL_WALLETS, payload: result.data });
-    });
-  };
-}
+  }
+
+  export function transactionsHistory(id, moment) {
+    return function (dispatch) {
+      axios
+        .get(
+          `http://localhost:3001/transactions/history/time/${id}?moment=${moment}`
+        )
+        .then((result) => {
+          dispatch({ type: TRANSACTIONS_HISTORY, payload: result.data });
+        })
+        .catch((error) => {
+          swal.fire({
+            title: error,
+            text: "Hubo un error inesperado.",
+            icon: "error",
+          });
+        });
+    };
+  }
+
+  export function AllUserWallets(id) {
+    return (dispatch) => {
+      axios.get(`http://localhost:3001/wallet/myWallets/${id}`).then((result) => {
+        return dispatch({ type: ALL_WALLETS, payload: result.data });
+      });
+    };
+  }
