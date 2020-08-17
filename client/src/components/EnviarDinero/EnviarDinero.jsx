@@ -150,7 +150,7 @@ function EnviarDinero({
                   <input
                     type="text"
                     className="form-control"
-                    placeholder="Aún no tiene contactos"
+                    placeholder="Aún no tienes contactos"
                     disabled
                   />
                 )}
