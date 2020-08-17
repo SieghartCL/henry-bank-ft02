@@ -2,6 +2,7 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  background-color: transparent !important;
 }
 #headerenviar {
   width: 70%;
@@ -52,7 +53,7 @@
   margin: 0px;
 }
 #transcli .total {
-  height: 180px;
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +95,7 @@
   color: black;
   margin-top: 5%;
   margin-bottom: 10%;
-  font-size: 90%;
+  font-size: 100%;
   font-weight: 700;
   box-shadow: 5px 5px 5px rgb(73, 70, 70) !important;
   background-color: yellow !important;
@@ -118,76 +119,10 @@
   background-color: white;
   border-color: transparent !important;
 }
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-  #enviarcont {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-  #headerenviar {
-    width: 100%;
-  }
-  #transcli.envia {
-    width: 100%;
-    background-color: #fffdfdef;
-    border: solid 1px #6b6b6b3f;
-    text-align: center;
-    align-self: center;
-  }
-  #transcli  .destino {
-    margin-bottom: 0px !important;
-  }
-  #transcli  button {
-    background-color: #fffe00;
-    border-radius: 5px 0px 0px 5px;
-  }
-  #transcli button svg {
-    fill: black;
-  }
-  #transcli  input {
-    height: 42px;
-    margin: 0px;
-  }
-  #transcli .total {
-    height: 180px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+
+#footerenviar{
   
-  #transcli .mensaje {
-    margin: 0px;
-  }
-  #transcli input {
-    margin-left: 0px !important;
-    width: 17px;
-    height: 17px;
-   
-  }
-  #transcli .form-check-label {
-    line-height: 17px;
-    text-align: justify;
-    margin-left: 10px !important;
-    color: #3b3b3b;
-  }
-
-  #form-check-input{
-position: absolute;
-  }
-
-  #enviarcont .send a {
-    position: relative;
-    color: black;
-    font-weight: bold;
-    background-color: #fffe00 !important;
-    box-shadow: 4px 4px 5px rgba(110, 110, 110, 0.575) !important;
-  }
-  #enviarcont .send a:hover {
-    box-shadow: none !important;
-  }
-  #footerenviar {
-    width: 100%;
-    margin-top: 5%;
-  }
+  width: 70%;
+  align-self: center;
+  
 }

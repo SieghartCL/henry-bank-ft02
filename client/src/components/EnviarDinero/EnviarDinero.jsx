@@ -120,7 +120,7 @@ function EnviarDinero({
       </Image>
       <div id="transactionSelector">
         <select name="transactionSelect" onChange={(e) => handleTypeSelection(e)}>
-          <option key={0} value={0}>Seleccione una opción</option>
+          <option key={0} value={0}>Selecciona una opción</option>
           {
             transactionTypes.map((transaction) => (
               <option key={transaction.id} value={transaction.id}>
@@ -130,8 +130,10 @@ function EnviarDinero({
           }
         </select>
       </div>
-      {transactionType === 0 && <h1>Para comenzar a operar, por favor seleccione una opción</h1>}
+      
+      {transactionType === 0 && <div id="transcli"><h2>Para comenzar a operar, por favor selecciona una opción</h2></div>}
       {transactionType === 1 &&
+        
         <div id="transcli">
           <h2>Transferencia a Cliente</h2>
           <div id="form-group col-md-5 envia">
@@ -239,16 +241,13 @@ function EnviarDinero({
           </Button>
             </div>
           </div>
-          <Image
-            id="footerenviar"
-            src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
-          ></Image>
+          
         </div>
       }
       {transactionType === 2 &&
         <div id="transcli">
           <h2>Transferencia a Comercio</h2>
-          <div className="form-group col-md-5 envia">
+          <div id="form-group col-md-5 envia">
             <div className="input-group mb-3 destino">
               <select name="merchantSelect" onChange={(e) => handleMerchantSelection(e)}>
                 <option key={0} value={0}>Seleccione un Comercio</option>
@@ -289,7 +288,7 @@ function EnviarDinero({
                 }}
               />
               <label className="form-check-label" for="defaultCheck1">
-                Acepto usar la sección amigos solo con fines personales, no
+                Acepto usar la sección amigos sólo con fines personales, no
                 comerciales
           </label>
             </div>
@@ -342,19 +341,16 @@ function EnviarDinero({
           </Button>
             </div>
           </div>
-          <Image
-            id="footerenviar"
-            src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
-          ></Image>
+          
         </div>
       }
       {transactionType === 3 &&
         <div id="transcli">
           <h2>Transferencia a Banco</h2>
-          <div className="form-group col-md-5 envia">
+          <div id="form-group col-md-5 envia">
             <div className="input-group mb-3 destino">
               <select name="bankSelect" onChange={(e) => handleBankSelection(e)}>
-                <option key={0} value={0}>Seleccione un Banco</option>
+                <option key={0} value={0}>Selecciona un Banco</option>
                 {
                   banks.map((bank) => (
                     <option key={bank.id} value={bank.id}>
@@ -392,7 +388,7 @@ function EnviarDinero({
                 }}
               />
               <label className="form-check-label" for="defaultCheck1">
-                Acepto usar la sección amigos solo con fines personales, no
+                Acepto usar la sección amigos sólo con fines personales, no
                 comerciales
         </label>
             </div>
@@ -445,12 +441,14 @@ function EnviarDinero({
         </Button>
             </div>
           </div>
-          <Image
+          
+        </div>
+        
+      }
+      <Image
             id="footerenviar"
             src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
           ></Image>
-        </div>
-      }
     </Container>
   );
 }
