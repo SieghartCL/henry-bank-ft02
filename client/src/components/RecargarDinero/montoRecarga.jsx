@@ -22,13 +22,13 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
     }
   }, [usuarioConectado]);
 
-  const [value, setCantidad] = useState(50);
+  const [value, setCantidad] = useState('');
 
   const handleChange = (event) => {
     let { value, min, max } = event.target;
-    value = Math.max(Number(min), Math.min(Number(max), Number(value)));
-
-    setCantidad(value);
+    // value = Math.max(Number(min), Math.min(Number(max), Number(value)));
+    if (value.length < 8 && value >= 0) setCantidad(value);
+    
   };
 
   const volver = function (e) {
@@ -62,10 +62,9 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
         ></path>
       </svg>
       <div className="form-group col-md-5 envia">
-        {value === 50 ? (
+        {value < 50 ? (
           <div className="alert alert-info alert-dismissible fade show">
-            <strong>Info!</strong> Recuerde que este es el mínimo de dinero
-            admitido para enviar.
+            <strong>Info!</strong> El monto minimo de recarga es $50
             <button type="button" className="close" data-dismiss="alert">
               &times;
             </button>
@@ -73,10 +72,9 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
         ) : (
           <div></div>
         )}
-        {value === 100000 ? (
+        {value > 100000 ? (
           <div className="alert alert-info alert-dismissible fade show">
-            <strong>Info!</strong> Recuerde que este es el máximo de dinero
-            admitido para enviar.
+            <strong>Info!</strong> El monto minimo de recarga es $100.000
             <button type="button" className="close" data-dismiss="alert">
               &times;
             </button>
@@ -84,14 +82,17 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
         ) : (
           <div></div>
         )}
-        <div className="total">
-          <h1>${value}</h1>
-        </div>
+        {value == '' ? 
+          <div className="total">
+            <h1>$0</h1>
+          </div> :
+          <div className="total">
+            <h1>${value}</h1>
+          </div>
+        }
+        
         <div class="input-group input-group-sm mb-3">
           <input
-            type="number"
-            min={50}
-            max={100000}
             value={value}
             class="form-control mensaje"
             placeholder="Modificar Cantidad"
@@ -105,9 +106,16 @@ function RecargarDinero({ usuarioConectado, getProfile, listaContactos }) {
               state: { value },
             }}
           >
-            <Button className="btn btn-dark" size="lg">
-              Recargar
-            </Button>
+            {(value < 50 || value > 100000) ? (
+              <Button className="btn btn-dark" disabled size="lg">
+                Recargar
+              </Button>
+            ):(
+              <Button className = "btn btn-dark" size = "lg">
+                Recargar
+              </Button>
+            )}
+            
           </Link>
         </div>
         <div>
