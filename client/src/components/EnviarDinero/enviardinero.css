@@ -7,36 +7,64 @@
   width: 70%;
   align-self: center;
 }
-#enviarcont .envia {
+
+#transactionSelector {
+  align-self: center;
   width: 70%;
+}
+
+#transcli {
+  
+  width: 70%;
+  align-self: center;
+  text-align: center;
+  align-items: center;
   background-color: #fffdfdef;
   border: solid 1px #6b6b6b3f;
-  text-align: center;
-  align-self: center;
+  padding: 20px;
 }
-#enviarcont .envia .destino {
+
+#transcli input .form-check confirmar{
+ position: relative;
+ 
+}
+
+#transcli label{
+ position: relative;
+ margin-left: 20px;
+ margin-bottom: 20px;
+
+}
+
+
+#transcli .destino {
   margin-bottom: 0px !important;
 }
-#enviarcont .envia .destino button {
+#transcli button {
   background-color: #fffe00;
   border-radius: 5px 0px 0px 5px;
 }
-#enviarcont .envia .destino button svg {
+#transcli button  svg {
   fill: black;
 }
-#enviarcont .envia .destino input {
+#transcli input {
   height: 42px;
   margin: 0px;
 }
-#enviarcont .envia .total {
+#transcli .total {
   height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#enviarcont .envia .total h1 {
-  font-size: 75px;
+#transcli  h1 {
+  font-size: 100px;
 }
+
+#transcli  h2 {
+  margin-bottom: 20px;
+}
+
 #enviarcont .envia .mensaje {
   margin: 0px;
 }
@@ -100,49 +128,54 @@
   #headerenviar {
     width: 100%;
   }
-  #enviarcont .envia {
+  #transcli.envia {
     width: 100%;
     background-color: #fffdfdef;
     border: solid 1px #6b6b6b3f;
     text-align: center;
     align-self: center;
   }
-  #enviarcont .envia .destino {
+  #transcli  .destino {
     margin-bottom: 0px !important;
   }
-  #enviarcont .envia .destino button {
+  #transcli  button {
     background-color: #fffe00;
     border-radius: 5px 0px 0px 5px;
   }
-  #enviarcont .envia .destino button svg {
+  #transcli button svg {
     fill: black;
   }
-  #enviarcont .envia .destino input {
+  #transcli  input {
     height: 42px;
     margin: 0px;
   }
-  #enviarcont .envia .total {
+  #transcli .total {
     height: 180px;
     display: flex;
     align-items: center;
     justify-content: center;
   }
-  #enviarcont .envia .total h1 {
-    font-size: 75px;
-  }
-  #enviarcont .envia .mensaje {
+  
+  #transcli .mensaje {
     margin: 0px;
   }
-  #enviarcont .envia .confirmar input {
+  #transcli input {
+    margin-left: 0px !important;
     width: 17px;
     height: 17px;
+   
   }
-  #enviarcont .envia .confirmar label {
+  #transcli .form-check-label {
     line-height: 17px;
     text-align: justify;
-    margin-left: 5px;
+    margin-left: 10px !important;
     color: #3b3b3b;
   }
+
+  #form-check-input{
+position: absolute;
+  }
+
   #enviarcont .send a {
     position: relative;
     color: black;

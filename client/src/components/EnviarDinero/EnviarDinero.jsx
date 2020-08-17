@@ -132,13 +132,13 @@ function EnviarDinero({
       </div>
       {transactionType === 0 && <h1>Para comenzar a operar, por favor seleccione una opción</h1>}
       {transactionType === 1 &&
-        <div>
-          <h1>Seleccion 1</h1>
-          <div className="form-group col-md-5 envia">
-            <div class="input-group mb-3 destino">
-              <div class="input-group-prepend">
-                <button class="input-group-text" id="basic-addon1">
-                  <FaUserPlus size="30" onClick={addcontactos} />
+        <div id="transcli">
+          <h2>Transferencia a Cliente</h2>
+          <div id="form-group col-md-5 envia">
+            <div className="input-group mb-3 destino">
+              <div className="input-group-prepend">
+                <button className="input-group-text" id="basic-addon1">
+                  <FaUserPlus size="30" onClick={addcontactos}/>
                 </button>
               </div>
               {usuarioConectado.contacts &&
@@ -147,7 +147,7 @@ function EnviarDinero({
                 ) : (
                   <input
                     type="text"
-                    class="form-control"
+                    className="form-control"
                     placeholder="Aún no tiene contactos"
                     disabled
                   />
@@ -162,17 +162,17 @@ function EnviarDinero({
                   <h1>${cantidad}</h1>
                 </div>
               )}
-            <div class="input-group input-group-sm mb-3">
+            <div className="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
-                class="form-control mensaje"
+                className="form-control mensaje"
                 placeholder="Modificar Cantidad"
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div class="form-check confirmar">
+            <div className="form-check confirmar">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 checked={checked}
                 id="defaultCheck1"
@@ -180,8 +180,8 @@ function EnviarDinero({
                   setChecked(e.target.checked);
                 }}
               />
-              <label class="form-check-label" for="defaultCheck1">
-                Acepto usar la sección amigos solo con fines personales, no
+              <label className="form-check-label" for="defaultCheck1">
+                Acepto usar la sección amigos sólo con fines personales, no
                 comerciales
           </label>
             </div>
@@ -246,10 +246,10 @@ function EnviarDinero({
         </div>
       }
       {transactionType === 2 &&
-        <div>
-          <h1>Seleccion 2</h1>
+        <div id="transcli">
+          <h2>Transferencia a Comercio</h2>
           <div className="form-group col-md-5 envia">
-            <div class="input-group mb-3 destino">
+            <div className="input-group mb-3 destino">
               <select name="merchantSelect" onChange={(e) => handleMerchantSelection(e)}>
                 <option key={0} value={0}>Seleccione un Comercio</option>
                 {
@@ -270,17 +270,17 @@ function EnviarDinero({
                   <h1>${cantidad}</h1>
                 </div>
               )}
-            <div class="input-group input-group-sm mb-3">
+            <div className="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
-                class="form-control mensaje"
+                className="form-control mensaje"
                 placeholder="Modificar Cantidad"
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div class="form-check confirmar">
+            <div className="form-check confirmar">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 checked={checked}
                 id="defaultCheck1"
@@ -288,7 +288,7 @@ function EnviarDinero({
                   setChecked(e.target.checked);
                 }}
               />
-              <label class="form-check-label" for="defaultCheck1">
+              <label className="form-check-label" for="defaultCheck1">
                 Acepto usar la sección amigos solo con fines personales, no
                 comerciales
           </label>
@@ -349,10 +349,10 @@ function EnviarDinero({
         </div>
       }
       {transactionType === 3 &&
-        <div>
-          <h1>Seleccion 3</h1>
+        <div id="transcli">
+          <h2>Transferencia a Banco</h2>
           <div className="form-group col-md-5 envia">
-            <div class="input-group mb-3 destino">
+            <div className="input-group mb-3 destino">
               <select name="bankSelect" onChange={(e) => handleBankSelection(e)}>
                 <option key={0} value={0}>Seleccione un Banco</option>
                 {
@@ -373,17 +373,17 @@ function EnviarDinero({
                   <h1>${cantidad}</h1>
                 </div>
               )}
-            <div class="input-group input-group-sm mb-3">
+            <div className="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
-                class="form-control mensaje"
+                className="form-control mensaje"
                 placeholder="Modificar Cantidad"
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div class="form-check confirmar">
+            <div className="form-check confirmar">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 checked={checked}
                 id="defaultCheck1"
@@ -391,7 +391,7 @@ function EnviarDinero({
                   setChecked(e.target.checked);
                 }}
               />
-              <label class="form-check-label" for="defaultCheck1">
+              <label className="form-check-label" for="defaultCheck1">
                 Acepto usar la sección amigos solo con fines personales, no
                 comerciales
         </label>
