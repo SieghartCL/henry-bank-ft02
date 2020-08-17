@@ -51,8 +51,8 @@ function AddUserForm({ id, getAddress, usuarioConectado, getProfile }) {
 
   return (
     <Container id="altaclientecont">
+      <Image id="headeraltacliente" src="https://fotos.subefotos.com/36a67c3cc3bad47c4fe8d29eecaab4d6o.png" ></Image>
       <div id="altacliente">
-        <img src={header} alt="header" />
         <form
           onSubmit={(event) => {
             event.preventDefault();
