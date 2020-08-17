@@ -306,28 +306,6 @@ export function enviarDinero(from, to, money, transactions_type) {
         });
     };
   }
-  
-  export function cargarDinero(id, value) {
-    console.log(value);
-    axios
-      .post(`http://localhost:3001/transactions/loadBalance/${id}`, { value })
-      .then((res) => {
-        console.log(res.data);
-        swal
-          .fire({
-            title: "Recarga exitosa!",
-            icon: "success",
-
-          })
-          .catch((error) => {
-            swal.fire({
-              title: error,
-              text: "Hubo un error inesperado.",
-              icon: "error",
-            });
-          });
-      })
-    }
 
   export function AllUserWallets(id) {
     return (dispatch) => {

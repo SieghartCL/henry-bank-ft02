@@ -261,14 +261,17 @@ function EnviarDinero({
                 }
               </select>
             </div>
-            <div className="total">
-              <h1>${cantidad}</h1>
-            </div>
+            {cantidad == "" ? (
+              <div className="total">
+                <h1>$0</h1>
+              </div>
+            ) : (
+                <div className="total">
+                  <h1>${cantidad}</h1>
+                </div>
+              )}
             <div class="input-group input-group-sm mb-3">
               <input
-                type="number"
-                min={50}
-                max={100000}
                 value={cantidad}
                 class="form-control mensaje"
                 placeholder="Modificar Cantidad"
@@ -361,14 +364,17 @@ function EnviarDinero({
                 }
               </select>
             </div>
-            <div className="total">
-              <h1>${cantidad}</h1>
-            </div>
+            {cantidad == "" ? (
+              <div className="total">
+                <h1>$0</h1>
+              </div>
+            ) : (
+                <div className="total">
+                  <h1>${cantidad}</h1>
+                </div>
+              )}
             <div class="input-group input-group-sm mb-3">
               <input
-                type="number"
-                min={50}
-                max={100000}
                 value={cantidad}
                 class="form-control mensaje"
                 placeholder="Modificar Cantidad"
