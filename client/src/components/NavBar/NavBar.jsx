@@ -19,10 +19,6 @@ const NavBar = () => {
             <IoIosPaperPlane size="50%" />
             Transacciones
           </Button>
-          <Button className="buttonSW" href="/stadistics" type="button">
-            <BsGraphUp size="50%" />
-            Estadisticas
-          </Button>
           <Button className="buttonSW" href="/perfil" type="button">
             <MdLanguage size="50%" />
             Mis Datos

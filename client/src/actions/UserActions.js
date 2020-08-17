@@ -181,6 +181,13 @@ export function enviarDinero(from, to, money, transactions_type) {
             },
           });
         }
+      })
+      .catch((error) => {
+        swal.fire({
+          title: "¡Qué mal!",
+          text: "No tienes fondos suficientes",
+          icon: "error",
+        });
       });
     };
   }
@@ -263,6 +270,64 @@ export function enviarDinero(from, to, money, transactions_type) {
         });
     };
   }
+
+  export function getUpdateProfile(address, id, user) {
+    return function (dispatch) {
+      console.log(user);
+      axios
+        .post("http://localhost:3001/auth/validate/street", address)
+        .then((res) => {
+          if (res.status === 200) {
+            console.log(user);
+            axios
+              .put(`http://localhost:3001/users/modify/${id}`, user)
+              .then((res) => {
+                if (res.status === 200) {
+                  dispatch({ type: MODIFY_USER, payload: res.data });
+                  swal
+                    .fire({
+                      title: "¡Buen trabajo!",
+                      text: "Tus datos fueron modificados correctamente",
+                      icon: "success",
+                    })
+                    .then((value) => {
+                      window.location.replace("http://localhost:3000/cliente");
+                    });
+                }
+              });
+          }
+        })
+        .catch((error) => {
+          swal.fire({
+            title: "¡Qué mal!",
+            text: "La dirección ingresada no es válida =(",
+            icon: "error",
+          });
+        });
+    };
+  }
+  
+  export function cargarDinero(id, value) {
+    console.log(value);
+    axios
+      .post(`http://localhost:3001/transactions/loadBalance/${id}`, { value })
+      .then((res) => {
+        console.log(res.data);
+        swal
+          .fire({
+            title: "Recarga exitosa!",
+            icon: "success",
+
+          })
+          .catch((error) => {
+            swal.fire({
+              title: error,
+              text: "Hubo un error inesperado.",
+              icon: "error",
+            });
+          });
+      })
+    }
 
   export function AllUserWallets(id) {
     return (dispatch) => {

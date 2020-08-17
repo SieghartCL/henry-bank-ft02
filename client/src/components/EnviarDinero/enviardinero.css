@@ -4,7 +4,7 @@
   flex-direction: column;
 }
 #headerenviar {
-  width: 100%;
+  width: 70%;
   align-self: center;
 }
 #enviarcont .envia {
@@ -80,7 +80,7 @@
 #buttonatras {
   width: 60%;
   height: 80%;
-  margin-bottom: 10%!important;
+  margin-bottom: 10% !important;
   align-self: center;
   text-align: center;
   color: black;
@@ -98,7 +98,7 @@
     flex-direction: column;
   }
   #headerenviar {
-    width: 100%
+    width: 100%;
   }
   #enviarcont .envia {
     width: 100%;

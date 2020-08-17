@@ -22,21 +22,21 @@ function Wallets({ AllUserWallets, getProfile, usuarioConectado, wallets }) {
   };
 
   return (
-    <div id="transacciones">
+    <div id="wallet">
       <Row>
         <h2>WALLET</h2>
         <Col sm={12}>
           <div className="item">
-            <div className="prop-1">
+            <div className="props">
               <h4>Tipo</h4>
             </div>
-            <div className="prop-2">
-              <h4>Balance</h4>
-            </div>
-            <div className="prop-3">
+            <div className="props">
               <h4>Divisa</h4>
             </div>
-            <div className="prop-1">
+            <div className="props">
+              <h4>Balance</h4>
+            </div>
+            <div className="props">
               <h4>Fecha Creada</h4>
             </div>
           </div>

@@ -37,9 +37,9 @@ function CargarDinero(props) {
             id="buttonrecargar"
             className="btn btn-dark"
             onClick={(e) => handlerSubmit(e)}
-            Confirmar
-            Recarga
-          ></Button>
+          >
+            Confirmar Recarga
+          </Button>
         </div>
       </div>
       <Image

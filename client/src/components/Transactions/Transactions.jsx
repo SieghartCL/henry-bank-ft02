@@ -23,7 +23,7 @@ function Transactions({
     }
   }, [usuarioConectado]);
 
-  const volver = function (e) {
+  const volver = function () {
     window.location.replace("http://localhost:3000/cliente");
   };
 
@@ -42,17 +42,17 @@ function Transactions({
             <div className="prop-1">
               <h4>Transacción</h4>
             </div>
-            <div className="prop-1">
-              <h4>Fecha Realizada</h4>
-            </div>
             <div className="prop-2">
-              <h4>Valor</h4>
+              <h4>Tipo Transacción</h4>
             </div>
             <div className="prop-3">
-              <h4>Estado</h4>
+              <h4>Valor</h4>
             </div>
             <div className="prop-4">
-              <h4>Tipo Transacción</h4>
+              <h4>Estado</h4>
+            </div>
+            <div className="prop-5">
+              <h4>Fecha Realizada</h4>
             </div>
           </div>
           <h2>INGRESOS</h2>
@@ -61,6 +61,8 @@ function Transactions({
               e.transactions_type !== "Transferencia Bancaria" && 
               e.transactions_type !== "Pago Comercio").map((e) => (
               <OneTransaction
+                color="income"
+                type="+"
                 key={e.id}
                 transactionNumber={e.transactionNumber}
                 createdAt={`${e.createdAt.split("T")[0]} ${
@@ -75,6 +77,8 @@ function Transactions({
           {history.outcome &&
             history.outcome.map((e) => (
               <OneTransaction
+                color="outcome"
+                type="-"
                 key={e.id}
                 transactionNumber={e.transactionNumber}
                 createdAt={`${e.createdAt.split("T")[0]}, ${
@@ -87,12 +91,16 @@ function Transactions({
             ))}
         </Col>
         <div>
-          <Button onClick={volver} className="btn btn-dark" variant="top" size="lg">
-            {" "}
+          <Button
+            onClick={volver}
+            className="btn btn-dark"
+            variant="top"
+            size="lg"
+          >
             Volver
           </Button>
         </div>
-      </Row> 
+      </Row>
     </div>
   );
 }

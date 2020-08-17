@@ -51,124 +51,124 @@ function AddUserForm({ id, getAddress, usuarioConectado, getProfile }) {
 
   return (
     <Container id="altaclientecont">
-      <div id="altacliente">
-        <img src={header} alt="header" />
-        <form
-          onSubmit={(event) => {
-            event.preventDefault();
-            if (getEdad(user.birthDate) >= 16) {
-              getAddress(address, id, user);
-            } else {
-              swal.fire({
-                title: "¡Upps!",
-                text: "Debes ser mayor de 16 años :c",
-                icon: "error",
-              });
-            }
-          }}
-        >
-          <div class="input-gruop mb-3">
-            <input
-              class="form-control"
-              name="firstName"
-              placeholder="Nombre"
-              value={user.firstName}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              class="form-control"
-              name="lastName"
-              placeholder="Apellido"
-              value={user.lastName}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              class="form-control"
-              name="documentType"
-              placeholder="Tipo de documento"
-              value={user.documentType}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              class="form-control"
-              name="identification"
-              placeholder="Número"
-              value={user.identification}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              class="form-control"
-              name="phone"
-              placeholder="Teléfono"
-              value={user.phone}
-              onChange={handleInputChange}
-              required
-            />
-            <div>
-              <p>Fecha de nacimiento</p>
-            </div>
-            <input
-              class="form-control"
-              type="date"
-              name="birthDate"
-              placeholder="Fecha de nacimiento"
-              value={user.birthDate}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              class="form-control"
-              name="street"
-              placeholder="Calle y altura"
-              value={user.street}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              class="form-control"
-              name="complemento"
-              placeholder="Piso y Depto"
-              value={user.complemento}
-              onChange={handleInputChange}
-            />
-            <input
-              class="form-control"
-              name="city"
-              placeholder="Ciudad"
-              value={user.city}
-              onChange={handleInputChange}
-              required
-            />
-            <input
-              class="form-control"
-              name="country"
-              placeholder="Pais"
-              value={user.country}
-              onChange={handleInputChange}
-              required
-            />
+      <Image
+        id="headeraltacliente"
+        src="https://fotos.subefotos.com/36a67c3cc3bad47c4fe8d29eecaab4d6o.png"
+      ></Image>
+      <form
+        id="form-alta"
+        onSubmit={(event) => {
+          event.preventDefault();
+          if (getEdad(user.birthDate) >= 16) {
+            getAddress(address, id, user);
+          } else {
+            swal.fire({
+              title: "¡Upps!",
+              text: "Debes ser mayor de 16 años :c",
+              icon: "error",
+            });
+          }
+        }}
+      >
+        <div class="container-control">
+          <input
+            class="form-control"
+            name="firstName"
+            placeholder="Nombre"
+            value={user.firstName}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="lastName"
+            placeholder="Apellido"
+            value={user.lastName}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="documentType"
+            placeholder="Tipo de documento"
+            value={user.documentType}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="identification"
+            placeholder="Número"
+            value={user.identification}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="phone"
+            placeholder="Teléfono"
+            value={user.phone}
+            onChange={handleInputChange}
+            required
+          />
+          <div id="fecha">
+            <p>Fecha de nacimiento</p>
           </div>
-          <div className="altaButtons">
-            <input
-              type="submit"
-              className="btn btn-outline-dark"
-              value="Dar de Alta"
-            />
-            <button
-              type="button"
-              className="btn btn-outline-danger"
-              value="Cancelar"
-              onClick={cancelar}
-            >
-              Cancelar
-            </button>
-          </div>
-        </form>
-        <a href="/help">¿Necesitás ayuda?</a>
+          <input
+            class="form-control"
+            type="date"
+            name="birthDate"
+            placeholder="Fecha de nacimiento"
+            value={user.birthDate}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="street"
+            placeholder="Calle y altura"
+            value={user.street}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="complemento"
+            placeholder="Piso y Depto"
+            value={user.complemento}
+            onChange={handleInputChange}
+          />
+          <input
+            class="form-control"
+            name="city"
+            placeholder="Ciudad"
+            value={user.city}
+            onChange={handleInputChange}
+            required
+          />
+          <input
+            class="form-control"
+            name="country"
+            placeholder="Pais"
+            value={user.country}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div className="altaButtons">
+          <input type="submit" id="buttonalta" value="Dar de Alta" />
+          <button
+            type="button"
+            id="buttonalta"
+            value="Cancelar"
+            onClick={cancelar}
+          >
+            Cancelar
+          </button>
+        </div>
+      </form>
+      <div id="ayuda">
+        <a href="/">¿Necesitás ayuda?</a>
       </div>
       <Image
         id="footeralta"
