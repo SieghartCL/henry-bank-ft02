@@ -5,6 +5,9 @@ import "./Wallets.css";
 import OneWallet from "./OneWallet";
 import { AllUserWallets, getProfile } from "../../actions/UserActions";
 import Button from "react-bootstrap/Button";
+import Container  from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+
 
 function Wallets({ AllUserWallets, getProfile, usuarioConectado, wallets }) {
   useEffect(() => {
@@ -22,7 +25,8 @@ function Wallets({ AllUserWallets, getProfile, usuarioConectado, wallets }) {
   };
 
   return (
-    <div id="wallet">
+    <Container id="wallet">
+       <Image id="headerwallet" src="https://fotos.subefotos.com/f807c25bc9510155673fc2acf1d82a39o.png" ></Image>
       <Row>
         <h2>WALLET</h2>
         <Col sm={12}>
@@ -51,14 +55,18 @@ function Wallets({ AllUserWallets, getProfile, usuarioConectado, wallets }) {
               />
             ))}
         </Col>
-        <div>
-          <Button onClick={volver} className="btn btn-dark" variant="top" size="lg">
+        <div id="gobackcont">
+          <Button 
+          onClick={volver} 
+          className="goback" 
+          variant="top" 
+         >
             {" "}
             Volver
           </Button>
         </div>
       </Row>
-    </div>
+    </Container>
   );
 }
 function mapStateToProps(state) {

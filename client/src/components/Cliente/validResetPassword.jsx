@@ -3,6 +3,9 @@ import {
   resetPassUser,
   getValidUser,
 } from "../../actions/resetPasswordActions";
+import Image from 'react-bootstrap/Image'
+import Container from 'react-bootstrap/Container'
+import "./CSS/validreset.css";
 
 import { useSelector, useDispatch } from "react-redux";
 
@@ -33,9 +36,10 @@ const ValidResetPassword = (props) => {
   };
 
   return (
-    <div className="container">
+    <Container className="containervalid" >
+      <Image id="headervalid" src="https://fotos.subefotos.com/f807c25bc9510155673fc2acf1d82a39o.png" ></Image>
       <form className="form-signin" onSubmit={(e) => e.preventDefault()}>
-        <h2>hola {user.firstName}! ingresa el codigo y nueva contraseña</h2>
+        <h2>Hola {user.firstName}! ingresa el codigo y nueva contraseña</h2>
         <label htmlFor="contraUser" className="sr-only">
           Nueva Constraseña
         </label>
@@ -65,8 +69,7 @@ const ValidResetPassword = (props) => {
           Confirmar cambio
         </button>
       </form>
-      <br />
-    </div>
+    </Container>
   );
 };
 

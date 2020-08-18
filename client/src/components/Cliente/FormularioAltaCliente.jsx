@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { getAddress, getProfile } from "../../actions/UserActions";
 import { connect } from "react-redux";
 import "./CSS/altaCliente.css";
-import header from "./Images/header.png";
 import swal from "sweetalert2";
 import Container from "react-bootstrap/Container";
 import Image from "react-bootstrap/Image";

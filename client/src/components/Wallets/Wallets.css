@@ -1,21 +1,9 @@
-*{
-    margin: 0px;
-    padding: 0px;
-}
 #root{
-    padding: 0px;
-    background-image: linear-gradient(
-        rgb(82, 82, 82), 
-        rgb(255, 255, 255)
-    );
-    height: 100vh;
+    margin-top: 0!important;
 }
 #wallet{
     position: relative;
-    width: 900px;
-    margin: 0px auto;
-    top: 50px;
-    padding: 30px 0px 15px 0px;
+    width: 70%;
     display: flex;
     background: linear-gradient(
         to bottom, 
@@ -60,29 +48,26 @@
     margin-left: 16%;
 }
 
-@media only screen and (max-width: 400px){ 
-    #root{
-        background: url("./Wallet.png") no-repeat;
-        background-size: cover;
-        position: relative;
-        display: flex;
-        flex-flow: row;
-        width: 100%;
-        height: 100%;
+@media only screen and (max-width: 415px){ 
+    #root {
+        margin: 0!important;
     }
-    #wallet{
-        top:250px;
-        width: 100%;
-        padding: 30px 0px 0px 0px;
+   #wallet{
+    width: 100%;
         display: flex;
-        background: transparent;
-        z-index: -100;    
+        background: transparent; 
         border: none;
+        flex-direction: column;
+        margin: 0!important;
+
     }
+#headerwallet {
+    width: 100%;
+    margin-top: 0!important;
+}
     #wallet .row{
         width: 100%;
         margin: 0px auto;
-        padding: 0px;
     }
     #wallet .row > h2{
         visibility: hidden;
@@ -90,7 +75,6 @@
     #wallet .item{
         align-items: center;
         background-color: white;
-        padding: 15px 0px;
         flex-wrap: wrap;
     }
     #wallet .item .prop-1{
@@ -105,7 +89,28 @@
     #wallet .item .props{
         width: 50%;
     }
-    #wallet button{
-       margin-bottom: 20px;
+    #gobackcont {
+        width: 100%;
+        display: flex;
+        align-self: center;
+        justify-content: center;
+
+    }
+    #wallet .goback{
+        width: 60%;
+        align-self: center;
+        background-color: yellow;
+        color: #000;
+        border: none;
+        font-weight: bold;
+        font-size: 100%;
+        box-shadow: 5px 5px 5px rgb(167, 167, 167);
+        margin-top: 10% !important;
+        margin-right: 15%;
+    }
+    .goback:hover {
+        color: rgb(0, 0, 0);
+        box-shadow: none;
+        background-color: rgb(179, 179, 179) 8, 168, 168;
     }
 }
