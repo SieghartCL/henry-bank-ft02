@@ -35,7 +35,7 @@ export function addUser(user) {
       .catch(() => {
         swal.fire({
           title: "¡Qué mal!",
-          text: "E-mail " + user.email + " ya está en uso =c",
+          text: "E-mail " + user.email + " ya está en uso",
           icon: "error",
         });
       });
@@ -81,7 +81,6 @@ export function logout() {
     axios
       .get("http://localhost:3001/auth/logout")
       .then(async (value) => {
-        console.log(value);
         await swal.fire({
           title: "¡Nos vemos pronto!",
           text: "Se ha deslogueado satisfactoriamente",
@@ -93,7 +92,7 @@ export function logout() {
       .catch(async (error) => {
         await swal.fire({
           title: "¡Qué mal!",
-          text: "No se pudo desloguear =c",
+          text: "No se pudo desloguear",
           icon: "error",
         });
       });
@@ -106,7 +105,6 @@ export function enviarDinero(from, to, money, transactions_type) {
       money: money,
       transactions_type,
     };
-    console.log(`Valor de transactions_type: ${transactions_type}`)
     switch (transactions_type) {
       case "UsertoUser":
         axios
@@ -131,7 +129,7 @@ export function enviarDinero(from, to, money, transactions_type) {
           .catch((error) => {
             swal.fire({
               title: "¡Qué mal!",
-              text: "data.message",
+              text: "No se pudo enviar dinero",
               icon: "error",
             });
           });
@@ -160,7 +158,7 @@ export function enviarDinero(from, to, money, transactions_type) {
           .catch((error) => {
             swal.fire({
               title: "¡Qué mal!",
-              text: "data.message",
+              text: "No se pudo enviar dinero",
               icon: "error",
             });
           });
@@ -194,12 +192,10 @@ export function enviarDinero(from, to, money, transactions_type) {
 
   export function getAddress(address, id, user) {
     return function (dispatch) {
-      console.log(user);
       axios
         .post("http://localhost:3001/auth/validate/street", address)
         .then((res) => {
           if (res.status === 200) {
-            console.log(user);
             axios
               .put(`http://localhost:3001/users/modify/${id}`, user)
               .then((res) => {
@@ -221,7 +217,7 @@ export function enviarDinero(from, to, money, transactions_type) {
         .catch((error) => {
           swal.fire({
             title: "¡Qué mal!",
-            text: "La dirección ingresada no es válida =(",
+            text: "La dirección ingresada no es válida",
             icon: "error",
           });
         });
@@ -229,11 +225,9 @@ export function enviarDinero(from, to, money, transactions_type) {
   }
 
   export function cargarDinero(id, value) {
-    console.log(value);
     axios
       .post(`http://localhost:3001/transactions/loadBalance/${id}`, { value })
       .then((res) => {
-        console.log(res.data);
         swal
           .fire({
             title: "Recarga exitosa!",
@@ -264,7 +258,7 @@ export function enviarDinero(from, to, money, transactions_type) {
         .catch((error) => {
           swal.fire({
             title: error,
-            text: "Hubo un error inesperado.",
+            text: "Hubo un error inesperado",
             icon: "error",
           });
         });
@@ -273,12 +267,10 @@ export function enviarDinero(from, to, money, transactions_type) {
 
   export function getUpdateProfile(address, id, user) {
     return function (dispatch) {
-      console.log(user);
       axios
         .post("http://localhost:3001/auth/validate/street", address)
         .then((res) => {
           if (res.status === 200) {
-            console.log(user);
             axios
               .put(`http://localhost:3001/users/modify/${id}`, user)
               .then((res) => {
@@ -300,7 +292,7 @@ export function enviarDinero(from, to, money, transactions_type) {
         .catch((error) => {
           swal.fire({
             title: "¡Qué mal!",
-            text: "La dirección ingresada no es válida =(",
+            text: "La dirección ingresada no es válida",
             icon: "error",
           });
         });
@@ -313,4 +305,27 @@ export function enviarDinero(from, to, money, transactions_type) {
         return dispatch({ type: ALL_WALLETS, payload: result.data });
       });
     };
+  }
+
+  export function LoginUser (usuario, setUsuario) {
+    axios.post('http://localhost:3001/auth/login',{
+      email: usuario.email,
+      password: usuario.password
+    }, { withCredentials: true })
+    .then((res)=>{
+      const user = res.data;
+
+      if (user) {
+        swal.fire("Éxito", 'Bienvenido ' + user.firstName, 'success');
+        setUsuario({
+          redirectTo: '/cliente'
+        })
+      }
+      else{
+        swal.fire('Error', "Usuario y/o contraseña incorrectos. Intente nuevamente", 'error');
+      }
+    })
+    .catch(e=>{
+      swal.fire('Error', "Ha ocurrido un error al iniciar sesión. Intente nuevamente", 'error');
+    })
   }

@@ -63,36 +63,24 @@ server.post('/:idUser/addContact', (req,res)=> {
                 res.status(200).send(userUpdated);
             })
         })
-
-        .catch(err => { res.status(400).send(err); 
-                    console.log(err)});
-        
-    
+        .catch(err => { res.status(400).send(err); });
 })
 
 
 
 server.delete('/:idUser/deleteContact/:email', (req,res) => {
-
-    
     const idUser =  req.params.idUser;
-    
     const email = req.params.email;
 
-    console.log(email)
-
     //busco usuario y usuario a borrar
-
     let usuario = Users.findByPk(idUser)
     let deleteado = Users.findOne({where: {email: email}})
     
-
     Promise.all([usuario,deleteado])
         .then(users=>{
             var contacts = users[0].contacts;
             //creo un nuevo array donde NO exista el id del usuario que quiero borrar
             const newContacts = contacts.filter(idUsers =>  idUsers != users[1].id)
-
             //modifico el array de contactos con el nuevo array que excluyó el id a eliminar
             Users.update({
                 contacts: newContacts
@@ -102,16 +90,8 @@ server.delete('/:idUser/deleteContact/:email', (req,res) => {
             .then(userUpdated=>{
                 res.status(200).send(userUpdated);
             })
-
-
-
-
         })
-
         .catch(err => { res.status(400).send(err)});
-
-
 })
-
 
 module.exports = server;

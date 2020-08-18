@@ -181,7 +181,7 @@ server.put("/:idSender/:idReceiver", async (req, res) => {
       let merchants = await Merchants.findOne({ where: { id: idReceiver } });
       //Validacion
       let checkMerch = await Merchants.findOne({ where: { id: idReceiver } });
-      console.log(userSender.balance);
+
       if (checkMerch && userSender && userSender.balance >= moneyFloat) {
         Promise.all([userSender, merchants])
           .then((users) => {

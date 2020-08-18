@@ -64,13 +64,12 @@ server.post("/new", async (req, res) => {
 //Edita un Usuario por ID
 server.put("/modify/:id", async (req, res) => {
   const { id } = req.params;
-  console.log(id);
-
   const user = await Users.findOne({
     where: {
       id: id,
     },
   });
+  
   if (user === null) {
     res.status(404).send({
       status: `No se ha encontrado al Usuario especificado. Contacte a su Administrador`,

@@ -72,21 +72,18 @@ function EnviarDinero({
   const handleTypeSelection = (event) => {
     let { value } = event.target;
     value = parseInt(value);
-    console.log(`Se cambió el Tipo de Transacción a ${value}`);
     setTransactionType(value);
   };
 
   const handleMerchantSelection = (event) => {
     let { value } = event.target;
     value = parseInt(value);
-    console.log(`Se cambió el Comercio a ${value}`);
     setSelectedMerchant(value);
   };
 
   const handleBankSelection = (event) => {
     let { value } = event.target;
     value = parseInt(value);
-    console.log(`Se cambió el Banco a ${value}`);
     setSelectedBank(value);
   };
 
@@ -133,7 +130,6 @@ function EnviarDinero({
       {transactionType === 0 && <h1>Para comenzar a operar, por favor seleccione una opción</h1>}
       {transactionType === 1 &&
         <div>
-          <h1>Seleccion 1</h1>
           <div className="form-group col-md-5 envia">
             <div class="input-group mb-3 destino">
               <div class="input-group-prepend">
@@ -194,16 +190,25 @@ function EnviarDinero({
                     size="lg"
                     onClick={() => {
                       if (checked) {
-                        const nombre = document.getElementById("myInput").value;
-                        for (let i = 0; i < listContact.length; i++) {
-                          if (listContact[i].nombreContacto === nombre) {
-                            enviarDinero(
-                              usuarioConectado.id,
-                              listContact[i],
-                              cantidad,
-                              transactionTypes[transactionType - 1].apiName
-                            );
+                        if (cantidad > 0) {
+                          const nombre = document.getElementById("myInput").value;
+                          for (let i = 0; i < listContact.length; i++) {
+                            if (listContact[i].nombreContacto === nombre) {
+                              enviarDinero(
+                                usuarioConectado.id,
+                                listContact[i],
+                                cantidad,
+                                transactionTypes[transactionType - 1].apiName
+                              );
+                            }
                           }
+                        } else {
+                          swal.fire({
+                            title: "Error",
+                            text:
+                              "La cantidad a enviar no puede ser 0",
+                            icon: "error",
+                          });
                         }
                       } else {
                         swal.fire({
@@ -247,7 +252,6 @@ function EnviarDinero({
       }
       {transactionType === 2 &&
         <div>
-          <h1>Seleccion 2</h1>
           <div className="form-group col-md-5 envia">
             <div class="input-group mb-3 destino">
               <select name="merchantSelect" onChange={(e) => handleMerchantSelection(e)}>
@@ -302,12 +306,21 @@ function EnviarDinero({
                     size="lg"
                     onClick={() => {
                       if (checked) {
-                        enviarDinero(
-                          usuarioConectado.id,
-                          merchants[selectedMerchant - 1],
-                          cantidad,
-                          transactionTypes[transactionType - 1].apiName
-                        );
+                        if (cantidad > 0) {
+                          enviarDinero(
+                            usuarioConectado.id,
+                            merchants[selectedMerchant - 1],
+                            cantidad,
+                            transactionTypes[transactionType - 1].apiName
+                          );
+                        } else {
+                          swal.fire({
+                            title: "Error",
+                            text:
+                              "La cantidad a enviar no puede ser 0",
+                            icon: "error",
+                          });
+                        }
                       } else {
                         swal.fire({
                           title: "Error",
@@ -350,7 +363,6 @@ function EnviarDinero({
       }
       {transactionType === 3 &&
         <div>
-          <h1>Seleccion 3</h1>
           <div className="form-group col-md-5 envia">
             <div class="input-group mb-3 destino">
               <select name="bankSelect" onChange={(e) => handleBankSelection(e)}>
@@ -405,12 +417,21 @@ function EnviarDinero({
                     size="lg"
                     onClick={() => {
                       if (checked) {
-                        enviarDinero(
-                          usuarioConectado.id,
-                          banks[selectedBank - 1],
-                          cantidad,
-                          transactionTypes[transactionType - 1].apiName
-                        );
+                        if (cantidad > 0) {
+                          enviarDinero(
+                            usuarioConectado.id,
+                            banks[selectedBank - 1],
+                            cantidad,
+                            transactionTypes[transactionType - 1].apiName
+                          );
+                        } else {
+                          swal.fire({
+                            title: "Error",
+                            text:
+                              "La cantidad a enviar no puede ser 0",
+                            icon: "error",
+                          });
+                        }
                       } else {
                         swal.fire({
                           title: "Error",

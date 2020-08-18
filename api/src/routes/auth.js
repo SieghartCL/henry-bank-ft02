@@ -15,7 +15,7 @@ server.post(
   },
   passport.authenticate("local-signin"),
   (req, res) => {
-    res.redirect("http://localhost:3000/cliente");
+    res.send(req.user);
   }
 );
 
@@ -28,8 +28,6 @@ server.get("/logout", function (req, res, next) {
 server.post(
   "/register",
   function (req, res, next) {
-    console.log("routes/auth.js, register, req.body: ");
-    console.log(req.body);
     next();
   },
   passport.authenticate("local-signup", {
@@ -40,7 +38,6 @@ server.post(
     session: false, // prevent auto-login
   }),
   (req, res) => {
-    console.log("registered", req.user);
     validateEmail(req.user.email, req.user.email_hash);
     res.send(req.user);
   }

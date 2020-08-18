@@ -45,15 +45,10 @@ module.exports = function(passport) {
                             });
 
                             var userinfo = user.get();
-                            console.log("###### Variable userinfo del passport.use (signup) ######");
-                            console.log(userinfo);
-
                             return done(null, userinfo);
                         }
                     })
                     .catch((err) => {
-                        console.log("Error:", err);
-
                         return done(null, false, {
                             message: 'Something went wrong with your Signup'
                         });
@@ -82,9 +77,7 @@ module.exports = function(passport) {
                 },
             })
             .then(function(user) {
-                // console.log(user);
                 if (!user) {
-                    console.log('Email does not exist')
                     return done(null, false, {
                         message: 'Email does not exist'
                     });
@@ -93,27 +86,20 @@ module.exports = function(passport) {
                 //1. Si está previamente encriptada del registro, usar la comprobación por hash
                 //2. Si no lo está, usar comprobación normal de strings
                 if (!isValidPassword(password, user.password)) {
-                    console.log('Incorrect password.')
                     return done(null, false, {
                         message: 'Incorrect password.'
                     });
                 }
                 // if (password !== user.password) {
-                //     console.log('Incorrect password.')
                 //     return done(null, false, {
                 //         message: 'Incorrect password.'
                 //     });
                 // }
 
                 var userinfo = user.get();
-                console.log("###### Variable userinfo del passport.use (signin) ######");
-                console.log(userinfo);
-
                 return done(null, userinfo);
             })
             .catch(function(err) {
-                console.log("Error:", err);
-
                 return done(null, false, {
                     message: 'Something went wrong with your Signin'
                 });

@@ -9,7 +9,6 @@ import Image from "react-bootstrap/Image";
 
 function AddUserForm({ id, getAddress, usuarioConectado, getProfile }) {
   const [user, setUser] = useState({});
-  console.log(usuarioConectado);
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setUser({
