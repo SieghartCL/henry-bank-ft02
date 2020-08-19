@@ -51,7 +51,7 @@ En ambos directorios (client y api), debes ejecutar lo siguiente
 ```bash
 npm start
 ```
-Por defecto, el Frontend se ejectutará en http://localhost:3000 y el Backend en http://localhost:3001
+Por defecto, el Frontend se ejecutará en http://localhost:3000 y el Backend en http://localhost:3001
 <br><br>
 
 # Construido con :hammer:
