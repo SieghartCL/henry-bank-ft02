@@ -34,11 +34,11 @@ function EnviarDinero({
   }, [usuarioConectado]);
 
   useEffect(() => {
-    merchantList()
+    merchantList();
   }, []);
 
   useEffect(() => {
-    bankList()
+    bankList();
   }, []);
 
   const [checked, setChecked] = useState(false);
@@ -54,14 +54,14 @@ function EnviarDinero({
   };
 
   const merchantList = async () => {
-    const response = await axios.get(`http://localhost:3001/merchants`)
+    const response = await axios.get(`http://localhost:3001/merchants`);
     setMerchants(response.data);
-  }
+  };
 
   const bankList = async () => {
-    const response = await axios.get(`http://localhost:3001/banks`)
+    const response = await axios.get(`http://localhost:3001/banks`);
     setBanks(response.data);
-  }
+  };
 
   const handleChange = (event) => {
     let { value, min, max } = event.target;
@@ -95,42 +95,49 @@ function EnviarDinero({
     {
       id: 1,
       apiName: "UsertoUser",
-      userName: "Transferencia a Cliente"
+      userName: "Transferencia a Cliente",
     },
     {
       id: 2,
       apiName: "UsertoMerchant",
-      userName: "Transferencia a Comercio"
+      userName: "Transferencia a Comercio",
     },
     {
       id: 3,
       apiName: "UsertoBank",
-      userName: "Transferencia a Banco"
-    }
+      userName: "Transferencia a Banco",
+    },
   ];
 
   return (
     <Container id="enviarcont">
       <Image
         id="headerenviar"
-        src="https://fotos.subefotos.com/64bf11a0a60617c000baae47b53883fbo.png ">
-      </Image>
+        src="https://fotos.subefotos.com/64bf11a0a60617c000baae47b53883fbo.png "
+      ></Image>
       <div id="transactionSelector">
-        <select name="transactionSelect" onChange={(e) => handleTypeSelection(e)}>
-          <option key={0} value={0}>Seleccione una opción</option>
-          {
-            transactionTypes.map((transaction) => (
-              <option key={transaction.id} value={transaction.id}>
-                {transaction.userName}
-              </option>
-            ))
-          }
+        <select
+          name="transactionSelect"
+          onChange={(e) => handleTypeSelection(e)}
+        >
+          <option key={0} value={0}>
+            Seleccione una opción
+          </option>
+          {transactionTypes.map((transaction) => (
+            <option key={transaction.id} value={transaction.id}>
+              {transaction.userName}
+            </option>
+          ))}
         </select>
       </div>
-      {transactionType === 0 && <h1>Para comenzar a operar, por favor seleccione una opción</h1>}
-      {transactionType === 1 &&
-        <div>
-          <div className="form-group col-md-5 envia">
+      {transactionType === 0 && (
+        <div id="transactionSelector">
+          <h4>Para comenzar a operar, por favor seleccione una opción</h4>
+        </div>
+      )}
+      {transactionType === 1 && (
+        <div id="transactionSelector-body">
+          <div className="envia">
             <div class="input-group mb-3 destino">
               <div class="input-group-prepend">
                 <button class="input-group-text" id="basic-addon1">
@@ -138,26 +145,26 @@ function EnviarDinero({
                 </button>
               </div>
               {usuarioConectado.contacts &&
-                usuarioConectado.contacts.length !== 0 ? (
-                  <SearchContact misContactos={listContact} />
-                ) : (
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Aún no tiene contactos"
-                    disabled
-                  />
-                )}
+              usuarioConectado.contacts.length !== 0 ? (
+                <SearchContact misContactos={listContact} />
+              ) : (
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Aún no tiene contactos"
+                  disabled
+                />
+              )}
             </div>
             {cantidad == "" ? (
               <div className="total">
                 <h1>$0</h1>
               </div>
             ) : (
-                <div className="total">
-                  <h1>${cantidad}</h1>
-                </div>
-              )}
+              <div className="total">
+                <h1>${cantidad}</h1>
+              </div>
+            )}
             <div class="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
@@ -179,57 +186,58 @@ function EnviarDinero({
               <label class="form-check-label" for="defaultCheck1">
                 Acepto usar la sección amigos solo con fines personales, no
                 comerciales
-          </label>
+              </label>
             </div>
             <div className="send">
               {usuarioConectado.contacts &&
-                usuarioConectado.contacts.length !== 0 ? (
-                  <Button
-                    className="btn btn-dark"
-                    id="buttonenviar"
-                    size="lg"
-                    onClick={() => {
-                      if (checked) {
-                        if (cantidad > 0) {
-                          const nombre = document.getElementById("myInput").value;
-                          for (let i = 0; i < listContact.length; i++) {
-                            if (listContact[i].nombreContacto === nombre) {
-                              enviarDinero(
-                                usuarioConectado.id,
-                                listContact[i],
-                                cantidad,
-                                transactionTypes[transactionType - 1].apiName
-                              );
-                            }
+              usuarioConectado.contacts.length !== 0 ? (
+                <Button
+                  className="btn btn-dark"
+                  id="buttonenviar"
+                  size="lg"
+                  onClick={() => {
+                    if (checked) {
+                      if (cantidad > 0) {
+                        const nombre = document.getElementById("myInput").value;
+                        for (let i = 0; i < listContact.length; i++) {
+                          if (listContact[i].nombreContacto === nombre) {
+                            enviarDinero(
+                              usuarioConectado.id,
+                              listContact[i],
+                              cantidad,
+                              transactionTypes[transactionType - 1].apiName
+                            );
                           }
-                        } else {
-                          swal.fire({
-                            title: "Error",
-                            text:
-                              "La cantidad a enviar no puede ser 0",
-                            icon: "error",
-                          });
                         }
                       } else {
                         swal.fire({
                           title: "Error",
-                          text:
-                            "Debes aceptar la condición de uso para poder enviar dinero",
+                          text: "La cantidad a enviar no puede ser 0",
                           icon: "error",
                         });
                       }
-                    }}
-                  >
-                    Enviar Dinero
-                  </Button>
-                ) : (
-                  <Button
-                    className="btn btn-dark"
-                    id="buttonatras"
-                    href="/cliente" size="lg">
-                    Atrás
-                  </Button>
-                )}
+                    } else {
+                      swal.fire({
+                        title: "Error",
+                        text:
+                          "Debes aceptar la condición de uso para poder enviar dinero",
+                        icon: "error",
+                      });
+                    }
+                  }}
+                >
+                  Enviar Dinero
+                </Button>
+              ) : (
+                <Button
+                  className="btn btn-dark"
+                  id="buttonatras"
+                  href="/cliente"
+                  size="lg"
+                >
+                  Atrás
+                </Button>
+              )}
             </div>
             <div>
               <Button
@@ -240,8 +248,8 @@ function EnviarDinero({
                 size="lg"
               >
                 {" "}
-            Volver
-          </Button>
+                Volver
+              </Button>
             </div>
           </div>
           <Image
@@ -249,20 +257,23 @@ function EnviarDinero({
             src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
           ></Image>
         </div>
-      }
-      {transactionType === 2 &&
-        <div>
-          <div className="form-group col-md-5 envia">
+      )}
+      {transactionType === 2 && (
+        <div id="transactionSelector-body">
+          <div className="envia">
             <div class="input-group mb-3 destino">
-              <select name="merchantSelect" onChange={(e) => handleMerchantSelection(e)}>
-                <option key={0} value={0}>Seleccione un Comercio</option>
-                {
-                  merchants.map((merchant) => (
-                    <option key={merchant.id} value={merchant.id}>
-                      {`${merchant.name} (${merchant.cuit})`}
-                    </option>
-                  ))
-                }
+              <select
+                name="merchantSelect"
+                onChange={(e) => handleMerchantSelection(e)}
+              >
+                <option key={0} value={0}>
+                  Seleccione un Comercio
+                </option>
+                {merchants.map((merchant) => (
+                  <option key={merchant.id} value={merchant.id}>
+                    {`${merchant.name} (${merchant.cuit})`}
+                  </option>
+                ))}
               </select>
             </div>
             {cantidad == "" ? (
@@ -270,10 +281,10 @@ function EnviarDinero({
                 <h1>$0</h1>
               </div>
             ) : (
-                <div className="total">
-                  <h1>${cantidad}</h1>
-                </div>
-              )}
+              <div className="total">
+                <h1>${cantidad}</h1>
+              </div>
+            )}
             <div class="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
@@ -295,52 +306,52 @@ function EnviarDinero({
               <label class="form-check-label" for="defaultCheck1">
                 Acepto usar la sección amigos solo con fines personales, no
                 comerciales
-          </label>
+              </label>
             </div>
             <div className="send">
-              {merchants &&
-                merchants.length !== 0 ? (
-                  <Button
-                    className="btn btn-dark"
-                    id="buttonenviar"
-                    size="lg"
-                    onClick={() => {
-                      if (checked) {
-                        if (cantidad > 0) {
-                          enviarDinero(
-                            usuarioConectado.id,
-                            merchants[selectedMerchant - 1],
-                            cantidad,
-                            transactionTypes[transactionType - 1].apiName
-                          );
-                        } else {
-                          swal.fire({
-                            title: "Error",
-                            text:
-                              "La cantidad a enviar no puede ser 0",
-                            icon: "error",
-                          });
-                        }
+              {merchants && merchants.length !== 0 ? (
+                <Button
+                  className="btn btn-dark"
+                  id="buttonenviar"
+                  size="lg"
+                  onClick={() => {
+                    if (checked) {
+                      if (cantidad > 0) {
+                        enviarDinero(
+                          usuarioConectado.id,
+                          merchants[selectedMerchant - 1],
+                          cantidad,
+                          transactionTypes[transactionType - 1].apiName
+                        );
                       } else {
                         swal.fire({
                           title: "Error",
-                          text:
-                            "Debes aceptar la condición de uso para poder enviar dinero",
+                          text: "La cantidad a enviar no puede ser 0",
                           icon: "error",
                         });
                       }
-                    }}
-                  >
-                    Enviar Dinero
-                  </Button>
-                ) : (
-                  <Button
-                    className="btn btn-dark"
-                    id="buttonatras"
-                    href="/cliente" size="lg">
-                    Atrás
-                  </Button>
-                )}
+                    } else {
+                      swal.fire({
+                        title: "Error",
+                        text:
+                          "Debes aceptar la condición de uso para poder enviar dinero",
+                        icon: "error",
+                      });
+                    }
+                  }}
+                >
+                  Enviar Dinero
+                </Button>
+              ) : (
+                <Button
+                  className="btn btn-dark"
+                  id="buttonatras"
+                  href="/cliente"
+                  size="lg"
+                >
+                  Atrás
+                </Button>
+              )}
             </div>
             <div>
               <Button
@@ -351,8 +362,8 @@ function EnviarDinero({
                 size="lg"
               >
                 {" "}
-            Volver
-          </Button>
+                Volver
+              </Button>
             </div>
           </div>
           <Image
@@ -360,20 +371,23 @@ function EnviarDinero({
             src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
           ></Image>
         </div>
-      }
-      {transactionType === 3 &&
-        <div>
-          <div className="form-group col-md-5 envia">
+      )}
+      {transactionType === 3 && (
+        <div id="transactionSelector-body">
+          <div className="envia">
             <div class="input-group mb-3 destino">
-              <select name="bankSelect" onChange={(e) => handleBankSelection(e)}>
-                <option key={0} value={0}>Seleccione un Banco</option>
-                {
-                  banks.map((bank) => (
-                    <option key={bank.id} value={bank.id}>
-                      {`${bank.name} (${bank.cuit})`}
-                    </option>
-                  ))
-                }
+              <select
+                name="bankSelect"
+                onChange={(e) => handleBankSelection(e)}
+              >
+                <option key={0} value={0}>
+                  Seleccione un Banco
+                </option>
+                {banks.map((bank) => (
+                  <option key={bank.id} value={bank.id}>
+                    {`${bank.name} (${bank.cuit})`}
+                  </option>
+                ))}
               </select>
             </div>
             {cantidad == "" ? (
@@ -381,10 +395,10 @@ function EnviarDinero({
                 <h1>$0</h1>
               </div>
             ) : (
-                <div className="total">
-                  <h1>${cantidad}</h1>
-                </div>
-              )}
+              <div className="total">
+                <h1>${cantidad}</h1>
+              </div>
+            )}
             <div class="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
@@ -406,52 +420,52 @@ function EnviarDinero({
               <label class="form-check-label" for="defaultCheck1">
                 Acepto usar la sección amigos solo con fines personales, no
                 comerciales
-        </label>
+              </label>
             </div>
             <div className="send">
-              {banks &&
-                banks.length !== 0 ? (
-                  <Button
-                    className="btn btn-dark"
-                    id="buttonenviar"
-                    size="lg"
-                    onClick={() => {
-                      if (checked) {
-                        if (cantidad > 0) {
-                          enviarDinero(
-                            usuarioConectado.id,
-                            banks[selectedBank - 1],
-                            cantidad,
-                            transactionTypes[transactionType - 1].apiName
-                          );
-                        } else {
-                          swal.fire({
-                            title: "Error",
-                            text:
-                              "La cantidad a enviar no puede ser 0",
-                            icon: "error",
-                          });
-                        }
+              {banks && banks.length !== 0 ? (
+                <Button
+                  className="btn btn-dark"
+                  id="buttonenviar"
+                  size="lg"
+                  onClick={() => {
+                    if (checked) {
+                      if (cantidad > 0) {
+                        enviarDinero(
+                          usuarioConectado.id,
+                          banks[selectedBank - 1],
+                          cantidad,
+                          transactionTypes[transactionType - 1].apiName
+                        );
                       } else {
                         swal.fire({
                           title: "Error",
-                          text:
-                            "Debes aceptar la condición de uso para poder enviar dinero",
+                          text: "La cantidad a enviar no puede ser 0",
                           icon: "error",
                         });
                       }
-                    }}
-                  >
-                    Enviar Dinero
-                  </Button>
-                ) : (
-                  <Button
-                    className="btn btn-dark"
-                    id="buttonatras"
-                    href="/cliente" size="lg">
-                    Atrás
-                  </Button>
-                )}
+                    } else {
+                      swal.fire({
+                        title: "Error",
+                        text:
+                          "Debes aceptar la condición de uso para poder enviar dinero",
+                        icon: "error",
+                      });
+                    }
+                  }}
+                >
+                  Enviar Dinero
+                </Button>
+              ) : (
+                <Button
+                  className="btn btn-dark"
+                  id="buttonatras"
+                  href="/cliente"
+                  size="lg"
+                >
+                  Atrás
+                </Button>
+              )}
             </div>
             <div>
               <Button
@@ -462,8 +476,8 @@ function EnviarDinero({
                 size="lg"
               >
                 {" "}
-          Volver
-        </Button>
+                Volver
+              </Button>
             </div>
           </div>
           <Image
@@ -471,7 +485,7 @@ function EnviarDinero({
             src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
           ></Image>
         </div>
-      }
+      )}
     </Container>
   );
 }

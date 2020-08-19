@@ -2,17 +2,32 @@
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-self: center;
 }
 #headerenviar {
   width: 70%;
   align-self: center;
 }
-#enviarcont .envia {
+#transactionSelector {
+  width: 70%;
+  align-self: center;
+  text-align: center;
+  align-items: center;
+  background-color: #fffdfdef;
+  padding: 5px;
+}
+#transactionSelector-body {
   width: 70%;
   background-color: #fffdfdef;
-  border: solid 1px #6b6b6b3f;
-  text-align: center;
   align-self: center;
+}
+#enviarcont .envia {
+  width: 100%;
+  background-color: #fffdfdef;
+  border: solid 1px #6b6b6b3f;
+  text-align: center !important;
+  align-self: center !important;
+  align-items: center !important;
 }
 #enviarcont .envia .destino {
   margin-bottom: 0px !important;
@@ -90,6 +105,10 @@
   background-color: white;
   border-color: transparent !important;
 }
+#footerenviar {
+  width: 100%;
+  margin-top: 0%;
+}
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
   #enviarcont {
@@ -99,6 +118,19 @@
   }
   #headerenviar {
     width: 100%;
+  }
+  #transactionSelector {
+    width: 100%;
+    align-self: center;
+    text-align: center;
+    align-items: center;
+    background-color: #fffdfdef;
+    padding: 5px;
+  }
+  #transactionSelector-body {
+    width: 100%;
+    background-color: #fffdfdef;
+    align-self: center;
   }
   #enviarcont .envia {
     width: 100%;
@@ -155,6 +187,6 @@
   }
   #footerenviar {
     width: 100%;
-    margin-top: 5%;
+    margin-top: 0%;
   }
 }

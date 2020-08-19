@@ -1,5 +1,6 @@
 import React from "react";
 import "./css/App.css";
+/* import { Route } from 'react-router-dom'; */
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import AltaUsuario from "./components/Cliente/FormularioAltaCliente.jsx";
 import Login from "./components/Usuario/LoginForm.jsx";
@@ -23,6 +24,7 @@ function App() {
     <div>
       <Router>
         <Switch>
+          {/* <Route exact path="/" component={Home} /> */}
           <Route exact path="/" component={Home} />
           <Route
             exact
@@ -54,7 +56,11 @@ function App() {
               <Transactions moment={match.params.moment} />
             )}
           />
-          <Route exact path="/transactions" component={Transactions} />
+          <Route
+            exact
+            path="/transactions"
+            component={ Transactions }
+          />
           <Route path="/montorecarga" component={MontoRecarga} />
           <Route path="/billetera" component={Wallets} />
           <Route path="/perfil" component={EditUsuario} />
