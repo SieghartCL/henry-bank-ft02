@@ -32,26 +32,31 @@
 #enviarcont .envia .destino {
   margin-bottom: 0px !important;
 }
-#enviarcont .envia .destino button {
+#transcli button {
   background-color: #fffe00;
   border-radius: 5px 0px 0px 5px;
 }
-#enviarcont .envia .destino button svg {
+#transcli button  svg {
   fill: black;
 }
-#enviarcont .envia .destino input {
+#transcli input {
   height: 42px;
   margin: 0px;
 }
-#enviarcont .envia .total {
-  height: 180px;
+#transcli .total {
+  height: 150px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-#enviarcont .envia .total h1 {
-  font-size: 75px;
+#transcli  h1 {
+  font-size: 100px;
 }
+
+#transcli  h2 {
+  margin-bottom: 20px;
+}
+
 #enviarcont .envia .mensaje {
   margin: 0px;
 }
@@ -81,7 +86,7 @@
   color: black;
   margin-top: 5%;
   margin-bottom: 10%;
-  font-size: 90%;
+  font-size: 100%;
   font-weight: 700;
   box-shadow: 5px 5px 5px rgb(73, 70, 70) !important;
   background-color: yellow !important;

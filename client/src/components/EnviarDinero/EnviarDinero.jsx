@@ -168,14 +168,14 @@ function EnviarDinero({
             <div class="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
-                class="form-control mensaje"
+                className="form-control mensaje"
                 placeholder="Modificar Cantidad"
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div class="form-check confirmar">
+            <div className="form-check confirmar">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 checked={checked}
                 id="defaultCheck1"
@@ -183,8 +183,8 @@ function EnviarDinero({
                   setChecked(e.target.checked);
                 }}
               />
-              <label class="form-check-label" for="defaultCheck1">
-                Acepto usar la sección amigos solo con fines personales, no
+              <label className="form-check-label" for="defaultCheck1">
+                Acepto usar la sección amigos sólo con fines personales, no
                 comerciales
               </label>
             </div>
@@ -252,10 +252,6 @@ function EnviarDinero({
               </Button>
             </div>
           </div>
-          <Image
-            id="footerenviar"
-            src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
-          ></Image>
         </div>
       )}
       {transactionType === 2 && (
@@ -288,14 +284,14 @@ function EnviarDinero({
             <div class="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
-                class="form-control mensaje"
+                className="form-control mensaje"
                 placeholder="Modificar Cantidad"
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div class="form-check confirmar">
+            <div className="form-check confirmar">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 checked={checked}
                 id="defaultCheck1"
@@ -303,8 +299,8 @@ function EnviarDinero({
                   setChecked(e.target.checked);
                 }}
               />
-              <label class="form-check-label" for="defaultCheck1">
-                Acepto usar la sección amigos solo con fines personales, no
+              <label className="form-check-label" for="defaultCheck1">
+                Acepto usar la sección amigos sólo con fines personales, no
                 comerciales
               </label>
             </div>
@@ -366,10 +362,6 @@ function EnviarDinero({
               </Button>
             </div>
           </div>
-          <Image
-            id="footerenviar"
-            src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
-          ></Image>
         </div>
       )}
       {transactionType === 3 && (
@@ -402,14 +394,14 @@ function EnviarDinero({
             <div class="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
-                class="form-control mensaje"
+                className="form-control mensaje"
                 placeholder="Modificar Cantidad"
                 onChange={(e) => handleChange(e)}
               />
             </div>
-            <div class="form-check confirmar">
+            <div className="form-check confirmar">
               <input
-                class="form-check-input"
+                className="form-check-input"
                 type="checkbox"
                 checked={checked}
                 id="defaultCheck1"
@@ -417,8 +409,8 @@ function EnviarDinero({
                   setChecked(e.target.checked);
                 }}
               />
-              <label class="form-check-label" for="defaultCheck1">
-                Acepto usar la sección amigos solo con fines personales, no
+              <label className="form-check-label" for="defaultCheck1">
+                Acepto usar la sección amigos sólo con fines personales, no
                 comerciales
               </label>
             </div>
