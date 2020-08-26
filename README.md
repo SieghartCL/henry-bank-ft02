@@ -3,6 +3,9 @@
 </p>
 
 # Proyecto Fintech - Henry Bank
+# Versión 1.0 estable
+# Fecha versión: 18-08-2020
+# Última modificación por Wolney Sandoval, 26-08-2020
 
 Henry Bank es el proyecto final realizado por un grupo de estudiantes para la institución [Henry](https://www.linkedin.com/school/soyhenry/) con el fin de graduarse como Full Stack Web developers. Henry Bank es el resultado de un proyecto desafiante construído desde cero, integrando en la misma todos los conocimientos adquiridos durante el programa educativo en [Henry](https://www.linkedin.com/school/soyhenry/).
 <br><br>
