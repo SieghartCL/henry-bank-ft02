@@ -121,7 +121,7 @@ function EnviarDinero({
           onChange={(e) => handleTypeSelection(e)}
         >
           <option key={0} value={0}>
-            Selecciona una opción
+            Seleccione una opción
           </option>
           {transactionTypes.map((transaction) => (
             <option key={transaction.id} value={transaction.id}>
@@ -130,19 +130,17 @@ function EnviarDinero({
           ))}
         </select>
       </div>
-
       {transactionType === 0 && (
-        <div id="transcli">
-          <h2>Para comenzar a operar, por favor selecciona una opción</h2>
+        <div id="transactionSelector">
+          <h4>Para comenzar a operar, por favor seleccione una opción</h4>
         </div>
       )}
       {transactionType === 1 && (
-        <div id="transcli">
-          <h2>Transferencia a Cliente</h2>
-          <div id="form-group col-md-5 envia">
-            <div className="input-group mb-3 destino">
-              <div className="input-group-prepend">
-                <button className="input-group-text" id="basic-addon1">
+        <div id="transactionSelector-body">
+          <div className="envia">
+            <div class="input-group mb-3 destino">
+              <div class="input-group-prepend">
+                <button class="input-group-text" id="basic-addon1">
                   <FaUserPlus size="30" onClick={addcontactos} />
                 </button>
               </div>
@@ -152,8 +150,8 @@ function EnviarDinero({
               ) : (
                 <input
                   type="text"
-                  className="form-control"
-                  placeholder="Aún no tienes contactos"
+                  class="form-control"
+                  placeholder="Aún no tiene contactos"
                   disabled
                 />
               )}
@@ -167,7 +165,7 @@ function EnviarDinero({
                 <h1>${cantidad}</h1>
               </div>
             )}
-            <div className="input-group input-group-sm mb-3">
+            <div class="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
                 className="form-control mensaje"
@@ -257,10 +255,9 @@ function EnviarDinero({
         </div>
       )}
       {transactionType === 2 && (
-        <div id="transcli">
-          <h2>Transferencia a Comercio</h2>
-          <div id="form-group col-md-5 envia">
-            <div className="input-group mb-3 destino">
+        <div id="transactionSelector-body">
+          <div className="envia">
+            <div class="input-group mb-3 destino">
               <select
                 name="merchantSelect"
                 onChange={(e) => handleMerchantSelection(e)}
@@ -284,7 +281,7 @@ function EnviarDinero({
                 <h1>${cantidad}</h1>
               </div>
             )}
-            <div className="input-group input-group-sm mb-3">
+            <div class="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
                 className="form-control mensaje"
@@ -368,16 +365,15 @@ function EnviarDinero({
         </div>
       )}
       {transactionType === 3 && (
-        <div id="transcli">
-          <h2>Transferencia a Banco</h2>
-          <div id="form-group col-md-5 envia">
-            <div className="input-group mb-3 destino">
+        <div id="transactionSelector-body">
+          <div className="envia">
+            <div class="input-group mb-3 destino">
               <select
                 name="bankSelect"
                 onChange={(e) => handleBankSelection(e)}
               >
                 <option key={0} value={0}>
-                  Selecciona un Banco
+                  Seleccione un Banco
                 </option>
                 {banks.map((bank) => (
                   <option key={bank.id} value={bank.id}>
@@ -395,7 +391,7 @@ function EnviarDinero({
                 <h1>${cantidad}</h1>
               </div>
             )}
-            <div className="input-group input-group-sm mb-3">
+            <div class="input-group input-group-sm mb-3">
               <input
                 value={cantidad}
                 className="form-control mensaje"
@@ -476,12 +472,12 @@ function EnviarDinero({
               </Button>
             </div>
           </div>
+          <Image
+            id="footerenviar"
+            src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
+          ></Image>
         </div>
       )}
-      <Image
-        id="footerenviar"
-        src="https://fotos.subefotos.com/0d5c65b0be7d80bce6ee2187e71c9997o.png"
-      ></Image>
     </Container>
   );
 }
