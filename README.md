@@ -3,7 +3,7 @@
 </p>
 
 # Proyecto Fintech - Henry Bank
-#### Versión 1.0 estable
+#### Versión 1.0 desarrollo
 #### Fecha versión: 18-08-2020
 #### Última modificación por Wolney Sandoval, 26-08-2020
 
